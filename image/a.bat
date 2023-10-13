@@ -1,0 +1,9 @@
+copy null.jpg 2.jpg > null
+copy null.jpg 3.jpg > null
+copy null.jpg 4.jpg > null
+copy null.jpg 5.jpg > null
+copy null.jpg 6.jpg > null
+copy null.jpg 7.jpg > null
+copy null.jpg 8.jpg > null
+copy null.jpg 9.jpg > null
+copy null.jpg 10.jpg > null
