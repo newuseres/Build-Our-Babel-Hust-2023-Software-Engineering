@@ -43,10 +43,3 @@ func draw():
 	t.texture = load(file_str)
 	hand.push_back(t)
 	add_child(t)
-	
-	
-
-
-func _on_button_reset_pressed():
-	
-	pass # Replace with function body.
