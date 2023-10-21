@@ -1,13 +1,12 @@
-extends Button
+extends Label
 
-class_name ButtonFinish
+class_name upLevelCostLabel
 
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
+	text = "upLevelCost" +	Pool.poolAttr["科技等级_"+str(String.num_int64(self.get_parent().level))+ "_科技升级金币"]

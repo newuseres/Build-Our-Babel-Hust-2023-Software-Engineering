@@ -1,25 +1,86 @@
 extends Node
+#类型	攻击力	生产力	耐久度	重量	攻击方式	等级	贴图名称
+class for_floor_attr extends Object: 
+	var name:String
+	var type:int
+	var attackPoint:int
+	var produce:int
+	var health:int
+	var weight:int
+	var attackType:int
+	var floorGrade:int
+	var image
 
-var cost : Dictionary
-var level : Dictionary
-var health : Dictionary
-var weight : Dictionary
-var attackPoint : Dictionary
-var produce : Dictionary
-var image : Dictionary
-var attackType : Dictionary
-var floorType : Dictionary
+var floor_attr:Dictionary
+var poolAttr:Dictionary
+
+func load_floor(pos:String):
+	var file = FileAccess.open(pos,FileAccess.READ)
+	var temp = file.get_csv_line(",")
+	var keys = []
+	for i in temp:
+		keys.push_back(i)
+	temp = file.get_csv_line(",")
+	var now_id = 0
+	while temp.size()>1:
+		now_id += 1
+		floor_attr[now_id] = for_floor_attr.new()
+		for idx in range(temp.size()):
+			if keys[idx] == "名称":
+				floor_attr[now_id].name = str(temp[idx])
+			elif keys[idx] == "类型":
+				floor_attr[now_id].type = int(temp[idx])
+			elif keys[idx] == "攻击力":
+				floor_attr[now_id].attackPoint = int(temp[idx])
+			elif keys[idx] == "生产力":
+				floor_attr[now_id].produce=int(temp[idx])
+			elif keys[idx] == "耐久度":
+				floor_attr[now_id].health = int(temp[idx])
+			elif keys[idx] == "重量":
+				floor_attr[now_id].weight = int(temp[idx])
+			elif keys[idx] == "攻击方式":
+				floor_attr[now_id].attackType = int(temp[idx])
+			elif keys[idx] == "等级":
+				floor_attr[now_id].floorGrade =int(temp[idx])
+			elif keys[idx] == "贴图名称":
+				floor_attr[now_id].image = load("res://image/"+str(temp[idx])+".jpg")
+		temp = file.get_csv_line(",")
+	file.close()
+
+func load_relation_database(pos:String):
+	var file = FileAccess.open(pos,FileAccess.READ)
+	var temp = file.get_csv_line(",")
+	var keys = []
+	#第一行的key
+	for i in temp:
+		keys.push_back(i)
+	temp = file.get_csv_line(",")
+	var nowlevel:int = 0
+	while temp.size() > 1:
+		nowlevel+=1
+		for idx in range(temp.size()):
+			if idx == 0: 
+				continue
+			poolAttr["科技等级_"+str(nowlevel)+"_"+keys[idx]] = temp[idx]
+			print("科技等级_"+str(nowlevel)+"_"+keys[idx])
+		temp = file.get_csv_line(",")
+	file.close()
+
+func load_kv_database(pos:String):
+	var file = FileAccess.open(pos,FileAccess.READ)
+	var temp = file.get_csv_line(",")
+	while temp.size() > 1:
+		poolAttr[temp[0]] = temp[1]
+		temp = file.get_csv_line(",")
+	file.close()
+
 
 func loadone():
-	cost[0]=1
-	level[0]=2
-	health[0]=3
-	weight[0]=4
-	attackPoint[0]=1
-	produce[0]=6
-	image[0]=(preload("res://image/1.jpg"))
-	attackType[0]=1
-	floorType[0]=1
+	floor_attr = {}
+	poolAttr = {}
+	load_relation_database("res://database/经济.csv")
+	load_kv_database("res://database/初始设置.csv")
+	load_floor("res://database/建筑数值（随机从80%~120%波动鼓励刷新）.csv")
 	pass
 
 func _ready():

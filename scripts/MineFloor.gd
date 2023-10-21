@@ -3,9 +3,9 @@ class_name MineFloor
 
 var produce : int
 	
-func load(id : int):
-	loadbase(id)
-	produce = Pool.produce[id]
+func load(id : int,level:int):
+	loadbase(id,level)
+	produce = Pool.floor_attr[id].produce
 	pass
 
 func act():

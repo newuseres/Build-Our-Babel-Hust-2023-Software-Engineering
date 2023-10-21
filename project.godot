@@ -27,6 +27,10 @@ window/size/viewport_height=900
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
+[internationalization]
+
+locale/translation_remaps={}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

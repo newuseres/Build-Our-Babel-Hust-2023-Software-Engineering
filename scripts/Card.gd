@@ -1,5 +1,4 @@
 extends Node2D
-
 class_name Card
 
 var floor : FloorBase
@@ -13,7 +12,8 @@ func refresh():
 	if visible == true :
 		floor.free()
 	visible = true
-	floor = FloorSuper.load(0)
+	print(get_parent())
+	floor = FloorSuper.load(2,get_parent().level)
 	add_child(floor)
 	floor.textureB.button_down.connect(click)
 

@@ -11,6 +11,3 @@ func _ready():
 func _process(delta):
 	pass
 
-func _pressed():
-	self.get_parent().refresh()
-	pass

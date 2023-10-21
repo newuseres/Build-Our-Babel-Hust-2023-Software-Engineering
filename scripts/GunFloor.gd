@@ -5,10 +5,11 @@ var attackPoint : int
 
 var attackType : Globals.AttackType
 	
-func load(id : int):
-	loadbase(id)
-	attackPoint = Pool.attackPoint[id]
-	attackType = Pool.attackType[id]
+func load(id : int,level:int):
+	loadbase(id,level)
+	print("id",id,level)
+	attackPoint = Pool.floor_attr[id].attackPoint
+	attackType = Pool.floor_attr[id].attackType
 	
 	pass
 

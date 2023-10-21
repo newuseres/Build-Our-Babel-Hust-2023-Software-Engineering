@@ -20,10 +20,11 @@ var weight:int
 
 var textureB:TextureButton
 var cost:int
-var level:int
-var id:int
+var floorlevel:int = 1
+var floorid:int
 var floorN:int
 var ownerPart:int
+var myName:String
 
 var floortype : Globals.FloorType
 
@@ -33,24 +34,26 @@ func _ready():
 func relocate():
 	position = Vector2(0, -70 -50 * floorN)
 	
-func loadbase(id:int) :
+func loadbase(id:int,level:int) :
 	alive = true
 	active = true
 	textureB = TextureButton.new()
 	add_child(textureB)
-	id = id
-	cost = Pool.cost[id]
-	textureB.texture_normal = Pool.image[id]
+	#读取shop等级
+	cost = int(Pool.poolAttr["科技等级_"+str(level)+"_建筑等级"+str(Pool.floor_attr[id].floorGrade)+"所需金币"])
+	textureB.texture_normal = Pool.floor_attr[id].image
 	textureB.ignore_texture_size = true
 	textureB.stretch_mode = TextureButton.STRETCH_SCALE
 	textureB.size = Vector2(100,100)
-	level = Pool.level[id]
-	health = Pool.health[id]
-	weight = Pool.weight[id]
-	floortype = Pool.floorType[id]
+	floorlevel = Pool.floor_attr[id].floorGrade
+	health = Pool.floor_attr[id].health
+	weight = Pool.floor_attr[id].weight
+	floortype = Pool.floor_attr[id].type
+	myName = str(Pool.floor_attr[id].name)
+	floorid = id
 	pass
-	
-func load(id : int):
+
+func load(id : int,level:int):
 	pass
 	
 func takeDamage(damage : int) -> bool:

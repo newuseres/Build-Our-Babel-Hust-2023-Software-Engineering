@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://fww450cfyeta"]
+
+[ext_resource type="Script" path="res://scripts/FloorSuper.gd" id="1_d0iyx"]
+[ext_resource type="Script" path="res://scripts/MineFloor.gd" id="2_17e8m"]
+[ext_resource type="Script" path="res://scripts/GunFloor.gd" id="3_hb5ds"]
+
+[node name="FloorBase" type="Node2D"]
+script = ExtResource("1_d0iyx")
+
+[node name="MineFloor" type="Node2D" parent="."]
+script = ExtResource("2_17e8m")
+
+[node name="GunFloor" type="Node2D" parent="."]
+script = ExtResource("3_hb5ds")

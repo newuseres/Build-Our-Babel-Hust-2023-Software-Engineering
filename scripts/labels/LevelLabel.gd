@@ -9,5 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "Level:" + String.num_int64(self.get_parent().level)
+	text = "level:" + String.num_int64(self.get_parent().level)
 	pass

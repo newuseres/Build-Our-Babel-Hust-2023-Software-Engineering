@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://vnhrx4iq4ggc"]
+[gd_scene load_steps=9 format=3 uid="uid://vnhrx4iq4ggc"]
 
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_afsdt"]
 [ext_resource type="Script" path="res://scripts/Card.gd" id="2_8gdsp"]
 [ext_resource type="Script" path="res://scripts/labels/GoldLabel.gd" id="4_3myuf"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonRefresh.gd" id="5_ce4io"]
 [ext_resource type="Script" path="res://scripts/labels/LevelLabel.gd" id="5_cwjqy"]
+[ext_resource type="Script" path="res://scripts/labels/flushCostLabel.gd" id="5_m615v"]
+[ext_resource type="Script" path="res://scripts/labels/upLevelCostLabel.gd" id="6_37etc"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonFinish.gd" id="6_q2ffn"]
 
 [node name="Shop" type="Node2D"]
@@ -37,18 +39,47 @@ offset_bottom = 101.0
 text = "level"
 script = ExtResource("5_cwjqy")
 
+[node name="flushCostLabel" type="Label" parent="."]
+offset_left = 916.0
+offset_top = 46.0
+offset_right = 989.0
+offset_bottom = 72.0
+text = "flushCost
+"
+script = ExtResource("5_m615v")
+
+[node name="upLevelCostLabel" type="Label" parent="."]
+offset_left = 912.0
+offset_top = 75.0
+offset_right = 985.0
+offset_bottom = 101.0
+text = "uplevelcost
+"
+script = ExtResource("6_37etc")
+
 [node name="ButtonRefresh" type="Button" parent="."]
-offset_left = 788.0
+offset_left = 789.0
 offset_top = 7.0
-offset_right = 837.0
+offset_right = 838.0
 offset_bottom = 38.0
 text = "刷新"
 script = ExtResource("5_ce4io")
 
 [node name="ButtonFinish" type="Button" parent="."]
-offset_left = 1002.0
-offset_top = 12.0
-offset_right = 1114.0
-offset_bottom = 95.0
+offset_left = 1110.0
+offset_top = 16.0
+offset_right = 1222.0
+offset_bottom = 99.0
 text = "回合结束"
 script = ExtResource("6_q2ffn")
+
+[node name="ButtonUpLevel" type="Button" parent="."]
+offset_left = 1278.0
+offset_top = 19.0
+offset_right = 1390.0
+offset_bottom = 102.0
+text = "升级科技"
+
+[connection signal="pressed" from="ButtonRefresh" to="." method="_on_button_refresh_pressed"]
+[connection signal="pressed" from="ButtonFinish" to="." method="_on_button_finish_pressed"]
+[connection signal="pressed" from="ButtonUpLevel" to="." method="_on_button_up_level_pressed"]
