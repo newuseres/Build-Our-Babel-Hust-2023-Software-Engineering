@@ -16,26 +16,31 @@ class_name  FloorBase
 var alive:bool
 var active:bool
 var health:int
-var weight:int 
+var weight:int
 
-var texture:TextureRect
+var textureRect:TextureRect
 var cost:int
 var level:int
 var id:int
+var floorN:int
+var ownerPart:int
 
 var floortype : Globals.FloorType
 
 func _ready():
-	alive = true
-	active = true
-	texture = TextureRect.new()
-	texture.expand_mode = TextureRect.EXPAND_FIT_HEIGHT
-	texture.size = Vector2(200,100)
+	pass
+
 	
 func loadbase(id:int) :
+	alive = true
+	active = true
+	textureRect = TextureRect.new()
+	textureRect.expand_mode = TextureRect.EXPAND_FIT_HEIGHT
+	textureRect.size = Vector2(200,100)	
+	add_child(textureRect)
 	id = id
 	cost = Pool.cost[id]
-	texture.texture = Pool.image[id]
+	textureRect.texture = Pool.image[id]
 	level = Pool.level[id]
 	health = Pool.health[id]
 	weight = Pool.weight[id]
@@ -46,7 +51,7 @@ func load(id : int):
 	pass
 
 func set_position(position:Vector2):
-	texture.set_position(position)
+	textureRect.set_position(position)
 	
 func takeDamage(damage : int) -> bool:
 	health -= damage
@@ -56,6 +61,7 @@ func takeDamage(damage : int) -> bool:
 	else: return true
 	
 func act():
+	active = false
 	pass
 
 func set_active(flag : bool = true):

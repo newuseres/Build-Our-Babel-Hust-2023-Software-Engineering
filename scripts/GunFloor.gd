@@ -13,6 +13,12 @@ func load(id : int):
 	pass
 
 func act():
-	get_parent().attack(attackType, attackPoint)
-	
+	active = false
+	match attackType :
+		Globals.attackType.straight:
+			if(get_parent().opposite.getFloor(floorN) == null) :
+				get_parent().opposite.getTop().takeDamage(attackPoint)
+			else :
+				get_parent().opposite.getFloor(floorN).takeDamage(attackPoint)
+			pass
 	pass

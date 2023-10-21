@@ -10,6 +10,8 @@ func load(id : int):
 			ret = GunFloor.new()
 		Globals.FloorType.mine:
 			ret = MineFloor.new()
+	ret.load(id)
+	print(1)
 	return ret
 		
 	

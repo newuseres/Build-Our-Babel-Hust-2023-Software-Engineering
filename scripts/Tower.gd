@@ -1,37 +1,48 @@
 extends Node
 
 var floors : Array
+var shop
+var opposite
+
+func getFloor(floorN):
+	if(floorN > floors.size()) : return null 
+	else : return floors[floorN]
+	pass
+
+func getTop():
+	return floors[-1]
 
 func build(floor):
-	
+	floors.push_back(floor)
+	add_child(floor)
 	pass
 
 func highestActive():
-	pass
-	
-func attack(attackType, attackPoint):
+	for floorN in range(floors.size() - 1,-1,-1) :
+		if(floors[floorN].active) :return floors[floorN]
+	return null
 	pass
 	
 func produce(produce):
-	pass
-	
-func takeAttack(attackType, attackPoint, attackFloor):
+	shop.productor += produce
 	pass
 	
 func resetActive():
+	for floor in floors:
+		floor.set_active()
 	pass
 	
 func fallCheck():
 	var sumWeight = 0
 	var sumDamage = 0
-	for floor in range(floors.size() - 1,-1,-1) :
+	for floorN in range(floors.size() - 1,-1,-1) :
 		if sumDamage > 0 :
-			floors[floor].takeDamage(sumDamage)
-		if floors[floor]._alive == false :
+			floors[floorN].takeDamage(sumDamage)
+		if floors[floorN]._alive == false :
 			sumDamage += sumWeight
 			sumWeight = 0
 		else:
-			sumWeight = sumWeight + floors[floor].weight
+			sumWeight = sumWeight + floors[floorN].weight
 	pass
 	var pos = 0
 	while (true):
@@ -42,12 +53,19 @@ func fallCheck():
 	pass
 
 func turnBegin():
+	resetActive()
+	shop.turnBegin()
+	
 	pass
 
 func winCheck():
+	return floors.size() > Globals.WinFloors
 	pass
 
-
+func paintFloor():
+	for floorN in range(0, floors.size()):
+		floors[floorN].floorN = floorN
+	pass
 
 '''
 ## 塔

@@ -1,9 +1,9 @@
 extends Node
 
 enum FloorType{
-	default,
-	gun,
-	mine
+	default =0,
+	gun = 1,
+	mine =2
 }
 
 enum AttackType{
@@ -11,3 +11,5 @@ enum AttackType{
 	straight = 1,
 	blow = 2,
 }
+
+var WinFloors = 20

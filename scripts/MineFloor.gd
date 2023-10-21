@@ -9,5 +9,6 @@ func load(id : int):
 	pass
 
 func act():
+	active = false
 	get_parent().produce(produce)
 	pass

@@ -20,12 +20,16 @@ var level:int
 var productor:int
 
 func refresh():
+	
 	pass
 
-func Buy(floor):
+func buy(floor):
 	if(gold < floor.cost) : return
 	gold -= floor.cost
 	get_parent().build(floor)
 	pass
 
+func newTurn():
+	gold += productor
+	refresh()
 
