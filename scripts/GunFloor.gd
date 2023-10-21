@@ -14,6 +14,7 @@ func load(id : int):
 
 func act():
 	active = false
+	if get_parent().opposite.floors.is_empty(): return
 	match attackType :
 		Globals.AttackType.straight:
 			if(get_parent().opposite.getFloor(floorN) == null) :

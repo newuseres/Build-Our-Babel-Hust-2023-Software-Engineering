@@ -13,11 +13,12 @@ func getFloor(floorN):
 
 func getTop():
 	if(floors.is_empty()) : return null
-	else : return floors[-1]
+	else : return floors[floors.size()-1]
 
 func build(floor):
 	floors.push_back(floor)
-	floor.position = Vector2(0, -20 -50 * floors.size())
+	floor.floorN = floors.size() - 1
+	floor.relocate()
 	floor.textureB.size = Vector2(50,50)
 	print(floor.position)
 	add_child(floor)
@@ -60,6 +61,7 @@ func fallCheck():
 	while (true):
 		if(pos >= floors.size()) : break
 		if(floors[pos].alive == false) :
+			remove_child(floors[pos])
 			floors.remove_at(pos)
 		else : pos += 1
 	pass
@@ -77,6 +79,7 @@ func winCheck():
 func paintFloor():
 	for floorN in range(0, floors.size()):
 		floors[floorN].floorN = floorN
+		floors[floorN].relocate()
 	pass
 
 '''

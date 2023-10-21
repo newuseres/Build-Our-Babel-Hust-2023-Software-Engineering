@@ -12,9 +12,9 @@ func click():
 func refresh():
 	if visible == true :
 		floor.free()
-	visible = true	
+	visible = true
 	floor = FloorSuper.load(0)
-	add_child(floor)	
+	add_child(floor)
 	floor.textureB.button_down.connect(click)
 
 func _ready():

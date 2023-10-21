@@ -15,7 +15,7 @@ func loadone():
 	level[0]=2
 	health[0]=3
 	weight[0]=4
-	attackPoint[0]=5
+	attackPoint[0]=1
 	produce[0]=6
 	image[0]=(preload("res://image/1.jpg"))
 	attackType[0]=1

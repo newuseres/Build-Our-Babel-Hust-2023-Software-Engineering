@@ -30,6 +30,8 @@ var floortype : Globals.FloorType
 func _ready():
 	pass
 
+func relocate():
+	position = Vector2(0, -70 -50 * floorN)
 	
 func loadbase(id:int) :
 	alive = true
