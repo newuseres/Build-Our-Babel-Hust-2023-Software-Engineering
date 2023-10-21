@@ -11,7 +11,6 @@ func load(id : int):
 		Globals.FloorType.mine:
 			ret = MineFloor.new()
 	ret.load(id)
-	print(1)
 	return ret
 		
 	

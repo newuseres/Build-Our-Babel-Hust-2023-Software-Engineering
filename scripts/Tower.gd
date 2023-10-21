@@ -37,8 +37,13 @@ func fallCheck():
 	var sumDamage = 0
 	for floorN in range(floors.size() - 1,-1,-1) :
 		if sumDamage > 0 :
-			floors[floorN].takeDamage(sumDamage)
-		if floors[floorN]._alive == false :
+			if sumDamage > floors[floorN].health :
+				sumDamage -= floors[floorN].health
+				floors[floorN].takeDamage(floors[floorN].health)
+			else:
+				floors[floorN].takeDamage(sumDamage)
+				sumDamage = 0
+		if floors[floorN].alive == false :
 			sumDamage += sumWeight
 			sumWeight = 0
 		else:
@@ -47,7 +52,7 @@ func fallCheck():
 	var pos = 0
 	while (true):
 		if(pos >= floors.size()) : break
-		if(floors[pos]._alive == false) :
+		if(floors[pos].alive == false) :
 			floors.remove_at(pos)
 		else : pos += 1
 	pass
