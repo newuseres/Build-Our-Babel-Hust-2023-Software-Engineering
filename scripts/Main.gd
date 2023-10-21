@@ -41,4 +41,17 @@ func _ready():
 	tower1 = Tower.new()
 	tower0.opposite = tower1
 	tower1.opposite = tower0
+	add_child(tower0)
+	add_child(tower1)
+	tower0.position = Vector2(100, 650)
+	tower1.position = Vector2(1350, 650)
+	tower0.shop.position = Vector2(0, 0)
+	tower1.shop.position = Vector2(-1250, 120)
+	
+func _process(delta):
+	if tower0.finished and tower1.finished :
+		allAct()
+		tower0.turnBegin()
+		tower1.turnBegin()
+	pass
 	

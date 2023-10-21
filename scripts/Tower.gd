@@ -1,20 +1,27 @@
-extends Node
+extends Node2D
+class_name Tower
 
 var floors : Array
 var shop
 var opposite
+var finished
 
 func getFloor(floorN):
-	if(floorN > floors.size()) : return null 
+	if(floorN >= floors.size()) : return null 
 	else : return floors[floorN]
 	pass
 
 func getTop():
-	return floors[-1]
+	if(floors.is_empty()) : return null
+	else : return floors[-1]
 
 func build(floor):
 	floors.push_back(floor)
+	floor.position = Vector2(0, -20 -50 * floors.size())
+	floor.textureB.size = Vector2(50,50)
+	print(floor.position)
 	add_child(floor)
+	
 	pass
 
 func highestActive():
@@ -59,8 +66,8 @@ func fallCheck():
 
 func turnBegin():
 	resetActive()
-	shop.turnBegin()
-	
+	$Shop.turnBegin()
+	finished = false
 	pass
 
 func winCheck():
@@ -84,9 +91,13 @@ func paintFloor():
 回合开始（）//矿工产生金币 打开商店
 获胜判断（）
 '''
+
+var shoptscn = preload("res://tscns/Shop.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	shop = shoptscn.instantiate()
+	shop.name = "Shop"
+	add_child(shop)
 	pass # Replace with function body.
 
 

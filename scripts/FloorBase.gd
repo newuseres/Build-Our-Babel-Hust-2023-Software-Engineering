@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name  FloorBase
 '''
 ## 层（基类）
@@ -18,7 +18,7 @@ var active:bool
 var health:int
 var weight:int
 
-var textureRect:TextureRect
+var textureB:TextureButton
 var cost:int
 var level:int
 var id:int
@@ -34,13 +34,14 @@ func _ready():
 func loadbase(id:int) :
 	alive = true
 	active = true
-	textureRect = TextureRect.new()
-	textureRect.expand_mode = TextureRect.EXPAND_FIT_HEIGHT
-	textureRect.size = Vector2(200,100)	
-	add_child(textureRect)
+	textureB = TextureButton.new()
+	add_child(textureB)
 	id = id
 	cost = Pool.cost[id]
-	textureRect.texture = Pool.image[id]
+	textureB.texture_normal = Pool.image[id]
+	textureB.ignore_texture_size = true
+	textureB.stretch_mode = TextureButton.STRETCH_SCALE
+	textureB.size = Vector2(100,100)
 	level = Pool.level[id]
 	health = Pool.health[id]
 	weight = Pool.weight[id]
@@ -49,9 +50,6 @@ func loadbase(id:int) :
 	
 func load(id : int):
 	pass
-
-func set_position(position:Vector2):
-	textureRect.set_position(position)
 	
 func takeDamage(damage : int) -> bool:
 	health -= damage

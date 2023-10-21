@@ -1,25 +1,25 @@
 extends Node
 
-var cost : Array
-var level : Array
-var health : Array
-var weight : Array
-var attackPoint : Array
-var produce : Array
-var image : Array
-var attackType : Array
-var floorType : Array
+var cost : Dictionary
+var level : Dictionary
+var health : Dictionary
+var weight : Dictionary
+var attackPoint : Dictionary
+var produce : Dictionary
+var image : Dictionary
+var attackType : Dictionary
+var floorType : Dictionary
 
 func loadone():
-	cost.push_back(1)
-	level.push_back(2)
-	health.push_back(3)
-	weight.push_back(4)
-	attackPoint.push_back(5)
-	produce.push_back(6)
-	image.push_back(preload("res://image/1.jpg"))
-	attackType.push_back(1)
-	floorType.push_back(1)
+	cost[0]=1
+	level[0]=2
+	health[0]=3
+	weight[0]=4
+	attackPoint[0]=5
+	produce[0]=6
+	image[0]=(preload("res://image/1.jpg"))
+	attackType[0]=1
+	floorType[0]=1
 	pass
 
 func _ready():

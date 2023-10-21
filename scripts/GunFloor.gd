@@ -15,7 +15,7 @@ func load(id : int):
 func act():
 	active = false
 	match attackType :
-		Globals.attackType.straight:
+		Globals.AttackType.straight:
 			if(get_parent().opposite.getFloor(floorN) == null) :
 				get_parent().opposite.getTop().takeDamage(attackPoint)
 			else :
