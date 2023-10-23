@@ -65,7 +65,7 @@ func fallCheck():
 			floors.remove_at(pos)
 		else : pos += 1
 	pass
-#电脑的turn_begin，玩家turn_end
+#玩家的turn_begin
 func turnBegin():
 	resetActive()
 	$Shop.turnBegin()

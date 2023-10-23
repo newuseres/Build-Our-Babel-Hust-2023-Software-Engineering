@@ -6,18 +6,21 @@ var floor : FloorBase
 func click():
 	print("click!")
 	get_parent().buy(floor)
+	floor.textureB.button_down.disconnect(click)
+	remove_child(floor.moreInformathionLabel)
 	pass
 
-func refresh():
+func refresh(level : int):
 	if visible == true :
 		floor.free()
 	visible = true
 	print(get_parent())
-	floor = FloorSuper.load(2,get_parent().level)
+	
+	floor = FloorSuper.load(Pool.getRand(level), get_parent().level)
 	add_child(floor)
 	floor.textureB.button_down.connect(click)
 
 func _ready():
 	visible = false
-	refresh()
+	refresh(1)
 	

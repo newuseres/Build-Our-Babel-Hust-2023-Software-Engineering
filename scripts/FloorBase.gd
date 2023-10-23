@@ -28,28 +28,43 @@ var myName:String
 
 var floortype : Globals.FloorType
 
+var moreInformathionLabel : MoreInformationLabel
+
 func _ready():
 	pass
 
 func relocate():
 	position = Vector2(0, -70 -50 * floorN)
+
+func floor_mouse_entered():
+	add_child(moreInformathionLabel)
+func floor_mouse_exited():
+	remove_child(moreInformathionLabel)
+	
 	
 func loadbase(id:int,level:int) :
 	alive = true
 	active = true
 	textureB = TextureButton.new()
+	moreInformathionLabel = MoreInformationLabel.new()
+	z_index = 0
+	moreInformathionLabel.z_index = 100000
 	add_child(textureB)
+	add_child(moreInformathionLabel)
 	#读取shop等级
 	cost = int(Pool.poolAttr["科技等级_"+str(level)+"_建筑等级"+str(Pool.floor_attr[id].floorGrade)+"所需金币"])
 	textureB.texture_normal = Pool.floor_attr[id].image
 	textureB.ignore_texture_size = true
 	textureB.stretch_mode = TextureButton.STRETCH_SCALE
 	textureB.size = Vector2(100,100)
+	textureB.mouse_entered.connect(floor_mouse_entered)
+	textureB.mouse_exited.connect(floor_mouse_exited)
 	floorlevel = Pool.floor_attr[id].floorGrade
 	health = Pool.floor_attr[id].health
 	weight = Pool.floor_attr[id].weight
 	floortype = Pool.floor_attr[id].type
 	myName = str(Pool.floor_attr[id].name)
+	moreInformathionLabel.position = Vector2(0, -50)
 	floorid = id
 	pass
 

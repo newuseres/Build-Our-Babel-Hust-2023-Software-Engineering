@@ -13,6 +13,9 @@ class for_floor_attr extends Object:
 
 var floor_attr:Dictionary
 var poolAttr:Dictionary
+var refreshRate:Array[Array]
+var levelfloor:Array[Array]
+
 
 func load_floor(pos:String):
 	var file = FileAccess.open(pos,FileAccess.READ)
@@ -42,6 +45,7 @@ func load_floor(pos:String):
 				floor_attr[now_id].attackType = int(temp[idx])
 			elif keys[idx] == "等级":
 				floor_attr[now_id].floorGrade =int(temp[idx])
+				levelfloor[int(temp[idx])].push_back(now_id)
 			elif keys[idx] == "贴图名称":
 				floor_attr[now_id].image = load("res://image/"+str(temp[idx])+".jpg")
 		temp = file.get_csv_line(",")
@@ -73,16 +77,41 @@ func load_kv_database(pos:String):
 		poolAttr[temp[0]] = temp[1]
 		temp = file.get_csv_line(",")
 	file.close()
+	
+func load_refresh_rates(pos:String):
+	var file = FileAccess.open(pos,FileAccess.READ)
+	var temp = file.get_csv_line(",")
+	var keys = []
+	#第一行的key
+	for i in temp:
+		keys.push_back(i)
+	temp = file.get_csv_line(",")
+	var nowlevel:int = 0
+	while temp.size() > 1:
+		for idx in range(temp.size()):
+			refreshRate[int(temp[0])].push_back( float(temp[idx]) )
+		temp = file.get_csv_line(",")
+	file.close()
 
 
 func loadone():
 	floor_attr = {}
 	poolAttr = {}
+	refreshRate = [[],[],[],[],[],[],[]]
+	levelfloor = [[],[],[],[],[],[],[]]
 	load_relation_database("res://database/经济.csv")
 	load_kv_database("res://database/初始设置.csv")
 	load_floor("res://database/建筑数值（随机从80%~120%波动鼓励刷新）.csv")
+	load_refresh_rates("res://database/商店刷新概率.csv")
 	pass
-
+	
+func getRand(level : int) -> int:
+	var seed : float = randf()
+	for objLevel in range(1, 7) :
+		if seed < refreshRate[level][objLevel]:
+			return levelfloor[objLevel][randi_range(0, levelfloor[objLevel].size() - 1)]
+		else : seed -= refreshRate[level][objLevel]
+	return 0
 func _ready():
 	loadone()
 	pass

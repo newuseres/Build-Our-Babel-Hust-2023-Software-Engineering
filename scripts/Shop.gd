@@ -22,12 +22,12 @@ var productor:int
 
 
 func refresh():
-	$Card0.refresh()
-	$Card1.refresh()
-	$Card2.refresh()
+	$Card0.refresh(level)
+	$Card1.refresh(level)
+	$Card2.refresh(level)
 	pass
 
-func buy(floor):
+func buy(floor:FloorBase):
 	if(gold < floor.cost) : return
 	gold -= floor.cost
 	var card = floor.get_parent()
@@ -38,10 +38,12 @@ func buy(floor):
 #玩家的turn_begin	
 func turnEnd():
 	get_parent().finished = true
+	visible =  false
 
 func turnBegin():
+	visible = true
 	gold += productor * int(Pool.poolAttr["科技等级_"+str(level)+"_矿工生产速度"])
-	goldFlushCost =int(Pool.poolAttr["科技等级_"+str(level)+"_刷新金币"])
+	goldFlushCost = int(Pool.poolAttr["科技等级_"+str(level)+"_刷新金币"])
 	refresh()
 
 func _ready():
@@ -61,7 +63,7 @@ func _on_button_refresh_pressed():
 
 
 func _on_button_up_level_pressed():
-	if(gold < int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) || level==5 ):
+	if(gold < int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) || level==6 ):
 		return;
 	gold = gold - int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) 
 	level += 1
