@@ -47,6 +47,9 @@ func turnBegin():
 	refresh()
 
 func _ready():
+	$Card0.father = self
+	$Card1.father = self
+	$Card2.father = self
 	productor = int(Pool.poolAttr["初始矿工"])
 	goldFlushCost = int(Pool.poolAttr["科技等级_1_刷新金币"])
 	gold = int(Pool.poolAttr["初始金币"])

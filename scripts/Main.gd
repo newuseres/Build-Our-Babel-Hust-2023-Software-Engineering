@@ -1,8 +1,9 @@
 extends Node
 var Tower = preload("res://scripts/Tower.gd")
 
-var tower0
-var tower1
+var tower0:Tower
+var tower1:Tower
+var finished:bool = false
 
 func turnBegin():
 	tower0.turnBegin()
@@ -49,8 +50,27 @@ func _ready():
 	tower1.shop.position = Vector2(-1250, 120)
 	
 func _process(delta):
+	if finished : return
 	if tower0.finished and tower1.finished :
 		allAct()
+		var tmpLabel:Label = Label.new()
+		
+		if tower0.winCheck() and tower1.winCheck() :
+			tmpLabel.text = "TIE"
+			add_child(tmpLabel)
+			finished = true
+			return
+			
+		elif tower0.winCheck() :
+			tmpLabel.text = "P0 WIN!"
+			add_child(tmpLabel)
+			finished = true
+			return
+		elif tower1.winCheck() :
+			tmpLabel.text = "P1 WIN!"
+			add_child(tmpLabel)
+			finished = true
+			return
 		tower0.turnBegin()
 		tower1.turnBegin()
 	pass

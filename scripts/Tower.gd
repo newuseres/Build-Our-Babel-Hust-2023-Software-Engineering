@@ -15,10 +15,14 @@ func getTop():
 	if(floors.is_empty()) : return null
 	else : return floors[floors.size()-1]
 
-func build(floor):
+func build(floor:FloorBase):
+	floor.moreInformathionLabel.visible = false
+	if floors.is_empty() : floor.z_index = 0
+	else : floor.z_index = floors[-1].z_index - 1;
 	floors.push_back(floor)
 	floor.floorN = floors.size() - 1
 	floor.relocate()
+	floor.father = self
 	floor.textureB.size = Vector2(50,50)
 	print(floor.position)
 	add_child(floor)

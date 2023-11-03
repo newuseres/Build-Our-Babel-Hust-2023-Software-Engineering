@@ -28,6 +28,8 @@ var myName:String
 
 var floortype : Globals.FloorType
 
+var father
+
 var moreInformathionLabel : MoreInformationLabel
 
 func _ready():
@@ -37,9 +39,9 @@ func relocate():
 	position = Vector2(0, -70 -50 * floorN)
 
 func floor_mouse_entered():
-	add_child(moreInformathionLabel)
+	moreInformathionLabel.visible = true
 func floor_mouse_exited():
-	remove_child(moreInformathionLabel)
+	moreInformathionLabel.visible = false
 	
 	
 func loadbase(id:int,level:int) :
@@ -57,6 +59,7 @@ func loadbase(id:int,level:int) :
 	textureB.ignore_texture_size = true
 	textureB.stretch_mode = TextureButton.STRETCH_SCALE
 	textureB.size = Vector2(100,100)
+	moreInformathionLabel.visible = false
 	textureB.mouse_entered.connect(floor_mouse_entered)
 	textureB.mouse_exited.connect(floor_mouse_exited)
 	floorlevel = Pool.floor_attr[id].floorGrade

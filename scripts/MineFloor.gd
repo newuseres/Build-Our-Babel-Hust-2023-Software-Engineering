@@ -10,5 +10,5 @@ func load(id : int,level:int):
 
 func act():
 	active = false
-	get_parent().produce(produce)
+	father.produce(produce)
 	pass
