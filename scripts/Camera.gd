@@ -19,5 +19,5 @@ func _process(delta):
 	if(Input.is_action_pressed("keydown")):
 		speed -= 1000 * delta
 	
-	position += delta * speed * Vector2(0,-1)	
+	position += delta * speed * Vector2(0,1)	
 		

@@ -99,12 +99,13 @@ func paintFloor():
 var warmTime = 0
 
 func allFreeze():
-	warmTime = 3.0;
 	for floorN in range(0, floors.size()):
 		floors[floorN].rigid.freeze = true
 	pass
 	
 func allUnfreeze():
+	print("sleep")
+	warmTime = 3.0
 	for floorN in range(0, floors.size()):
 		floors[floorN].rigid.freeze = false
 	pass
