@@ -36,18 +36,31 @@ func allAct():
 		tower1.fallCheck()
 	pass
 	
-
+var shoptscn = preload("res://tscns/Shop.tscn")
+var Cameratscn = preload("res://tscns/Camera.tscn")
 func _ready():
 	tower0 = Tower.new()
 	tower1 = Tower.new()
 	tower0.opposite = tower1
 	tower1.opposite = tower0
-	add_child(tower0)
-	add_child(tower1)
+	var Camera = Cameratscn.instantiate()
+	add_child(Camera)
+	Camera.z_index = -1000
+	#Camera.set_script(load("res://tscns/Camera.gd"))
+	Camera.game.add_child(tower0)
+	Camera.game.add_child(tower1)
 	tower0.position = Vector2(100, 650)
 	tower1.position = Vector2(1350, 650)
-	tower0.shop.position = Vector2(0, 0)
-	tower1.shop.position = Vector2(-1250, 120)
+	tower0.shop = shoptscn.instantiate()
+	tower0.shop.name = "Shop"
+	tower0.shop.father = tower0
+	add_child(tower0.shop)
+	tower1.shop = shoptscn.instantiate()
+	tower1.shop.name = "Shop"
+	tower1.shop.father = tower1
+	add_child(tower1.shop)
+	tower0.shop.position = Vector2(100, 650)
+	tower1.shop.position = Vector2(100, 770)
 	
 func _process(delta):
 	if finished : return

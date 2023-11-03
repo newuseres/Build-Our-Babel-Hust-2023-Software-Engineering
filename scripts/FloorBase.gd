@@ -32,11 +32,13 @@ var father
 
 var moreInformathionLabel : MoreInformationLabel
 
+var rigid:RigidBody2D
+
 func _ready():
 	pass
 
 func relocate():
-	position = Vector2(0, -70 -800)
+	position = Vector2(0, -70 - 1500)
 
 func floor_mouse_entered():
 	moreInformathionLabel.visible = true
@@ -75,6 +77,8 @@ func load(id : int,level:int):
 	pass
 	
 func takeDamage(damage : int) -> bool:
+	position -= Vector2(0,0.1)
+	position += Vector2(0,0.1)
 	health -= damage
 	if(health <= 0):
 		alive = false

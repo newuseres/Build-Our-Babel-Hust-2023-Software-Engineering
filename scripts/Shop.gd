@@ -19,6 +19,7 @@ var penaltyCoefficient:float = 2#惩罚系数
 var level:int = 1
 
 var productor:int
+var father:Tower
 
 
 func refresh():
@@ -33,11 +34,11 @@ func buy(floor:FloorBase):
 	var card = floor.get_parent()
 	card.remove_child(floor)
 	card.visible = false
-	get_parent().build(floor)
+	father.build(floor)
 	pass
 #玩家的turn_begin	
 func turnEnd():
-	get_parent().finished = true
+	father.finished = true
 	visible =  false
 
 func turnBegin():
