@@ -36,7 +36,7 @@ func _ready():
 	pass
 
 func relocate():
-	position = Vector2(0, -70 -50 * floorN)
+	position = Vector2(0, -70 -800)
 
 func floor_mouse_entered():
 	moreInformathionLabel.visible = true

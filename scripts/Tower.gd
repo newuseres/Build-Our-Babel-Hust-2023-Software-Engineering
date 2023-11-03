@@ -15,6 +15,7 @@ func getTop():
 	if(floors.is_empty()) : return null
 	else : return floors[floors.size()-1]
 
+var rigidfloortscn = preload("res://tscns/Rigidfloor.tscn")	
 func build(floor:FloorBase):
 	floor.moreInformathionLabel.visible = false
 	if floors.is_empty() : floor.z_index = 0
@@ -25,8 +26,13 @@ func build(floor:FloorBase):
 	floor.father = self
 	floor.textureB.size = Vector2(50,50)
 	print(floor.position)
+	#加入碰撞体积
+	floor.remove_child(floor.textureB)
+	var rigidtmp = rigidfloortscn.instantiate()
+	floor.add_child(rigidtmp)
+	rigidtmp.name = "rigidtmp"
+	rigidtmp.add_child(floor.textureB)
 	add_child(floor)
-	
 	pass
 
 func highestActive():
@@ -65,6 +71,7 @@ func fallCheck():
 	while (true):
 		if(pos >= floors.size()) : break
 		if(floors[pos].alive == false) :
+			#floors[pos].remove_child(floors[pos].find_child("rigidtmp"))
 			remove_child(floors[pos])
 			floors.remove_at(pos)
 		else : pos += 1
