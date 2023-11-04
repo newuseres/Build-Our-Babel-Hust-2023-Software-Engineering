@@ -58,6 +58,8 @@ func _ready():
 	tower1.shop = shoptscn.instantiate()
 	tower1.shop.name = "Shop"
 	tower1.shop.father = tower1
+	tower0.tower_id = 0
+	tower1.tower_id = 1
 	add_child(tower1.shop)
 	tower0.shop.position = Vector2(100, 600)
 	tower1.shop.position = Vector2(100, 750)
@@ -65,7 +67,10 @@ func _ready():
 func _process(delta):
 	if finished : return
 	if tower0.finished and tower1.finished :
+		tower0.finished = 0
+		tower1.finished = 0
 		allAct()
+		await get_tree().create_timer(0.4).timeout
 		var tmpLabel:Label = Label.new()
 		
 		if tower0.winCheck() and tower1.winCheck() :

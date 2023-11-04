@@ -5,7 +5,7 @@ var floors : Array[FloorBase]
 var shop:Shop
 var opposite
 var finished
-
+var tower_id:int
 func getFloor(floorN):
 	if(floorN >= floors.size()) : return null 
 	else : return floors[floorN]
