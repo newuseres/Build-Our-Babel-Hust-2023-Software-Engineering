@@ -20,11 +20,13 @@ var weight:int
 
 var textureB:TextureButton
 var cost:int
+var originalcost:int#初始cost值
 var floorlevel:int = 1
 var floorid:int
 var floorN:int
 var ownerPart:int
 var myName:String
+var addProductorLimit:int #增加矿工上限
 
 var floortype : Globals.FloorType
 
@@ -56,7 +58,8 @@ func loadbase(id:int,level:int) :
 	add_child(textureB)
 	add_child(moreInformathionLabel)
 	#读取shop等级
-	cost = int(Pool.poolAttr["科技等级_"+str(level)+"_建筑等级"+str(Pool.floor_attr[id].floorGrade)+"所需金币"])
+	originalcost = int(Pool.poolAttr["科技等级_"+str(level)+"_建筑等级"+str(Pool.floor_attr[id].floorGrade)+"所需金币"])
+	cost = originalcost
 	textureB.texture_normal = Pool.floor_attr[id].image
 	textureB.ignore_texture_size = true
 	textureB.stretch_mode = TextureButton.STRETCH_SCALE
@@ -69,6 +72,7 @@ func loadbase(id:int,level:int) :
 	weight = Pool.floor_attr[id].weight
 	floortype = Pool.floor_attr[id].type
 	myName = str(Pool.floor_attr[id].name)
+	addProductorLimit = Pool.floor_attr[id].addProductorLimit
 	moreInformathionLabel.position = Vector2(0, -50)
 	floorid = id
 	pass

@@ -10,6 +10,7 @@ class for_floor_attr extends Object:
 	var attackType:int
 	var floorGrade:int
 	var image
+	var addProductorLimit:int
 
 var floor_attr:Dictionary
 var poolAttr:Dictionary
@@ -48,6 +49,8 @@ func load_floor(pos:String):
 				levelfloor[int(temp[idx])].push_back(now_id)
 			elif keys[idx] == "贴图名称":
 				floor_attr[now_id].image = load("res://image/"+str(temp[idx])+".jpg")
+			elif keys[idx] == "增加矿工上限":
+				floor_attr[now_id].addProductorLimit = int(temp[idx])
 		temp = file.get_csv_line(",")
 	file.close()
 

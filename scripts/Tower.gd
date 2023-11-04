@@ -46,6 +46,7 @@ func highestActive():
 	
 func produce(produce):
 	shop.productor += produce
+	shop.productor = min(shop.productor,shop.productorLimit)
 	pass
 	
 func resetActive():
@@ -76,7 +77,10 @@ func fallCheck():
 		if(pos >= floors.size()) : break
 		if(floors[pos].alive == false) :
 			#floors[pos].remove_child(floors[pos].find_child("rigidtmp"))
+			shop.productorLimit -= floors[pos].addProductorLimit
+			shop.productor = min(shop.productor,shop.productorLimit)
 			remove_child(floors[pos].rigid)
+			#floors[pos].rigid.queue_free() #避免内存泄露,暂时不加入避免bug
 			floors.remove_at(pos)
 		else : pos += 1
 	pass

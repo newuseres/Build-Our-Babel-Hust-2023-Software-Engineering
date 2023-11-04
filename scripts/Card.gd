@@ -19,6 +19,7 @@ func refresh(level : int):
 	floor = FloorSuper.load(Pool.getRand(level), get_parent().level)
 	add_child(floor)
 	floor.father = self;
+	floor.cost = floor.originalcost * (father.penaltyNowRate if father!=null else 1.0 )
 	floor.textureB.button_down.connect(click)
 
 func _ready():

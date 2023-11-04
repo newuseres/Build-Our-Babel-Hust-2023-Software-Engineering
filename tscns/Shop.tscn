@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://vnhrx4iq4ggc"]
+[gd_scene load_steps=11 format=3 uid="uid://vnhrx4iq4ggc"]
 
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_afsdt"]
 [ext_resource type="Script" path="res://scripts/Card.gd" id="2_8gdsp"]
 [ext_resource type="Script" path="res://scripts/labels/GoldLabel.gd" id="4_3myuf"]
+[ext_resource type="Script" path="res://tscns/ProducerLabel.gd" id="5_bbyac"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonRefresh.gd" id="5_ce4io"]
 [ext_resource type="Script" path="res://scripts/labels/LevelLabel.gd" id="5_cwjqy"]
 [ext_resource type="Script" path="res://scripts/labels/flushCostLabel.gd" id="5_m615v"]
 [ext_resource type="Script" path="res://scripts/labels/upLevelCostLabel.gd" id="6_37etc"]
+[ext_resource type="Script" path="res://tscns/ProductorlimitLabel.gd" id="6_axcwc"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonFinish.gd" id="6_q2ffn"]
 
 [node name="Shop" type="Node2D"]
@@ -38,6 +40,23 @@ offset_right = 828.0
 offset_bottom = 101.0
 text = "level"
 script = ExtResource("5_cwjqy")
+
+[node name="ProductorLabel" type="Label" parent="."]
+offset_left = 786.0
+offset_top = 112.0
+offset_right = 826.0
+offset_bottom = 138.0
+text = "productor"
+script = ExtResource("5_bbyac")
+
+[node name="ProductorlimitLabel" type="Label" parent="."]
+offset_left = 911.0
+offset_top = 112.0
+offset_right = 989.0
+offset_bottom = 138.0
+text = "productorLimit
+"
+script = ExtResource("6_axcwc")
 
 [node name="flushCostLabel" type="Label" parent="."]
 offset_left = 916.0

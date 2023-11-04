@@ -1,6 +1,6 @@
 extends Label
 
-class_name LevelLabel
+class_name Productorlabel
 
 # Called when the node enters the scene tree for the first time.
 

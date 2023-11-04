@@ -59,8 +59,8 @@ func _ready():
 	tower1.shop.name = "Shop"
 	tower1.shop.father = tower1
 	add_child(tower1.shop)
-	tower0.shop.position = Vector2(100, 650)
-	tower1.shop.position = Vector2(100, 770)
+	tower0.shop.position = Vector2(100, 600)
+	tower1.shop.position = Vector2(100, 750)
 	
 func _process(delta):
 	if finished : return
