@@ -71,6 +71,8 @@ func _process(delta):
 		tower1.finished = 0
 		allAct()
 		await get_tree().create_timer(0.4).timeout
+		tower0.allUnfreeze()
+		tower1.allUnfreeze()
 		var tmpLabel:Label = Label.new()
 		
 		if tower0.winCheck() and tower1.winCheck() :

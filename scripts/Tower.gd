@@ -40,7 +40,7 @@ func build(floor:FloorBase):
 
 func highestActive():
 	for floorN in range(floors.size() - 1,-1,-1) :
-		if(floors[floorN].active) :return floors[floorN]
+		if(floors[floorN].active and floors[floorN].alive) :return floors[floorN]
 	return null
 	pass
 	
@@ -55,7 +55,8 @@ func resetActive():
 	pass
 	
 func fallCheck():
-	allUnfreeze()
+	#allUnfreeze() 
+	#now freeze after wait
 	var sumWeight = 0
 	var sumDamage = 0
 	for floorN in range(floors.size() - 1,-1,-1) :
