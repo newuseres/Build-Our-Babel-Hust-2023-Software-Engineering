@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcgfcillewd7f"]
+
+[ext_resource type="Script" path="res://scripts/Begin.gd" id="1_b0d4q"]
+[ext_resource type="Texture2D" uid="uid://cbbny67ouv75y" path="res://image/bg1.png" id="1_bbb3s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kgtlg"]
+font_size = 44
+
+[node name="Begin" type="Node2D"]
+script = ExtResource("1_b0d4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(754, 352)
+texture = ExtResource("1_bbb3s")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 524.0
+offset_top = 730.0
+offset_right = 1052.0
+offset_bottom = 809.0
+text = "曾经有一个与世隔绝的王国"
+label_settings = SubResource("LabelSettings_kgtlg")
