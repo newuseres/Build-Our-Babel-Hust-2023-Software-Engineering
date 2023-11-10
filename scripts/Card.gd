@@ -19,11 +19,13 @@ func refresh(level : int):
 	floor = FloorSuper.load(Pool.getRand(level), get_parent().level)
 	add_child(floor)
 	floor.father = self;
-	floor.cost = floor.originalcost * (father.penaltyNowRate if father!=null else 1.0 )
 	floor.textureB.button_down.connect(click)
-	$Label.text = "COST:"+ String.num_int64(floor.cost)
 
 func _ready():
 	visible = false
 	refresh(1)
 	
+func _process(delta):
+	floor.cost = floor.originalcost * (father.penaltyNowRate if father!=null else 1.0 )
+	if visible:
+		$Label.text = "COST:"+ String.num_int64(floor.cost)

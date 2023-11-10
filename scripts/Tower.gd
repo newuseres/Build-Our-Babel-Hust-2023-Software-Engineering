@@ -14,6 +14,8 @@ func getFloor(floorN):
 func getTop():
 	if(floors.is_empty()) : return null
 	else : return floors[floors.size()-1]
+	
+
 
 var rigidfloortscn = preload("res://tscns/Rigidfloor.tscn")	
 func build(floor:FloorBase):
@@ -56,7 +58,7 @@ func resetActive():
 	
 func fallCheck():
 	#allUnfreeze() 
-	#now freeze after wait
+	#now unfreeze after wait
 	var sumWeight = 0
 	var sumDamage = 0
 	for floorN in range(floors.size() - 1,-1,-1) :

@@ -16,6 +16,7 @@ class_name  FloorBase
 var alive:bool
 var active:bool
 var health:int
+var maxHealth:int
 var weight:int
 
 var textureB:TextureButton
@@ -69,6 +70,7 @@ func loadbase(id:int,level:int) :
 	textureB.mouse_exited.connect(floor_mouse_exited)
 	floorlevel = Pool.floor_attr[id].floorGrade
 	health = Pool.floor_attr[id].health
+	maxHealth = health
 	weight = Pool.floor_attr[id].weight
 	floortype = Pool.floor_attr[id].type
 	myName = str(Pool.floor_attr[id].name)
@@ -81,13 +83,17 @@ func load(id : int,level:int):
 	pass
 	
 func takeDamage(damage : int, damageType = Globals.DamageType.normal) -> bool:
-	position -= Vector2(0,0.1)
-	position += Vector2(0,0.1)
 	health -= damage
 	if(health <= 0):
 		alive = false
 		return false
 	else: return true
+
+func takeHeal(heal : int):
+	health = max(health + heal, maxHealth)
+
+func dealthVoice():
+	pass
 	
 func act():
 	active = false
