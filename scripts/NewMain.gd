@@ -1,4 +1,5 @@
 extends Node
+class_name Game
 var Tower = preload("res://scripts/Tower.gd")
 
 var finished:bool = false
@@ -60,13 +61,20 @@ func _ready():
 	tower0.shop = shoptscn.instantiate()
 	tower0.shop.name = "Shop"
 	tower0.shop.father = tower0
+	tower0.father = self
+	tower0.tower_id = 0
 	add_child(tower0.shop)
+	
 	tower1.shop = shoptscn.instantiate()
 	tower1.shop.name = "Shop"
 	tower1.shop.father = tower1
-	tower0.tower_id = 0
+	tower1.father = self
 	tower1.tower_id = 1
 	add_child(tower1.shop)
+	
+	$Minimap.father0 = tower0
+	$Minimap.father1 = tower1
+	
 	if playID == 0:
 		tower1.shop.visible = false
 	else:
@@ -75,7 +83,8 @@ func _ready():
 	tower1.shop.position = Vector2(300, 500)
 
 
-
+func refreshMinimap():
+	$Minimap.updateScreen()
 
 func _process(delta):
 	if finished : return
@@ -105,6 +114,7 @@ func _process(delta):
 			return
 		tower0.turnBegin()
 		tower1.turnBegin()
+		$Minimap.updateScreen()
 	pass
 	
 

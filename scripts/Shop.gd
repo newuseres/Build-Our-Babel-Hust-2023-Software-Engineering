@@ -27,9 +27,9 @@ var father:Tower
 
 
 func refresh():
-	$ShopSceen/Card0.refresh(level)
-	$ShopSceen/Card1.refresh(level)
-	$ShopSceen/Card2.refresh(level)
+	$ShopScreen/Card0.refresh(level)
+	$ShopScreen/Card1.refresh(level)
+	$ShopScreen/Card2.refresh(level)
 	pass
 
 func buy(floornow:FloorBase):
@@ -55,10 +55,10 @@ func buy(floornow:FloorBase):
 
 func turnEnd():
 	father.finished = true
-	$ShopSceen.visible =  false
+	$ShopScreen.visible =  false
 
 func turnBegin():
-	$ShopSceen.visible = true
+	$ShopScreen.visible = true
 	gold += productor * int(Pool.poolAttr["科技等级_"+str(level)+"_矿工生产速度"])
 	goldFlushCost = int(Pool.poolAttr["科技等级_"+str(level)+"_刷新金币"])
 	penaltyNowRate = 1
@@ -66,9 +66,9 @@ func turnBegin():
 	refresh()
 
 func _ready():
-	$ShopSceen/Card0.father = self
-	$ShopSceen/Card1.father = self
-	$ShopSceen/Card2.father = self
+	$ShopScreen/Card0.father = self
+	$ShopScreen/Card1.father = self
+	$ShopScreen/Card2.father = self
 	productor = int(Pool.poolAttr["初始矿工"])
 	productorLimit = int(Pool.poolAttr["初始矿工上限"])
 	goldFlushCost = int(Pool.poolAttr["科技等级_1_刷新金币"])
@@ -102,12 +102,12 @@ func _on_button_finish_pressed():
 
 
 func _on_button_close_shop_sceen_pressed():
-	$ShopSceen.visible = false
+	$ShopScreen.visible = false
 	
 	pass # Replace with function body.
 
 
 func _on_button_open_shop_pressed():
-	$ShopSceen.visible = true
+	$ShopScreen.visible = true
 
 	pass # Replace with function body.

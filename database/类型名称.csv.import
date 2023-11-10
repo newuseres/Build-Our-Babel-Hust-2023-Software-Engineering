@@ -1,17 +1,3 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
-uid="uid://dxjr5p21tu0tp"
-
-[deps]
-
-files=["res://database/类型名称.1.translation"]
-
-source_file="res://database/类型名称.csv"
-dest_files=["res://database/类型名称.1.translation"]
-
-[params]
-
-compress=true
-delimiter=0
+importer="keep"

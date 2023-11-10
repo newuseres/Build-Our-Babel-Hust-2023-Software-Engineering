@@ -6,6 +6,7 @@ var shop:Shop
 var opposite
 var finished
 var tower_id:int
+var father : Game
 func getFloor(floorN) -> FloorBase:
 	if(floorN >= floors.size()) : return null 
 	else : return floors[floorN]
@@ -56,6 +57,7 @@ func build(floor:FloorBase):
 	floor.rigid = rigidtmp
 	rigidtmp.position = Vector2(0,-1500)
 	add_child(rigidtmp)
+	father.refreshMinimap()
 	#rigidtmp.add_child(floor.textureB)
 	#add_child(floor)
 	pass

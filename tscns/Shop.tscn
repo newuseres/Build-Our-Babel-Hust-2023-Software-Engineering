@@ -63,29 +63,29 @@ offset_bottom = -426.0
 text = "商店
 "
 
-[node name="ShopSceen" type="Sprite2D" parent="."]
+[node name="ShopScreen" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.643137, 1, 0.431373)
 z_index = 10
 position = Vector2(410, 16.5)
 scale = Vector2(1.36883, 1.2113)
 texture = ExtResource("12_m62lq")
 
-[node name="Card0" parent="ShopSceen" instance=ExtResource("2_nmrwk")]
+[node name="Card0" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
 position = Vector2(-252.04, -96.0365)
 scale = Vector2(0.730551, 1.09132)
 
-[node name="Card1" parent="ShopSceen" instance=ExtResource("2_nmrwk")]
+[node name="Card1" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
 position = Vector2(-98.6244, -98.2192)
 scale = Vector2(0.730551, 1.09132)
 
-[node name="Card2" parent="ShopSceen" instance=ExtResource("2_nmrwk")]
+[node name="Card2" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
 position = Vector2(59.1746, -98.2192)
 scale = Vector2(0.730551, 1.09132)
 
-[node name="flushCostLabel" type="Label" parent="ShopSceen"]
+[node name="flushCostLabel" type="Label" parent="ShopScreen"]
 offset_left = 142.686
 offset_top = -34.3854
 offset_right = 224.686
@@ -95,7 +95,7 @@ text = "flushCost
 "
 script = ExtResource("5_m615v")
 
-[node name="ButtonRefresh" type="Button" parent="ShopSceen"]
+[node name="ButtonRefresh" type="Button" parent="ShopScreen"]
 offset_left = 272.0
 offset_top = -65.0
 offset_right = 373.0
@@ -103,21 +103,21 @@ offset_bottom = 16.0
 text = "刷新"
 script = ExtResource("5_ce4io")
 
-[node name="ButtonUpLevel" type="Button" parent="ShopSceen"]
+[node name="ButtonUpLevel" type="Button" parent="ShopScreen"]
 offset_left = 275.0
 offset_top = 140.0
 offset_right = 371.0
 offset_bottom = 230.0
 text = "升级科技"
 
-[node name="ButtonCloseShopSceen" type="Button" parent="ShopSceen"]
+[node name="ButtonCloseShopSceen" type="Button" parent="ShopScreen"]
 offset_left = 307.0
 offset_top = -227.0
 offset_right = 379.0
 offset_bottom = -142.0
 text = "关闭商店"
 
-[node name="upLevelCostLabel" type="Label" parent="ShopSceen"]
+[node name="upLevelCostLabel" type="Label" parent="ShopScreen"]
 offset_left = 136.776
 offset_top = 165.135
 offset_right = 224.776
@@ -129,6 +129,6 @@ script = ExtResource("6_37etc")
 
 [connection signal="pressed" from="ButtonFinish" to="." method="_on_button_finish_pressed"]
 [connection signal="pressed" from="ButtonOpenShop" to="." method="_on_button_open_shop_pressed"]
-[connection signal="pressed" from="ShopSceen/ButtonRefresh" to="." method="_on_button_refresh_pressed"]
-[connection signal="pressed" from="ShopSceen/ButtonUpLevel" to="." method="_on_button_up_level_pressed"]
-[connection signal="pressed" from="ShopSceen/ButtonCloseShopSceen" to="." method="_on_button_close_shop_sceen_pressed"]
+[connection signal="pressed" from="ShopScreen/ButtonRefresh" to="." method="_on_button_refresh_pressed"]
+[connection signal="pressed" from="ShopScreen/ButtonUpLevel" to="." method="_on_button_up_level_pressed"]
+[connection signal="pressed" from="ShopScreen/ButtonCloseShopSceen" to="." method="_on_button_close_shop_sceen_pressed"]
