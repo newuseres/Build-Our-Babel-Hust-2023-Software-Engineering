@@ -1,3 +1,17 @@
 [remap]
 
-importer="keep"
+importer="csv_translation"
+type="Translation"
+uid="uid://b0t1rjn3ffbxv"
+
+[deps]
+
+files=["res://database/建筑数值（随机从80%~120%波动鼓励刷新）.类型.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.攻击力.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.生产力.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.耐久度.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.重量.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.攻击方式.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.等级.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.增加矿工上限.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.价格.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.贴图名称.translation"]
+
+source_file="res://database/建筑数值（随机从80%~120%波动鼓励刷新）.csv"
+dest_files=["res://database/建筑数值（随机从80%~120%波动鼓励刷新）.类型.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.攻击力.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.生产力.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.耐久度.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.重量.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.攻击方式.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.等级.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.增加矿工上限.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.价格.translation", "res://database/建筑数值（随机从80%~120%波动鼓励刷新）.贴图名称.translation"]
+
+[params]
+
+compress=true
+delimiter=0

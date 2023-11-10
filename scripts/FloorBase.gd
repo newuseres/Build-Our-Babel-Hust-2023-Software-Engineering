@@ -28,14 +28,25 @@ var floorN:int
 var ownerPart:int
 var myName:String
 var addProductorLimit:int #增加矿工上限
+var buffList:Dictionary
 
-var floortype : Globals.FloorType
+var floortype : String
 
 var father
 
 var moreInformathionLabel : MoreInformationLabel
 
 var rigid:RigidBody2D
+
+var Bullet = preload("res://scripts/Bullet.gd")
+
+func makeBulletFly(dest:FloorBase, BulletType:int = 1):
+	var bullet:Bullet = Bullet.new()
+	add_child(bullet)
+	bullet.straightfly(self.position+Vector2(0,25),
+	self.position+Vector2(0,25)+Vector2 ( (1250 if self.father.tower_id==0 else -1250),-50*(dest.floorN-floorN)) 
+	,3000
+	,BulletType)
 
 func _ready():
 	pass
@@ -59,7 +70,7 @@ func loadbase(id:int,level:int) :
 	add_child(textureB)
 	add_child(moreInformathionLabel)
 	#读取shop等级
-	originalcost = int(Pool.poolAttr["科技等级_"+str(level)+"_建筑等级"+str(Pool.floor_attr[id].floorGrade)+"所需金币"])
+	originalcost = Pool.floor_attr[id].cost
 	cost = originalcost
 	textureB.texture_normal = Pool.floor_attr[id].image
 	textureB.ignore_texture_size = true
@@ -80,16 +91,22 @@ func loadbase(id:int,level:int) :
 	pass
 
 func load(id : int,level:int):
+	loadbase(id, level)
 	pass
 	
-func takeDamage(damage : int, damageType = Globals.DamageType.normal) -> bool:
+func takeDamage(damage : int,resource :FloorBase,damageType = Globals.DamageType.normal) -> bool:
 	health -= damage
+	if(damageType == Globals.DamageType.lock) :
+		buffList[Globals.BuffType.lock] = buffList.get(Globals.BuffType.lock,0 )
 	if(health <= 0):
 		alive = false
 		return false
 	else: return true
 
 func takeHeal(heal : int):
+	if(buffList.get(Globals.BuffType.lock,0 ) > 0 ):
+		buffList[Globals.BuffType.lock] -= 1
+		return
 	health = max(health + heal, maxHealth)
 
 func dealthVoice():

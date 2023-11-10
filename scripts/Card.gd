@@ -26,6 +26,6 @@ func _ready():
 	refresh(1)
 	
 func _process(delta):
-	floor.cost = floor.originalcost * (father.penaltyNowRate if father!=null else 1.0 )
 	if visible:
+		floor.cost = floor.originalcost * (father.penaltyNowRate if father!=null else 1.0 )
 		$Label.text = "COST:"+ String.num_int64(floor.cost)

@@ -6,16 +6,36 @@ var shop:Shop
 var opposite
 var finished
 var tower_id:int
-func getFloor(floorN):
+func getFloor(floorN) -> FloorBase:
 	if(floorN >= floors.size()) : return null 
 	else : return floors[floorN]
 	pass
 
-func getTop():
+func getTop() -> FloorBase:
 	if(floors.is_empty()) : return null
 	else : return floors[floors.size()-1]
 	
-
+func getWeak() -> FloorBase:
+	if(floors.is_empty()) : return null
+	var ret:FloorBase = floors[0]
+	for floor in floors:
+		if(floor.health < ret.health) : ret = floor
+	return ret
+	
+func getContain() -> FloorBase:
+	if(floors.is_empty()) : return null
+	var ret:FloorBase = floors[0]
+	for floor in floors:
+		if(floor.addProductorLimit < ret.addProductorLimit) : ret = floor
+	return ret
+	
+func getProduce() -> FloorBase:
+	if(floors.is_empty()) : return null
+	var ret:FloorBase = floors[0]
+	for floor in floors:
+		if(floor.productor if floor.floortype == Globals.FloorType.mine else 0 < 
+		ret.productor if ret.floortype == Globals.FloorType.mine else 0) : ret = floor
+	return ret
 
 var rigidfloortscn = preload("res://tscns/Rigidfloor.tscn")	
 func build(floor:FloorBase):
@@ -65,9 +85,9 @@ func fallCheck():
 		if sumDamage > 0 :
 			if sumDamage > floors[floorN].health :
 				sumDamage -= floors[floorN].health
-				floors[floorN].takeDamage(floors[floorN].health, Globals.DamageType.gravity)
+				floors[floorN].takeDamage(floors[floorN].health, null, Globals.DamageType.gravity)
 			else:
-				floors[floorN].takeDamage(sumDamage, Globals.DamageType.gravity)
+				floors[floorN].takeDamage(sumDamage,null , Globals.DamageType.gravity)
 				sumDamage = 0
 		if floors[floorN].alive == false :
 			sumDamage += sumWeight

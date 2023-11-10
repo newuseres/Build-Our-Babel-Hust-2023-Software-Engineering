@@ -2,20 +2,21 @@ extends Node
 #类型	攻击力	生产力	耐久度	重量	攻击方式	等级	贴图名称
 class for_floor_attr extends Object: 
 	var name:String
-	var type:int
+	var type:String
 	var attackPoint:int
 	var produce:int
 	var health:int
 	var weight:int
-	var attackType:int
 	var floorGrade:int
 	var image
 	var addProductorLimit:int
+	var cost:int
 
 var floor_attr:Dictionary
 var poolAttr:Dictionary
 var refreshRate:Array[Array]
 var levelfloor:Array[Array]
+var FloorType:Dictionary 
 
 
 func load_floor(pos:String):
@@ -33,7 +34,7 @@ func load_floor(pos:String):
 			if keys[idx] == "名称":
 				floor_attr[now_id].name = str(temp[idx])
 			elif keys[idx] == "类型":
-				floor_attr[now_id].type = int(temp[idx])
+				floor_attr[now_id].type = str(temp[idx])
 			elif keys[idx] == "攻击力":
 				floor_attr[now_id].attackPoint = int(temp[idx])
 			elif keys[idx] == "生产力":
@@ -42,8 +43,6 @@ func load_floor(pos:String):
 				floor_attr[now_id].health = int(temp[idx])
 			elif keys[idx] == "重量":
 				floor_attr[now_id].weight = int(temp[idx])
-			elif keys[idx] == "攻击方式":
-				floor_attr[now_id].attackType = int(temp[idx])
 			elif keys[idx] == "等级":
 				floor_attr[now_id].floorGrade =int(temp[idx])
 				levelfloor[int(temp[idx])].push_back(now_id)
@@ -51,6 +50,8 @@ func load_floor(pos:String):
 				floor_attr[now_id].image = load("res://image/floor/"+str(temp[idx])+".jpg")
 			elif keys[idx] == "增加矿工上限":
 				floor_attr[now_id].addProductorLimit = int(temp[idx])
+			elif keys[idx] == "价格":
+				floor_attr[now_id].cost = int(temp[idx])
 		temp = file.get_csv_line(",")
 	file.close()
 
@@ -96,8 +97,16 @@ func load_refresh_rates(pos:String):
 		temp = file.get_csv_line(",")
 	file.close()
 
+func load_floor_type(pos:String):
+	var file = FileAccess.open(pos,FileAccess.READ)
+	var temp = file.get_csv_line(",")
+	while temp.size() > 1:
+		FloorType[temp[0]] = load("res://scripts/floorTypes/"+temp[0]+".gd")
+		temp = file.get_csv_line(",")
+	file.close()	
+	pass
 
-func loadone():
+func loadall():
 	floor_attr = {}
 	poolAttr = {}
 	refreshRate = [[],[],[],[],[],[],[]]
@@ -106,6 +115,7 @@ func loadone():
 	load_kv_database("res://database/初始设置.csv")
 	load_floor("res://database/建筑数值（随机从80%~120%波动鼓励刷新）.csv")
 	load_refresh_rates("res://database/商店刷新概率.csv")
+	load_floor_type("res://database/类型名称.csv")
 	pass
 	
 func getRand(level : int) -> int:
@@ -116,5 +126,5 @@ func getRand(level : int) -> int:
 		else : seed -= refreshRate[level][objLevel]
 	return 0
 func _ready():
-	loadone()
+	loadall()
 	pass
