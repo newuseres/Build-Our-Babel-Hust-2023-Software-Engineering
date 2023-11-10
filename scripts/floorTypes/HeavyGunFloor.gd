@@ -1,4 +1,4 @@
-extends "res://scripts/FloorBase.gd"
+extends FloorBase
 class_name HeavyGunFloor
 
 var attackPoint : int

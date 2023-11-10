@@ -26,7 +26,7 @@ func _process(delta):
 		sleepT = 1
 		x += 1
 		if x == 6 :
-			get_tree().change_scene_to_file("res://tscns/Main.tscn")
+			get_tree().change_scene_to_file("res://tscns/NewMain.tscn")
 			return
 		$Sprite2D.texture = load( "res://image/bg"+String.num_int64(x)+".png")
 		$Label.text = bgText[x]

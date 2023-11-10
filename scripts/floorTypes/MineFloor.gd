@@ -1,5 +1,5 @@
-extends "res://scripts/FloorBase.gd"
-class_name MineFloor
+extends FloorBase
+class_name ResistFloor
 
 var produce : int
 	

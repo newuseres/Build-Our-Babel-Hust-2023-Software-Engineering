@@ -93,8 +93,8 @@ func loadbase(id:int,level:int) :
 func load(id : int,level:int):
 	loadbase(id, level)
 	pass
-	
-func takeDamage(damage : int,resource :FloorBase,damageType = Globals.DamageType.normal) -> bool:
+
+func takeDamageBase(damage : int,resource :FloorBase,damageType) -> bool:
 	health -= damage
 	if(damageType == Globals.DamageType.lock) :
 		buffList[Globals.BuffType.lock] = buffList.get(Globals.BuffType.lock,0 )
@@ -102,6 +102,9 @@ func takeDamage(damage : int,resource :FloorBase,damageType = Globals.DamageType
 		alive = false
 		return false
 	else: return true
+	
+func takeDamage(damage : int,resource :FloorBase,damageType = Globals.DamageType.normal) -> bool:
+	return takeDamageBase(damage,resource ,damageType)
 
 func takeHeal(heal : int):
 	if(buffList.get(Globals.BuffType.lock,0 ) > 0 ):

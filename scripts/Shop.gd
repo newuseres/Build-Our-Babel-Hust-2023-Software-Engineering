@@ -108,6 +108,7 @@ func _on_button_close_shop_sceen_pressed():
 
 
 func _on_button_open_shop_pressed():
-	$ShopScreen.visible = true
+	if(father.finished != true): 
+		$ShopScreen.visible = true
 
 	pass # Replace with function body.
