@@ -63,9 +63,9 @@ func fallCheck():
 		if sumDamage > 0 :
 			if sumDamage > floors[floorN].health :
 				sumDamage -= floors[floorN].health
-				floors[floorN].takeDamage(floors[floorN].health)
+				floors[floorN].takeDamage(floors[floorN].health, Globals.DamageType.gravity)
 			else:
-				floors[floorN].takeDamage(sumDamage)
+				floors[floorN].takeDamage(sumDamage, Globals.DamageType.gravity)
 				sumDamage = 0
 		if floors[floorN].alive == false :
 			sumDamage += sumWeight
@@ -81,7 +81,7 @@ func fallCheck():
 			shop.productorLimit -= floors[pos].addProductorLimit
 			shop.productor = min(shop.productor,shop.productorLimit)
 			remove_child(floors[pos].rigid)
-			#floors[pos].rigid.queue_free() #避免内存泄露,暂时不加入避免bug
+			floors[pos].rigid.queue_free() #避免内存泄露,暂时不加入避免bug
 			floors.remove_at(pos)
 		else : pos += 1
 	pass

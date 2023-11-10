@@ -70,25 +70,22 @@ func _process(delta):
 		tower0.finished = 0
 		tower1.finished = 0
 		allAct()
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(1.0).timeout
+		
 		tower0.allUnfreeze()
 		tower1.allUnfreeze()
-		var tmpLabel:Label = Label.new()
 		
 		if tower0.winCheck() and tower1.winCheck() :
-			tmpLabel.text = "TIE"
-			add_child(tmpLabel)
+			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
 			finished = true
 			return
 			
 		elif tower0.winCheck() :
-			tmpLabel.text = "P0 WIN!"
-			add_child(tmpLabel)
+			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
 			finished = true
 			return
 		elif tower1.winCheck() :
-			tmpLabel.text = "P1 WIN!"
-			add_child(tmpLabel)
+			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
 			finished = true
 			return
 		tower0.turnBegin()

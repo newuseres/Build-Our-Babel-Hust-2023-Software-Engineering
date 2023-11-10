@@ -48,7 +48,7 @@ func load_floor(pos:String):
 				floor_attr[now_id].floorGrade =int(temp[idx])
 				levelfloor[int(temp[idx])].push_back(now_id)
 			elif keys[idx] == "贴图名称":
-				floor_attr[now_id].image = load("res://image/"+str(temp[idx])+".jpg")
+				floor_attr[now_id].image = load("res://image/floor/"+str(temp[idx])+".jpg")
 			elif keys[idx] == "增加矿工上限":
 				floor_attr[now_id].addProductorLimit = int(temp[idx])
 		temp = file.get_csv_line(",")

@@ -80,7 +80,7 @@ func loadbase(id:int,level:int) :
 func load(id : int,level:int):
 	pass
 	
-func takeDamage(damage : int) -> bool:
+func takeDamage(damage : int, damageType = Globals.DamageType.normal) -> bool:
 	position -= Vector2(0,0.1)
 	position += Vector2(0,0.1)
 	health -= damage

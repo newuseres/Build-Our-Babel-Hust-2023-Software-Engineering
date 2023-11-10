@@ -40,13 +40,15 @@ func buy(floornow:FloorBase):
 	var card = floornow.get_parent()
 	card.remove_child(floornow)
 	card.visible = false
+	'''
+	#calc twice
 	if($Card0.floor!=null):
 		$Card0.floor.cost = int($Card0.floor.cost*penaltyNowRate)
 	if($Card1.floor!=null):
 		$Card1.floor.cost = int($Card1.floor.cost*penaltyNowRate)
 	if($Card2.floor!=null):
 		$Card2.floor.cost = int($Card2.floor.cost*penaltyNowRate)
-
+	'''
 	father.build(floornow)
 	pass
 #玩家的turn_begin	

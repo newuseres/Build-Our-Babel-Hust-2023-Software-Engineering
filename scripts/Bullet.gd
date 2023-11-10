@@ -3,7 +3,6 @@ class_name Bullet
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	texture = preload("res://image/pd1.png")
 	visible = false
 	pass # Replace with function body.
 var velocity:float
@@ -12,7 +11,8 @@ var from:Vector2
 var to:Vector2
 var time_all:float
 var time_now:float
-func straightfly(ffrom:Vector2,tto:Vector2,vv:float):
+func straightfly(ffrom:Vector2,tto:Vector2,vv:float,textureType:int = 1):
+	texture = load("res://image/bullet/bullet"+String.num_int64(textureType)+".png")
 	from = ffrom
 	to = tto
 	velocity = vv

@@ -12,4 +12,11 @@ enum AttackType{
 	blow = 2,
 }
 
+enum DamageType{
+	default = 0,
+	normal = 1,
+	gravity = 2,
+	sacrifice = 3,
+}
+
 var WinFloors = 20

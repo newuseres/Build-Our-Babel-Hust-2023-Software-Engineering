@@ -21,6 +21,7 @@ func refresh(level : int):
 	floor.father = self;
 	floor.cost = floor.originalcost * (father.penaltyNowRate if father!=null else 1.0 )
 	floor.textureB.button_down.connect(click)
+	$Label.text = "COST:"+ String.num_int64(floor.cost)
 
 func _ready():
 	visible = false

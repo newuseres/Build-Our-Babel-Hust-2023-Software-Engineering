@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://vnhrx4iq4ggc"]
 
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_afsdt"]
-[ext_resource type="Script" path="res://scripts/Card.gd" id="2_8gdsp"]
+[ext_resource type="PackedScene" uid="uid://mysr35pn3pkv" path="res://tscns/Card.tscn" id="2_nmrwk"]
 [ext_resource type="Script" path="res://scripts/labels/GoldLabel.gd" id="4_3myuf"]
 [ext_resource type="Script" path="res://tscns/ProducerLabel.gd" id="5_bbyac"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonRefresh.gd" id="5_ce4io"]
@@ -14,16 +14,13 @@
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_afsdt")
 
-[node name="Card0" type="Node2D" parent="."]
-script = ExtResource("2_8gdsp")
+[node name="Card0" parent="." instance=ExtResource("2_nmrwk")]
 
-[node name="Card1" type="Node2D" parent="."]
-position = Vector2(300, 0)
-script = ExtResource("2_8gdsp")
+[node name="Card1" parent="." instance=ExtResource("2_nmrwk")]
+position = Vector2(220, 0)
 
-[node name="Card2" type="Node2D" parent="."]
-position = Vector2(600, 0)
-script = ExtResource("2_8gdsp")
+[node name="Card2" parent="." instance=ExtResource("2_nmrwk")]
+position = Vector2(440, 0)
 
 [node name="GoldLabel" type="Label" parent="."]
 offset_left = 787.0
