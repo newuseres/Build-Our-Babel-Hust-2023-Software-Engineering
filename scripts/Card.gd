@@ -16,14 +16,14 @@ func refresh(level : int):
 		floor.free()
 	visible = true
 	
-	floor = FloorSuper.load(Pool.getRand(level), get_parent().level)
+	floor = FloorSuper.load(Pool.getRand(level), father.level)
 	add_child(floor)
 	floor.father = self;
 	floor.textureB.button_down.connect(click)
 
 func _ready():
 	visible = false
-	refresh(1)
+	#refresh(1)
 	
 func _process(delta):
 	if visible:

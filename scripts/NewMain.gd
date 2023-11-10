@@ -44,6 +44,8 @@ var Cameratscn = preload("res://tscns/Camera.tscn")
 func _ready():
 	tower0 = Tower.new()
 	tower1 = Tower.new()
+	tower0.finished = true
+	tower1.finished = true
 	tower0.opposite = tower1
 	tower1.opposite = tower0
 	var Camera = Cameratscn.instantiate()
@@ -81,10 +83,12 @@ func _process(delta):
 		tower0.finished = 0
 		tower1.finished = 0
 		allAct()
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		
 		tower0.allUnfreeze()
 		tower1.allUnfreeze()
+		
+		await get_tree().create_timer(0.5).timeout
 		
 		if tower0.winCheck() and tower1.winCheck() :
 			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
