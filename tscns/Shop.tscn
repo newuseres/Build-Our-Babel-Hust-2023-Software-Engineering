@@ -1,101 +1,130 @@
-[gd_scene load_steps=11 format=3 uid="uid://vnhrx4iq4ggc"]
+[gd_scene load_steps=12 format=3 uid="uid://vnhrx4iq4ggc"]
 
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_afsdt"]
 [ext_resource type="PackedScene" uid="uid://mysr35pn3pkv" path="res://tscns/Card.tscn" id="2_nmrwk"]
+[ext_resource type="Texture2D" uid="uid://dfx6a86gqhv51" path="res://image/bullet/bullet1.png" id="4_0v2ax"]
 [ext_resource type="Script" path="res://scripts/labels/GoldLabel.gd" id="4_3myuf"]
+[ext_resource type="Script" path="res://tscns/ProducerLabel.gd" id="5_bbyac"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonRefresh.gd" id="5_ce4io"]
 [ext_resource type="Script" path="res://scripts/labels/LevelLabel.gd" id="5_cwjqy"]
 [ext_resource type="Script" path="res://scripts/labels/flushCostLabel.gd" id="5_m615v"]
-[ext_resource type="Script" path="res://scripts/labels/ProducerLabel.gd" id="5_wtxul"]
 [ext_resource type="Script" path="res://scripts/labels/upLevelCostLabel.gd" id="6_37etc"]
-[ext_resource type="Script" path="res://scripts/labels/ProductorlimitLabel.gd" id="6_ncivi"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonFinish.gd" id="6_q2ffn"]
+[ext_resource type="Texture2D" path="res://image/shop.png" id="12_m62lq"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_afsdt")
 
 [node name="Card0" parent="." instance=ExtResource("2_nmrwk")]
+z_index = 50
+position = Vector2(65, -1)
 
 [node name="Card1" parent="." instance=ExtResource("2_nmrwk")]
-position = Vector2(220, 0)
+z_index = 50
+position = Vector2(275, -3)
 
 [node name="Card2" parent="." instance=ExtResource("2_nmrwk")]
-position = Vector2(440, 0)
+z_index = 50
+position = Vector2(491, -3)
 
 [node name="GoldLabel" type="Label" parent="."]
-offset_left = 787.0
-offset_top = 43.0
-offset_right = 827.0
-offset_bottom = 66.0
+offset_left = -199.0
+offset_top = -478.0
+offset_right = -159.0
+offset_bottom = -452.0
 text = "gold"
 script = ExtResource("4_3myuf")
 
+[node name="Sprite2D" type="Sprite2D" parent="GoldLabel"]
+position = Vector2(-28, 13)
+texture = ExtResource("4_0v2ax")
+
 [node name="LevelLabel" type="Label" parent="."]
-offset_left = 788.0
-offset_top = 78.0
-offset_right = 828.0
-offset_bottom = 101.0
+offset_left = -81.0
+offset_top = -475.0
+offset_right = -41.0
+offset_bottom = -449.0
 text = "level"
 script = ExtResource("5_cwjqy")
 
+[node name="Sprite2D2" type="Sprite2D" parent="LevelLabel"]
+position = Vector2(-26, 14)
+texture = ExtResource("4_0v2ax")
+
 [node name="ProductorLabel" type="Label" parent="."]
-offset_left = 786.0
-offset_top = 112.0
-offset_right = 826.0
-offset_bottom = 138.0
+offset_left = 274.0
+offset_top = -469.0
+offset_right = 352.0
+offset_bottom = -443.0
 text = "productor"
-script = ExtResource("5_wtxul")
+script = ExtResource("5_bbyac")
 
-[node name="ProductorlimitLabel" type="Label" parent="."]
-offset_left = 911.0
-offset_top = 112.0
-offset_right = 989.0
-offset_bottom = 138.0
-text = "productorLimit
+[node name="ButtonFinish" type="Button" parent="."]
+offset_left = 997.0
+offset_top = 206.0
+offset_right = 1109.0
+offset_bottom = 289.0
+text = "回合结束"
+script = ExtResource("6_q2ffn")
+
+[node name="ButtonOpenShop" type="Button" parent="."]
+offset_left = 1026.0
+offset_top = -479.0
+offset_right = 1093.0
+offset_bottom = -426.0
+text = "商店
 "
-script = ExtResource("6_ncivi")
 
-[node name="flushCostLabel" type="Label" parent="."]
-offset_left = 916.0
-offset_top = 46.0
-offset_right = 989.0
-offset_bottom = 72.0
+[node name="ShopSceen" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(410, 87)
+scale = Vector2(1.36883, 0.916318)
+texture = ExtResource("12_m62lq")
+
+[node name="flushCostLabel" type="Label" parent="ShopSceen"]
+offset_left = 142.686
+offset_top = -34.3854
+offset_right = 224.686
+offset_bottom = -8.38543
+theme_override_colors/font_color = Color(0.937255, 0, 0, 1)
 text = "flushCost
 "
 script = ExtResource("5_m615v")
 
-[node name="upLevelCostLabel" type="Label" parent="."]
-offset_left = 912.0
-offset_top = 75.0
-offset_right = 985.0
-offset_bottom = 101.0
+[node name="ButtonRefresh" type="Button" parent="ShopSceen"]
+offset_left = 272.0
+offset_top = -65.0
+offset_right = 373.0
+offset_bottom = 16.0
+text = "刷新"
+script = ExtResource("5_ce4io")
+
+[node name="ButtonUpLevel" type="Button" parent="ShopSceen"]
+offset_left = 275.0
+offset_top = 140.0
+offset_right = 371.0
+offset_bottom = 230.0
+text = "升级科技"
+
+[node name="ButtonCloseShopSceen" type="Button" parent="ShopSceen"]
+offset_left = 307.0
+offset_top = -227.0
+offset_right = 379.0
+offset_bottom = -142.0
+text = "关闭商店"
+
+[node name="upLevelCostLabel" type="Label" parent="ShopSceen"]
+offset_left = 136.776
+offset_top = 165.135
+offset_right = 224.776
+offset_bottom = 191.135
+theme_override_colors/font_color = Color(0.807843, 0, 0, 1)
 text = "uplevelcost
 "
 script = ExtResource("6_37etc")
 
-[node name="ButtonRefresh" type="Button" parent="."]
-offset_left = 789.0
-offset_top = 7.0
-offset_right = 838.0
-offset_bottom = 38.0
-text = "刷新"
-script = ExtResource("5_ce4io")
-
-[node name="ButtonFinish" type="Button" parent="."]
-offset_left = 1110.0
-offset_top = 16.0
-offset_right = 1222.0
-offset_bottom = 99.0
-text = "回合结束"
-script = ExtResource("6_q2ffn")
-
-[node name="ButtonUpLevel" type="Button" parent="."]
-offset_left = 1278.0
-offset_top = 19.0
-offset_right = 1390.0
-offset_bottom = 102.0
-text = "升级科技"
-
-[connection signal="pressed" from="ButtonRefresh" to="." method="_on_button_refresh_pressed"]
 [connection signal="pressed" from="ButtonFinish" to="." method="_on_button_finish_pressed"]
-[connection signal="pressed" from="ButtonUpLevel" to="." method="_on_button_up_level_pressed"]
+[connection signal="pressed" from="ButtonOpenShop" to="." method="_on_button_open_shop_pressed"]
+[connection signal="pressed" from="ShopSceen/ButtonRefresh" to="." method="_on_button_refresh_pressed"]
+[connection signal="pressed" from="ShopSceen/ButtonUpLevel" to="." method="_on_button_up_level_pressed"]
+[connection signal="pressed" from="ShopSceen/ButtonCloseShopSceen" to="." method="_on_button_close_shop_sceen_pressed"]

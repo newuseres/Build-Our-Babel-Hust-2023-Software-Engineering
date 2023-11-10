@@ -1,5 +1,5 @@
 extends "res://scripts/FloorBase.gd"
-class_name HeavyGunFloor
+class_name GunFloor
 
 var attackPoint : int
 	

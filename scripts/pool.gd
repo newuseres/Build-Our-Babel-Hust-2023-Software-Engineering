@@ -101,6 +101,7 @@ func load_floor_type(pos:String):
 	var file = FileAccess.open(pos,FileAccess.READ)
 	var temp = file.get_csv_line(",")
 	while temp.size() > 1:
+		print(temp[0], "res://scripts/floorTypes/"+temp[0]+".gd")
 		FloorType[temp[0]] = load("res://scripts/floorTypes/"+temp[0]+".gd")
 		temp = file.get_csv_line(",")
 	file.close()	

@@ -99,3 +99,21 @@ func _on_button_up_level_pressed():
 func _on_button_finish_pressed():
 	turnEnd()
 	pass # Replace with function body.
+
+
+func _on_button_close_shop_sceen_pressed():
+	$ShopSceen.visible = false
+	$Card0.visible = false
+	$Card1.visible = false
+	$Card2.visible = false
+	
+	pass # Replace with function body.
+
+
+func _on_button_open_shop_pressed():
+	$ShopSceen.visible = true
+	$Card0.visible = true
+	$Card1.visible = true
+	$Card2.visible = true
+
+	pass # Replace with function body.

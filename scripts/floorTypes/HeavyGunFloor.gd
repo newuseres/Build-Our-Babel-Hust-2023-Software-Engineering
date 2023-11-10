@@ -1,5 +1,5 @@
 extends "res://scripts/FloorBase.gd"
-class_name GunFloor
+class_name HeavyGunFloor
 
 var attackPoint : int
 	
@@ -19,7 +19,7 @@ func act():
 
 	var aim:FloorBase
 	if(father.opposite.getFloor(floorN) == null) :
-		father.opposite.getTop().takeDamage(attackPoint)
+		father.opposite.getTop().takeDamage(attackPoint,self)
 		makeBulletFly(father.opposite.getTop())
 		aim = father.opposite.getTop()
 		if aim.floorN > 0:
