@@ -1,13 +1,15 @@
-extends Label
+extends Node2D
 
-class_name flushCostLabel
 
 # Called when the node enters the scene tree for the first time.
-
+var father
 func _ready():
+	$Label.father = get_parent()
+	father = get_parent()
 	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "刷新商店消耗:" + String.num_int64(self.get_parent().get_parent().goldFlushCost)
+	$healthbar.value = (100.0 * father.health/father.maxHealth)
 	pass

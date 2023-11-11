@@ -1,57 +1,75 @@
-[gd_scene load_steps=12 format=3 uid="uid://vnhrx4iq4ggc"]
+[gd_scene load_steps=21 format=3 uid="uid://vnhrx4iq4ggc"]
 
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_afsdt"]
+[ext_resource type="LabelSettings" uid="uid://cbuan21y4ibj3" path="res://tress/shop_font30px.tres" id="2_m0a2g"]
 [ext_resource type="PackedScene" uid="uid://mysr35pn3pkv" path="res://tscns/Card.tscn" id="2_nmrwk"]
-[ext_resource type="Texture2D" uid="uid://dfx6a86gqhv51" path="res://image/bullet/bullet1.png" id="4_0v2ax"]
+[ext_resource type="Texture2D" uid="uid://cjf75yl3iyq60" path="res://image/ui/gold_font.png" id="3_v250c"]
 [ext_resource type="Script" path="res://scripts/labels/GoldLabel.gd" id="4_3myuf"]
 [ext_resource type="Script" path="res://tscns/ProducerLabel.gd" id="5_bbyac"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonRefresh.gd" id="5_ce4io"]
-[ext_resource type="Script" path="res://scripts/labels/LevelLabel.gd" id="5_cwjqy"]
 [ext_resource type="Script" path="res://scripts/labels/flushCostLabel.gd" id="5_m615v"]
+[ext_resource type="Texture2D" uid="uid://c6al18y3w5lvt" path="res://image/ui/namecard.png" id="5_r1xl3"]
 [ext_resource type="Script" path="res://scripts/labels/upLevelCostLabel.gd" id="6_37etc"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonFinish.gd" id="6_q2ffn"]
-[ext_resource type="Texture2D" uid="uid://d0gn6k1bhc3bg" path="res://image/shop.png" id="12_m62lq"]
+[ext_resource type="Texture2D" uid="uid://bxjo0f0c1xnea" path="res://image/ui/productor_font.png" id="8_8nr8e"]
+[ext_resource type="Script" path="res://scripts/FloorTotalLabel.gd" id="9_ltxlc"]
+[ext_resource type="Texture2D" uid="uid://qe7hqso7cv3d" path="res://image/ui/floor_num_font.png" id="10_ojea3"]
+[ext_resource type="Texture2D" uid="uid://du760xor6700" path="res://image/ui/shopui.png" id="12_wwnjq"]
+[ext_resource type="LabelSettings" uid="uid://bdadfrnrf2vmx" path="res://tress/shop_font16px.tres" id="14_1o0jt"]
+[ext_resource type="Texture2D" uid="uid://cu3pi10qhoded" path="res://image/ui/flash_font.png" id="16_cdi3l"]
+[ext_resource type="Texture2D" uid="uid://rlmxpf3qen22" path="res://image/ui/close_font.png" id="16_rtsup"]
+[ext_resource type="Texture2D" uid="uid://b4g325721dweg" path="res://image/ui/add_science_font.png" id="17_xysjt"]
+[ext_resource type="Texture2D" uid="uid://bmme8vjfrskwx" path="res://image/ui/shop3.png" id="21_1tfoa"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_afsdt")
 
 [node name="GoldLabel" type="Label" parent="."]
-offset_left = -199.0
-offset_top = -478.0
-offset_right = -159.0
-offset_bottom = -452.0
+offset_left = -181.0
+offset_top = -471.0
+offset_right = -44.0
+offset_bottom = -426.0
 text = "gold"
+label_settings = ExtResource("2_m0a2g")
+horizontal_alignment = 2
 script = ExtResource("4_3myuf")
 
-[node name="Sprite2D" type="Sprite2D" parent="GoldLabel"]
-position = Vector2(-28, 13)
-texture = ExtResource("4_0v2ax")
+[node name="font" type="Sprite2D" parent="GoldLabel"]
+position = Vector2(498, 361)
+scale = Vector2(1, 0.998667)
+texture = ExtResource("3_v250c")
 
-[node name="LevelLabel" type="Label" parent="."]
-offset_left = -81.0
-offset_top = -475.0
-offset_right = -41.0
-offset_bottom = -449.0
-text = "level"
-script = ExtResource("5_cwjqy")
-
-[node name="Sprite2D2" type="Sprite2D" parent="LevelLabel"]
-position = Vector2(-26, 14)
-texture = ExtResource("4_0v2ax")
+[node name="card" type="Sprite2D" parent="GoldLabel"]
+z_index = -1
+position = Vector2(647, 359)
+scale = Vector2(1.29667, 1.00267)
+texture = ExtResource("5_r1xl3")
 
 [node name="ProductorLabel" type="Label" parent="."]
 offset_left = 274.0
 offset_top = -469.0
-offset_right = 352.0
-offset_bottom = -443.0
+offset_right = 435.0
+offset_bottom = -424.0
 text = "productor"
+label_settings = ExtResource("2_m0a2g")
+horizontal_alignment = 2
 script = ExtResource("5_bbyac")
 
+[node name="font" type="Sprite2D" parent="ProductorLabel"]
+position = Vector2(-2, 367)
+texture = ExtResource("8_8nr8e")
+
+[node name="card" type="Sprite2D" parent="ProductorLabel"]
+z_index = -1
+position = Vector2(668, 363)
+scale = Vector2(1.29667, 1.00267)
+texture = ExtResource("5_r1xl3")
+
 [node name="ButtonFinish" type="Button" parent="."]
-offset_left = 997.0
-offset_top = 206.0
-offset_right = 1109.0
-offset_bottom = 289.0
+offset_left = 978.0
+offset_top = -399.0
+offset_right = 1090.0
+offset_bottom = -316.0
 text = "回合结束"
 script = ExtResource("6_q2ffn")
 
@@ -63,69 +81,111 @@ offset_bottom = -426.0
 text = "商店
 "
 
+[node name="LevelLabel" type="Label" parent="."]
+offset_left = 59.0
+offset_top = -474.0
+offset_right = 149.0
+offset_bottom = -429.0
+text = "f"
+label_settings = ExtResource("2_m0a2g")
+horizontal_alignment = 2
+script = ExtResource("9_ltxlc")
+
+[node name="font" type="Sprite2D" parent="LevelLabel"]
+position = Vector2(259, 360)
+texture = ExtResource("10_ojea3")
+
+[node name="card" type="Sprite2D" parent="LevelLabel"]
+z_index = -1
+position = Vector2(463.5, 360)
+scale = Vector2(0.915833, 1)
+texture = ExtResource("5_r1xl3")
+
 [node name="ShopScreen" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.643137, 1, 0.431373)
+self_modulate = Color(1, 1, 1, 0.6)
 z_index = 10
-position = Vector2(410, 16.5)
-scale = Vector2(1.36883, 1.2113)
-texture = ExtResource("12_m62lq")
+position = Vector2(434.149, -84.6187)
+scale = Vector2(1.31691, 1.14832)
+texture = ExtResource("12_wwnjq")
 
 [node name="Card0" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
-position = Vector2(-252.04, -96.0365)
+position = Vector2(-388.653, -93.701)
 scale = Vector2(0.730551, 1.09132)
 
 [node name="Card1" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
-position = Vector2(-98.6244, -98.2192)
+position = Vector2(-170.218, -90.3988)
 scale = Vector2(0.730551, 1.09132)
 
 [node name="Card2" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
-position = Vector2(59.1746, -98.2192)
+position = Vector2(33.6053, -84.6198)
 scale = Vector2(0.730551, 1.09132)
 
 [node name="flushCostLabel" type="Label" parent="ShopScreen"]
-offset_left = 142.686
-offset_top = -34.3854
-offset_right = 224.686
-offset_bottom = -8.38543
+offset_left = 220.0
+offset_top = -46.644
+offset_right = 351.0
+offset_bottom = -20.644
 theme_override_colors/font_color = Color(0.937255, 0, 0, 1)
 text = "flushCost
 "
+label_settings = ExtResource("14_1o0jt")
 script = ExtResource("5_m615v")
 
 [node name="ButtonRefresh" type="Button" parent="ShopScreen"]
-offset_left = 272.0
-offset_top = -65.0
-offset_right = 373.0
-offset_bottom = 16.0
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 291.0
+offset_top = -25.0
+offset_right = 358.0
+offset_bottom = 56.0
 text = "刷新"
 script = ExtResource("5_ce4io")
 
+[node name="Sprite2D" type="Sprite2D" parent="ShopScreen/ButtonRefresh"]
+position = Vector2(-281.503, 22.1105)
+texture = ExtResource("16_cdi3l")
+
 [node name="ButtonUpLevel" type="Button" parent="ShopScreen"]
-offset_left = 275.0
-offset_top = 140.0
-offset_right = 371.0
-offset_bottom = 230.0
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 284.184
+offset_top = 168.001
+offset_right = 356.184
+offset_bottom = 251.001
 text = "升级科技"
 
+[node name="Sprite2D" type="Sprite2D" parent="ShopScreen/ButtonUpLevel"]
+position = Vector2(-267.928, -156.029)
+texture = ExtResource("17_xysjt")
+
 [node name="ButtonCloseShopSceen" type="Button" parent="ShopScreen"]
-offset_left = 307.0
-offset_top = -227.0
-offset_right = 379.0
-offset_bottom = -142.0
-text = "关闭商店"
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 294.0
+offset_top = -181.0
+offset_right = 354.0
+offset_bottom = -93.0
+text = "关闭"
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopScreen/ButtonCloseShopSceen"]
+position = Vector2(-282.202, 169.953)
+scale = Vector2(0.987643, 1.02616)
+texture = ExtResource("16_rtsup")
 
 [node name="upLevelCostLabel" type="Label" parent="ShopScreen"]
-offset_left = 136.776
-offset_top = 165.135
-offset_right = 224.776
-offset_bottom = 191.135
+offset_left = 200.0
+offset_top = 149.839
+offset_right = 288.0
+offset_bottom = 175.839
 theme_override_colors/font_color = Color(0.807843, 0, 0, 1)
 text = "uplevelcost
 "
+label_settings = ExtResource("14_1o0jt")
 script = ExtResource("6_37etc")
+
+[node name="3cardframe" type="Sprite2D" parent="ShopScreen"]
+position = Vector2(-12.4194, 0.41278)
+texture = ExtResource("21_1tfoa")
 
 [connection signal="pressed" from="ButtonFinish" to="." method="_on_button_finish_pressed"]
 [connection signal="pressed" from="ButtonOpenShop" to="." method="_on_button_open_shop_pressed"]

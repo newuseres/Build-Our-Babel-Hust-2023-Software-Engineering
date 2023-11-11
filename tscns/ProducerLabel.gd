@@ -9,5 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "Productor:" + String.num_int64(self.get_parent().productor) +" / " + String.num_int64(self.get_parent().productorLimit)
+	text =  String.num_int64(self.get_parent().productor) +" / " + String.num_int64(self.get_parent().productorLimit)
 	pass

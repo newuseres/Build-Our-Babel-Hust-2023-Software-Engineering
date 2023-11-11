@@ -1,6 +1,6 @@
 extends Label
 
-class_name flushCostLabel
+class_name Levellabel
 
 # Called when the node enters the scene tree for the first time.
 
@@ -9,5 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "刷新商店消耗:" + String.num_int64(self.get_parent().get_parent().goldFlushCost)
+	text = String.num_int64(self.get_parent().level)
 	pass

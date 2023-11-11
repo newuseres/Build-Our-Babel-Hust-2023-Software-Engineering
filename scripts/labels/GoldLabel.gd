@@ -9,5 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "gold:" + String.num_int64(self.get_parent().gold)
+	text = String.num_int64(self.get_parent().gold)
 	pass

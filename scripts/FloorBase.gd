@@ -33,8 +33,9 @@ var buffList:Dictionary
 var floortype : String
 
 var father
+var MoreInformation = preload("res://tscns/MoreInformation.tscn")
 
-var moreInformathionLabel : MoreInformationLabel
+var moreInformation
 
 var rigid:RigidBody2D
 
@@ -55,20 +56,20 @@ func relocate():
 	position = Vector2(0, -70 - 1500)
 
 func floor_mouse_entered():
-	moreInformathionLabel.visible = true
+	moreInformation.visible = true
 func floor_mouse_exited():
-	moreInformathionLabel.visible = false
+	moreInformation.visible = false
 	
 	
 func loadbase(id:int,level:int) :
 	alive = true
 	active = true
 	textureB = TextureButton.new()
-	moreInformathionLabel = MoreInformationLabel.new()
+	moreInformation = MoreInformation.instantiate()
 	z_index = 0
-	moreInformathionLabel.z_index = 100000
+	moreInformation.z_index = 100000
 	add_child(textureB)
-	add_child(moreInformathionLabel)
+	add_child(moreInformation)
 	#读取shop等级
 	originalcost = Pool.floor_attr[id].cost
 	cost = originalcost
@@ -76,7 +77,7 @@ func loadbase(id:int,level:int) :
 	textureB.ignore_texture_size = true
 	textureB.stretch_mode = TextureButton.STRETCH_SCALE
 	textureB.size = Vector2(100,100)
-	moreInformathionLabel.visible = false
+	moreInformation.visible = false
 	textureB.mouse_entered.connect(floor_mouse_entered)
 	textureB.mouse_exited.connect(floor_mouse_exited)
 	floorlevel = Pool.floor_attr[id].floorGrade
@@ -86,7 +87,7 @@ func loadbase(id:int,level:int) :
 	floortype = Pool.floor_attr[id].type
 	myName = str(Pool.floor_attr[id].name)
 	addProductorLimit = Pool.floor_attr[id].addProductorLimit
-	moreInformathionLabel.position = Vector2(0, -50)
+	moreInformation.position = Vector2(0, -50)
 	floorid = id
 	pass
 

@@ -8,7 +8,7 @@ func click():
 	print("click!")
 	father.buy(floor)
 	floor.textureB.button_down.disconnect(click)
-	remove_child(floor.moreInformathionLabel)
+	remove_child(floor.moreInformation)
 	pass
 
 func refresh(level : int):

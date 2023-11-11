@@ -130,3 +130,11 @@ func _on_button_pressed():
 		tower1.shop.visible = true
 			
 	pass # Replace with function body.
+
+
+func _on_一键多金_pressed():
+	if tmpShop == 0:
+		tower0.shop.gold += 10000000
+	else:
+		tower1.shop.gold += 10000000
+	pass # Replace with function body.

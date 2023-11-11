@@ -9,4 +9,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "upLevelCost" +	Pool.poolAttr["科技等级_"+str(String.num_int64(self.get_parent().get_parent().level))+ "_科技升级金币"]
+	text = "科技升级消耗:" +	Pool.poolAttr["科技等级_"+str(String.num_int64(self.get_parent().get_parent().level))+ "_科技升级金币"]

@@ -41,7 +41,7 @@ func getProduce() -> FloorBase:
 var rigidfloortscn = preload("res://tscns/Rigidfloor.tscn")	
 func build(floor:FloorBase):
 	allUnfreeze()
-	floor.moreInformathionLabel.visible = false
+	floor.moreInformation.visible = false
 	if floors.is_empty() : floor.z_index = 0
 	else : floor.z_index = floors[-1].z_index - 1;
 	floors.push_back(floor)
