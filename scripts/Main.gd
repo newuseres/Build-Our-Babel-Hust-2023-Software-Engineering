@@ -10,6 +10,10 @@ func turnBegin():
 	tower1.turnBegin()
 	
 var prior = 0
+
+func pickAction():
+	
+	pass
 	
 func allAct():
 	while(true):

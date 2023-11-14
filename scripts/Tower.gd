@@ -38,7 +38,7 @@ func getProduce() -> FloorBase:
 		ret.productor if ret.floortype == Globals.FloorType.mine else 0) : ret = floor
 	return ret
 
-var rigidfloortscn = preload("res://tscns/Rigidfloor.tscn")	
+var rigidfloortscn = preload("res://tscns/Rigidfloor.tscn")
 func build(floor:FloorBase):
 	allUnfreeze()
 	floor.moreInformation.visible = false
@@ -55,7 +55,7 @@ func build(floor:FloorBase):
 	var rigidtmp:RigidBody2D = rigidfloortscn.instantiate()
 	rigidtmp.add_child(floor)
 	floor.rigid = rigidtmp
-	rigidtmp.position = Vector2(0,-1500)
+	rigidtmp.position = Vector2(0,-5000 + floors.size() * 50)
 	add_child(rigidtmp)
 	father.refreshMinimap()
 	#rigidtmp.add_child(floor.textureB)

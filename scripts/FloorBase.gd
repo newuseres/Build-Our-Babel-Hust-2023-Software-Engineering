@@ -68,6 +68,7 @@ func loadbase(id:int,level:int) :
 	moreInformation = MoreInformation.instantiate()
 	z_index = 0
 	moreInformation.z_index = 100000
+
 	add_child(textureB)
 	add_child(moreInformation)
 	#读取shop等级
