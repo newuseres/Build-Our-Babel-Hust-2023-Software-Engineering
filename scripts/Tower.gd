@@ -7,6 +7,13 @@ var opposite
 var finished
 var tower_id:int
 var father : Game
+var seed:int
+var rng:RandomNumberGenerator
+
+func turnEnd():
+	finished = true
+	pass
+
 func getFloor(floorN) -> FloorBase:
 	if(floorN >= floors.size()) : return null 
 	else : return floors[floorN]
@@ -55,7 +62,7 @@ func build(floor:FloorBase):
 	var rigidtmp:RigidBody2D = rigidfloortscn.instantiate()
 	rigidtmp.add_child(floor)
 	floor.rigid = rigidtmp
-	rigidtmp.position = Vector2(0,-5000 + floors.size() * 50)
+	rigidtmp.position = Vector2(0,-2000 - floors.size() * 50)
 	add_child(rigidtmp)
 	father.refreshMinimap()
 	#rigidtmp.add_child(floor.textureB)
@@ -153,6 +160,8 @@ func allUnfreeze():
 '''
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng = RandomNumberGenerator.new()
+	rng.seed = seed
 	pass # Replace with function body.
 
 func _process(delta):

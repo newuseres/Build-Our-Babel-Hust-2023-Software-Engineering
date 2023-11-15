@@ -3,7 +3,8 @@ extends Control
 
 @onready var _client: WebSocketClient = $WebSocketClient
 var ID = null
-
+var game:Game
+var gameTscn = preload("res://tscns/NewMain.tscn")
 # 更换大厅场景
 func to_menu ():
 	$Menu/RoomTip.hide()
@@ -18,10 +19,15 @@ func to_room (room_id):
 	$WaitingRoom/Number.text = "房间号：" + room_id
 	$WaitingRoom.visible = true
 
-func to_game ():
-	$Client/RichTextLabel.clear()
-	$Client/Text.clear()
-	$Client.visible = true
+func to_game (playid,seed0,seed1):
+	
+	game = gameTscn.instantiate()
+	game.playID = playid	
+	game.seed0 = seed0
+	game.seed1 = seed1
+	add_child(game)
+
+	
 	
 # 更新房间人员列表
 func update_waiting_list (data):
@@ -44,8 +50,8 @@ func _on_web_socket_client_connected_to_server():
 	$IDUI.visible = true
 
 # 客户端接收数据
-func _on_web_socket_client_message_received(message):
-	message = JSON.parse_string(message)
+func _on_web_socket_client_message_received(_message):
+	var message:Dictionary = JSON.parse_string(_message)
 	
 	# 接收连接数据
 	if (message["type"] == "connect"):
@@ -82,22 +88,27 @@ func _on_web_socket_client_message_received(message):
 	# 接收开始游戏信息
 	if (message["type"] == "startgame"):
 		$WaitingRoom.hide()
-		to_game()
+		to_game(message.get("playid",1),message.get("seed0",0),message.get("seed1",0))
 		
 	# 接收游戏聊天信息
-	if (message["type"] == "chat"):
-		$Client/RichTextLabel.add_text(message["ID"] + ": " + message["data"] + "\n")
+	#if (message["type"] == "chat"):
+	#	$Client/RichTextLabel.add_text(message["ID"] + ": " + message["data"] + "\n")
 		
 	# 接收结束游戏信息
 	if (message["type"] == "endgame"):
-		$Client.hide()
+		game.queue_free()
 		to_room(message["roomnum"])
 		if (message["reason"] == "quit"):
 			$Info/Label.text = "对手退出了游戏"
 			$Info.visible = true
+	
+	if (message["type"] == "gameoperation"):
+		game.enemyAct(message)  
+		pass
 
 
 func _ready():
+	#to be coding
 	var err = _client.connect_to_url("ws://175.178.69.150:8000/")
 	# var err = _client.connect_to_url("ws://localhost:8000/")
 	if err != OK:
@@ -138,5 +149,8 @@ func _on_quit_pressed():
 	_client.send(JSON.stringify({"type": "quitroom", "ID": ID}))
 
 # 游戏中发送信息
-func _on_client_send_data(data):
-	_client.send(JSON.stringify({"type": "chat", "data": data, "ID": ID}))
+func _on_client_send_data(data:Dictionary):
+	data["ID"] = ID
+	data["type"] = "gameoperation"
+	_client.send(JSON.stringify(data))
+	

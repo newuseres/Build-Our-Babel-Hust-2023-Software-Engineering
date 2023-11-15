@@ -3,23 +3,23 @@
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_afsdt"]
 [ext_resource type="LabelSettings" uid="uid://cbuan21y4ibj3" path="res://tress/shop_font30px.tres" id="2_m0a2g"]
 [ext_resource type="PackedScene" uid="uid://mysr35pn3pkv" path="res://tscns/Card.tscn" id="2_nmrwk"]
-[ext_resource type="Texture2D" uid="uid://cjf75yl3iyq60" path="res://image/ui/gold_font.png" id="3_v250c"]
 [ext_resource type="Script" path="res://scripts/labels/GoldLabel.gd" id="4_3myuf"]
+[ext_resource type="Texture2D" uid="uid://cjf75yl3iyq60" path="res://image/ui/gold_font.png" id="4_cr2f6"]
+[ext_resource type="Texture2D" uid="uid://c6al18y3w5lvt" path="res://image/ui/namecard.png" id="5_3ume2"]
 [ext_resource type="Script" path="res://tscns/ProducerLabel.gd" id="5_bbyac"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonRefresh.gd" id="5_ce4io"]
 [ext_resource type="Script" path="res://scripts/labels/flushCostLabel.gd" id="5_m615v"]
-[ext_resource type="Texture2D" uid="uid://c6al18y3w5lvt" path="res://image/ui/namecard.png" id="5_r1xl3"]
 [ext_resource type="Script" path="res://scripts/labels/upLevelCostLabel.gd" id="6_37etc"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonFinish.gd" id="6_q2ffn"]
-[ext_resource type="Texture2D" uid="uid://bxjo0f0c1xnea" path="res://image/ui/productor_font.png" id="8_8nr8e"]
+[ext_resource type="Texture2D" uid="uid://bxjo0f0c1xnea" path="res://image/ui/productor_font.png" id="7_t40wj"]
 [ext_resource type="Script" path="res://scripts/FloorTotalLabel.gd" id="9_ltxlc"]
-[ext_resource type="Texture2D" uid="uid://qe7hqso7cv3d" path="res://image/ui/floor_num_font.png" id="10_ojea3"]
-[ext_resource type="Texture2D" uid="uid://du760xor6700" path="res://image/ui/shopui.png" id="12_wwnjq"]
+[ext_resource type="Texture2D" uid="uid://qe7hqso7cv3d" path="res://image/ui/floor_num_font.png" id="10_p4wfx"]
+[ext_resource type="Texture2D" uid="uid://du760xor6700" path="res://image/ui/shopui.png" id="11_c7334"]
 [ext_resource type="LabelSettings" uid="uid://bdadfrnrf2vmx" path="res://tress/shop_font16px.tres" id="14_1o0jt"]
-[ext_resource type="Texture2D" uid="uid://cu3pi10qhoded" path="res://image/ui/flash_font.png" id="16_cdi3l"]
-[ext_resource type="Texture2D" uid="uid://rlmxpf3qen22" path="res://image/ui/close_font.png" id="16_rtsup"]
-[ext_resource type="Texture2D" uid="uid://b4g325721dweg" path="res://image/ui/add_science_font.png" id="17_xysjt"]
-[ext_resource type="Texture2D" uid="uid://bmme8vjfrskwx" path="res://image/ui/shop3.png" id="21_1tfoa"]
+[ext_resource type="Texture2D" uid="uid://cu3pi10qhoded" path="res://image/ui/flash_font.png" id="16_lusrj"]
+[ext_resource type="Texture2D" uid="uid://b4g325721dweg" path="res://image/ui/add_science_font.png" id="17_67rde"]
+[ext_resource type="Texture2D" uid="uid://rlmxpf3qen22" path="res://image/ui/close_font.png" id="18_wsnw4"]
+[ext_resource type="Texture2D" uid="uid://bmme8vjfrskwx" path="res://image/ui/shop3.png" id="20_tt4l4"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_afsdt")
@@ -37,13 +37,13 @@ script = ExtResource("4_3myuf")
 [node name="font" type="Sprite2D" parent="GoldLabel"]
 position = Vector2(498, 361)
 scale = Vector2(1, 0.998667)
-texture = ExtResource("3_v250c")
+texture = ExtResource("4_cr2f6")
 
 [node name="card" type="Sprite2D" parent="GoldLabel"]
 z_index = -1
 position = Vector2(647, 359)
 scale = Vector2(1.29667, 1.00267)
-texture = ExtResource("5_r1xl3")
+texture = ExtResource("5_3ume2")
 
 [node name="ProductorLabel" type="Label" parent="."]
 offset_left = 274.0
@@ -57,13 +57,13 @@ script = ExtResource("5_bbyac")
 
 [node name="font" type="Sprite2D" parent="ProductorLabel"]
 position = Vector2(-2, 367)
-texture = ExtResource("8_8nr8e")
+texture = ExtResource("7_t40wj")
 
 [node name="card" type="Sprite2D" parent="ProductorLabel"]
 z_index = -1
 position = Vector2(668, 363)
 scale = Vector2(1.29667, 1.00267)
-texture = ExtResource("5_r1xl3")
+texture = ExtResource("5_3ume2")
 
 [node name="ButtonFinish" type="Button" parent="."]
 offset_left = 978.0
@@ -93,20 +93,20 @@ script = ExtResource("9_ltxlc")
 
 [node name="font" type="Sprite2D" parent="LevelLabel"]
 position = Vector2(259, 360)
-texture = ExtResource("10_ojea3")
+texture = ExtResource("10_p4wfx")
 
 [node name="card" type="Sprite2D" parent="LevelLabel"]
 z_index = -1
 position = Vector2(463.5, 360)
 scale = Vector2(0.915833, 1)
-texture = ExtResource("5_r1xl3")
+texture = ExtResource("5_3ume2")
 
 [node name="ShopScreen" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.6)
 z_index = 10
 position = Vector2(434.149, -84.6187)
 scale = Vector2(1.31691, 1.14832)
-texture = ExtResource("12_wwnjq")
+texture = ExtResource("11_c7334")
 
 [node name="Card0" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
@@ -145,7 +145,7 @@ script = ExtResource("5_ce4io")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShopScreen/ButtonRefresh"]
 position = Vector2(-281.503, 22.1105)
-texture = ExtResource("16_cdi3l")
+texture = ExtResource("16_lusrj")
 
 [node name="ButtonUpLevel" type="Button" parent="ShopScreen"]
 self_modulate = Color(1, 1, 1, 0)
@@ -157,7 +157,7 @@ text = "升级科技"
 
 [node name="Sprite2D" type="Sprite2D" parent="ShopScreen/ButtonUpLevel"]
 position = Vector2(-267.928, -156.029)
-texture = ExtResource("17_xysjt")
+texture = ExtResource("17_67rde")
 
 [node name="ButtonCloseShopSceen" type="Button" parent="ShopScreen"]
 self_modulate = Color(1, 1, 1, 0)
@@ -170,7 +170,7 @@ text = "关闭"
 [node name="Sprite2D" type="Sprite2D" parent="ShopScreen/ButtonCloseShopSceen"]
 position = Vector2(-282.202, 169.953)
 scale = Vector2(0.987643, 1.02616)
-texture = ExtResource("16_rtsup")
+texture = ExtResource("18_wsnw4")
 
 [node name="upLevelCostLabel" type="Label" parent="ShopScreen"]
 offset_left = 200.0
@@ -185,7 +185,7 @@ script = ExtResource("6_37etc")
 
 [node name="3cardframe" type="Sprite2D" parent="ShopScreen"]
 position = Vector2(-12.4194, 0.41278)
-texture = ExtResource("21_1tfoa")
+texture = ExtResource("20_tt4l4")
 
 [connection signal="pressed" from="ButtonFinish" to="." method="_on_button_finish_pressed"]
 [connection signal="pressed" from="ButtonOpenShop" to="." method="_on_button_open_shop_pressed"]

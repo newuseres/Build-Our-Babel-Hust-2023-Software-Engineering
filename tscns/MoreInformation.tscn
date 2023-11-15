@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bstm0dum4ef72"]
+[gd_scene load_steps=3 format=3 uid="uid://bstm0dum4ef72"]
 
 [ext_resource type="Script" path="res://scripts/labels/MoreInformationLabel.gd" id="1_ai0do"]
 [ext_resource type="Script" path="res://scripts/MoreInformation.gd" id="1_kqpgs"]
-[ext_resource type="Texture2D" uid="uid://qwvcxd4jxtnn" path="res://image/block.png" id="3_piqyq"]
 
 [node name="MoreInformation" type="Node2D"]
 script = ExtResource("1_kqpgs")
@@ -19,8 +18,6 @@ offset_right = -9.0
 offset_bottom = 28.0
 allow_greater = true
 nine_patch_stretch = true
-texture_under = ExtResource("3_piqyq")
-texture_progress = ExtResource("3_piqyq")
 tint_under = Color(0.294118, 0.294118, 0.294118, 1)
 tint_over = Color(1, 1, 1, 0)
 tint_progress = Color(1, 0.211765, 0.27451, 1)

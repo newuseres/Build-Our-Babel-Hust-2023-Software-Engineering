@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d12jsrbmkf1ln"]
+[gd_scene load_steps=4 format=3 uid="uid://d12jsrbmkf1ln"]
 
 [ext_resource type="Script" path="res://network/websocket/WebSocketClient.gd" id="1_75oc4"]
 [ext_resource type="Script" path="res://network/main.gd" id="1_iajoo"]
-[ext_resource type="PackedScene" uid="uid://30kp47bwl73o" path="res://network/client.tscn" id="3_pl1fr"]
 [ext_resource type="Script" path="res://network/Info.gd" id="4_cfqyu"]
 
 [node name="Main" type="Control"]
@@ -281,10 +280,6 @@ offset_right = 235.0
 offset_bottom = 38.0
 theme_override_font_sizes/font_size = 25
 
-[node name="Client" parent="." instance=ExtResource("3_pl1fr")]
-visible = false
-layout_mode = 1
-
 [node name="Info" type="Panel" parent="."]
 visible = false
 modulate = Color(0.298039, 0.298039, 0.298039, 1)
@@ -343,5 +338,4 @@ text = "关闭"
 [connection signal="pressed" from="IDUI/IDButton" to="." method="_on_id_button_pressed"]
 [connection signal="toggled" from="WaitingRoom/Ready" to="." method="_on_ready_toggled"]
 [connection signal="pressed" from="WaitingRoom/Quit" to="." method="_on_quit_pressed"]
-[connection signal="sendData" from="Client" to="." method="_on_client_send_data"]
 [connection signal="pressed" from="Info/Button" to="Info" method="_on_button_pressed"]

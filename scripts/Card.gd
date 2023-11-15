@@ -3,10 +3,11 @@ class_name Card
 
 var floor : FloorBase
 var father : Shop
+var number : int
 
 func click():
 	print("click!")
-	father.buy(floor)
+	father.buy(number)
 	floor.textureB.button_down.disconnect(click)
 	remove_child(floor.moreInformation)
 	pass
@@ -16,7 +17,7 @@ func refresh(level : int):
 		floor.free()
 	visible = true
 	
-	floor = FloorSuper.load(Pool.getRand(level), father.level)
+	floor = FloorSuper.load(Pool.getRand(level, father.father.rng), father.level)
 	add_child(floor)
 	floor.father = self;
 	floor.textureB.button_down.connect(click)

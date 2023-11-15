@@ -16,7 +16,7 @@ var floor_attr:Dictionary
 var poolAttr:Dictionary
 var refreshRate:Array[Array]
 var levelfloor:Array[Array]
-var FloorType:Dictionary 
+var FloorType:Dictionary
 
 
 func load_floor(pos:String):
@@ -119,11 +119,11 @@ func loadall():
 	load_floor_type("res://database/类型名称.csv")
 	pass
 	
-func getRand(level : int) -> int:
-	var seed : float = randf()
+func getRand(level : int, rng : RandomNumberGenerator) -> int:
+	var seed : float = rng.randf()
 	for objLevel in range(1, 7) :
 		if seed < refreshRate[level][objLevel]:
-			return levelfloor[objLevel][randi_range(0, levelfloor[objLevel].size() - 1)]
+			return levelfloor[objLevel][rng.randi_range(0, levelfloor[objLevel].size() - 1)]
 		else : seed -= refreshRate[level][objLevel]
 	return 0
 func _ready():

@@ -6,7 +6,10 @@ var finished:bool = false
 
 var tower0:Tower 
 var tower1:Tower 
+var towerEnemy:Tower
 var playID:int#玩家ID
+var seed0:int
+var seed1:int
 
 func turnBegin():
 	tower0.turnBegin()
@@ -42,6 +45,18 @@ func allAct():
 	
 var shoptscn = preload("res://tscns/Shop.tscn")
 var Cameratscn = preload("res://tscns/Camera.tscn")
+
+func enemyAct(message:Dictionary):
+	if(message["op"] == "buy"):
+		towerEnemy.shop.buy(message["number"], true)
+	if(message["op"] == "levelup"):
+		towerEnemy.shop._on_button_up_level_pressed(true)
+	if(message["op"] == "refresh"):
+		towerEnemy.shop._on_button_refresh_pressed(true)
+	if(message["op"] == "turnend"):
+		towerEnemy.shop._on_button_finish_pressed(true)
+	pass
+
 func _ready():
 	tower0 = Tower.new()
 	tower1 = Tower.new()
@@ -53,10 +68,10 @@ func _ready():
 	add_child(Camera)
 	Camera.z_index = -1000
 	#Camera.set_script(load("res://tscns/Camera.gd"))
-	Camera.game.add_child(tower0)
-	Camera.game.add_child(tower1)
 	tower0.position = Vector2(300, 650)
 	tower1.position = Vector2(1050, 650)
+	tower0.seed = seed0
+	tower1.seed = seed1
 	
 	tower0.shop = shoptscn.instantiate()
 	tower0.shop.name = "Shop"
@@ -77,10 +92,14 @@ func _ready():
 	
 	if playID == 0:
 		tower1.shop.visible = false
+		towerEnemy = tower1
 	else:
 		tower0.shop.visible = false
+		towerEnemy = tower0
 	tower0.shop.position = Vector2(300, 500)
 	tower1.shop.position = Vector2(300, 500)
+	Camera.game.add_child(tower0)
+	Camera.game.add_child(tower1)
 
 
 func refreshMinimap():

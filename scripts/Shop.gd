@@ -20,20 +20,23 @@ var penaltyNowRate:float = 1#当前的购买惩罚系数
 var penaltyBuy:float#购买的惩罚倍率
 
 var level:int = 1
-
+var cards:Array[Card]
 var productor:int
 var productorLimit:int#矿工上限
 var father:Tower
 
 
 func refresh():
-	$ShopScreen/Card0.refresh(level)
-	$ShopScreen/Card1.refresh(level)
-	$ShopScreen/Card2.refresh(level)
+	cards[0].refresh(level)
+	cards[1].refresh(level)
+	cards[2].refresh(level)
 	pass
 
-func buy(floornow:FloorBase):
+func buy(number:int, nosignal:bool = false):
+	var floornow:FloorBase = cards[number].floor
 	if(gold < floornow.cost) : return
+	if(nosignal == false):
+		emit_signal("sendData", {"op":"buy","number":number})
 	gold -= floornow.cost
 	penaltyNowRate = penaltyNowRate * penaltyBuy
 	productorLimit += floornow.addProductorLimit
@@ -54,10 +57,12 @@ func buy(floornow:FloorBase):
 #玩家的turn_begin	
 
 func turnEnd():
-	father.finished = true
+	father.turnEnd()
 	$ShopScreen.visible =  false
+	$ButtonFinish.visible = false
 
 func turnBegin():
+	$ButtonFinish.visible = true
 	$ShopScreen.visible = true
 	gold += productor * int(Pool.poolAttr["科技等级_"+str(level)+"_矿工生产速度"])
 	goldFlushCost = int(Pool.poolAttr["科技等级_"+str(level)+"_刷新金币"])
@@ -65,10 +70,18 @@ func turnBegin():
 	penaltyBuy = float(Pool.poolAttr["科技等级_"+str(level)+"_购买惩罚倍率"])
 	refresh()
 
+
+
 func _ready():
-	$ShopScreen/Card0.father = self
-	$ShopScreen/Card1.father = self
-	$ShopScreen/Card2.father = self
+	cards.push_back($ShopScreen/Card0)
+	cards.push_back($ShopScreen/Card1)
+	cards.push_back($ShopScreen/Card2)
+	cards[0].father = self
+	cards[1].father = self
+	cards[2].father = self
+	cards[0].number = 0
+	cards[1].number = 1
+	cards[2].number = 2
 	productor = int(Pool.poolAttr["初始矿工"])
 	productorLimit = int(Pool.poolAttr["初始矿工上限"])
 	goldFlushCost = int(Pool.poolAttr["科技等级_1_刷新金币"])
@@ -79,24 +92,27 @@ func _ready():
 
 	
 
-func _on_button_refresh_pressed():
+func _on_button_refresh_pressed(nosignal : bool = false):
 	if(gold < goldFlushCost) : return
 	gold -= goldFlushCost
+	emit_signal("sendData", {"op":"refresh"})
 	goldFlushCost *= penaltyCoefficient
 	refresh()
 	pass # Replace with function body.
 
 
-func _on_button_up_level_pressed():
+func _on_button_up_level_pressed(nosignal : bool = false):
 	if(gold < int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) || level==6 ):
 		return;
+	emit_signal("sendData", {"op":"levelup"})
 	gold = gold - int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) 
 	level += 1
 	penaltyBuy = float(Pool.poolAttr["科技等级_"+str(level)+"_购买惩罚倍率"])
 	pass # Replace with function body.
 
 
-func _on_button_finish_pressed():
+func _on_button_finish_pressed(nosignal : bool = false):
+	emit_signal("sendData", {"op":"turnend"})
 	turnEnd()
 	pass # Replace with function body.
 
