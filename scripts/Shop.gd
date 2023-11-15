@@ -2,7 +2,6 @@ extends Node2D
 class_name Shop
 
 signal sendData(Data:Dictionary)
-
 '''
 ## 商店场景
 牌(*3)

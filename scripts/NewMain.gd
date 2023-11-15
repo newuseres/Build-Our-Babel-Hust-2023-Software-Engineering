@@ -1,5 +1,6 @@
 extends Node
 class_name Game
+signal actEnd
 var Tower = preload("res://scripts/Tower.gd")
 
 var finished:bool = false
@@ -43,6 +44,7 @@ func allAct():
 		tower0.fallCheck()
 		tower1.fallCheck()
 		await get_tree().create_timer(0.1).timeout
+	emit_signal("actEnd")
 	pass
 	
 var shoptscn = preload("res://tscns/Shop.tscn")
@@ -115,6 +117,7 @@ func _process(delta):
 		await get_tree().create_timer(2).timeout
 		
 		allAct()
+		await actEnd
 		
 		await get_tree().create_timer(0.5).timeout
 		
