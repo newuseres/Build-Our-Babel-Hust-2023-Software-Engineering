@@ -46,6 +46,8 @@ func getProduce() -> FloorBase:
 	return ret
 
 var rigidfloortscn = preload("res://tscns/Rigidfloor.tscn")
+var mutex:Mutex = Mutex.new()
+
 func build(floor:FloorBase):
 	allUnfreeze()
 	floor.moreInformation.visible = false
@@ -67,6 +69,9 @@ func build(floor:FloorBase):
 	father.refreshMinimap()
 	#rigidtmp.add_child(floor.textureB)
 	#add_child(floor)
+	mutex.lock()
+	await get_tree().create_timer(0.5).timeout
+	mutex.unlock()
 	pass
 
 func highestActive():

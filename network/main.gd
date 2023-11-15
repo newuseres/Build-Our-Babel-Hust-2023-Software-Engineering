@@ -122,7 +122,7 @@ func _on_join_pressed():
 
 # 大厅 - 随机加入
 func _on_rand_join_pressed():
-	pass
+	_client.send(JSON.stringify({"type": "randjoin", "ID": ID}))
 
 # 大厅 - 创建房间
 func _on_create_pressed():

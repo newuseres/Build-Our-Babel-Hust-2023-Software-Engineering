@@ -36,6 +36,7 @@ func refresh():
 
 func buy(number:int, nosignal:bool = false):
 	var floornow:FloorBase = cards[number].floor
+	floornow.cost = floornow.originalcost * penaltyNowRate 
 	if(gold < floornow.cost) : return
 	if(nosignal == false):
 		emit_signal("sendData", {"type":"gameoperation","op":"buy","number":number})
