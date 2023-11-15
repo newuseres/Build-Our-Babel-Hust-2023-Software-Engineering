@@ -52,7 +52,7 @@ func _on_web_socket_client_connected_to_server():
 # 客户端接收数据
 func _on_web_socket_client_message_received(_message):
 	var message:Dictionary = JSON.parse_string(_message)
-	
+	print(ID,"\n",message)
 	# 接收连接数据
 	if (message["type"] == "connect"):
 		if (message["data"] == "OK"):

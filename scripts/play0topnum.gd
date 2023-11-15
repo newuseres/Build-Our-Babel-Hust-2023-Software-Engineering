@@ -8,5 +8,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "玩家0高度："+str(get_parent().tower1.floors.size())
+	text = "玩家0高度："+str(get_parent().tower0.floors.size())
 	pass
