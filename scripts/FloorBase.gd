@@ -46,7 +46,7 @@ func makeBulletFly(dest:FloorBase, BulletType:int = 1):
 	add_child(bullet)
 	bullet.straightfly(self.position+Vector2(0,25),
 	self.position+Vector2(0,25)+Vector2 ( (750 if self.father.tower_id==0 else -750),-50*(dest.floorN-floorN)) 
-	,3000
+	,2000
 	,BulletType)
 
 func _ready():

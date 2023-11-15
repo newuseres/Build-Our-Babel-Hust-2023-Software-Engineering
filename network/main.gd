@@ -1,5 +1,5 @@
 extends Control
-
+class_name NetworkMain
 
 @onready var _client: WebSocketClient = $WebSocketClient
 var ID = null
@@ -22,6 +22,7 @@ func to_room (room_id):
 func to_game (playid,seed0,seed1):
 	
 	game = gameTscn.instantiate()
+	game.father = self
 	game.playID = playid	
 	game.seed0 = seed0
 	game.seed1 = seed1
@@ -151,6 +152,5 @@ func _on_quit_pressed():
 # 游戏中发送信息
 func _on_client_send_data(data:Dictionary):
 	data["ID"] = ID
-	data["type"] = "gameoperation"
 	_client.send(JSON.stringify(data))
 	

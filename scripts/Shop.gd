@@ -1,6 +1,8 @@
 extends Node2D
-
 class_name Shop
+
+signal sendData(Data:Dictionary)
+
 '''
 ## 商店场景
 牌(*3)
@@ -36,7 +38,7 @@ func buy(number:int, nosignal:bool = false):
 	var floornow:FloorBase = cards[number].floor
 	if(gold < floornow.cost) : return
 	if(nosignal == false):
-		emit_signal("sendData", {"op":"buy","number":number})
+		emit_signal("sendData", {"type":"gameoperation","op":"buy","number":number})
 	gold -= floornow.cost
 	penaltyNowRate = penaltyNowRate * penaltyBuy
 	productorLimit += floornow.addProductorLimit
@@ -73,6 +75,7 @@ func turnBegin():
 
 
 func _ready():
+	if(father.father.father != null): sendData.connect(father.father.father._on_client_send_data)
 	cards.push_back($ShopScreen/Card0)
 	cards.push_back($ShopScreen/Card1)
 	cards.push_back($ShopScreen/Card2)
@@ -95,7 +98,7 @@ func _ready():
 func _on_button_refresh_pressed(nosignal : bool = false):
 	if(gold < goldFlushCost) : return
 	gold -= goldFlushCost
-	emit_signal("sendData", {"op":"refresh"})
+	emit_signal("sendData", {"type":"gameoperation", "op":"refresh"})
 	goldFlushCost *= penaltyCoefficient
 	refresh()
 	pass # Replace with function body.
@@ -104,7 +107,7 @@ func _on_button_refresh_pressed(nosignal : bool = false):
 func _on_button_up_level_pressed(nosignal : bool = false):
 	if(gold < int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) || level==6 ):
 		return;
-	emit_signal("sendData", {"op":"levelup"})
+	emit_signal("sendData", {"type":"gameoperation", "op":"levelup"})
 	gold = gold - int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) 
 	level += 1
 	penaltyBuy = float(Pool.poolAttr["科技等级_"+str(level)+"_购买惩罚倍率"])
@@ -112,7 +115,7 @@ func _on_button_up_level_pressed(nosignal : bool = false):
 
 
 func _on_button_finish_pressed(nosignal : bool = false):
-	emit_signal("sendData", {"op":"turnend"})
+	if(nosignal == false) : emit_signal( "sendData", {"type":"gameoperation","op":"turnend"} )
 	turnEnd()
 	pass # Replace with function body.
 

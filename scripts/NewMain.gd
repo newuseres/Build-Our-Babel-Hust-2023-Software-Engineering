@@ -10,6 +10,7 @@ var towerEnemy:Tower
 var playID:int#玩家ID
 var seed0:int
 var seed1:int
+var father:NetworkMain
 
 func turnBegin():
 	tower0.turnBegin()
@@ -41,6 +42,7 @@ func allAct():
 			tower1.highestActive().act()
 		tower0.fallCheck()
 		tower1.fallCheck()
+		await get_tree().create_timer(0.1).timeout
 	pass
 	
 var shoptscn = preload("res://tscns/Shop.tscn")
@@ -110,7 +112,10 @@ func _process(delta):
 	if tower0.finished and tower1.finished :
 		tower0.finished = 0
 		tower1.finished = 0
+		await get_tree().create_timer(2).timeout
+		
 		allAct()
+		
 		await get_tree().create_timer(0.5).timeout
 		
 		tower0.allUnfreeze()
@@ -119,15 +124,18 @@ func _process(delta):
 		await get_tree().create_timer(0.5).timeout
 		
 		if tower0.winCheck() and tower1.winCheck() :
+			
 			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
 			finished = true
 			return
 			
 		elif tower0.winCheck() :
+			
 			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
 			finished = true
 			return
 		elif tower1.winCheck() :
+			
 			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
 			finished = true
 			return
