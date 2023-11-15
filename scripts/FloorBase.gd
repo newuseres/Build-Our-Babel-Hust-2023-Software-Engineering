@@ -37,7 +37,7 @@ var MoreInformation = preload("res://tscns/MoreInformation.tscn")
 
 var moreInformation
 
-var rigid:RigidBody2D
+var rigid:Rigid
 
 var Bullet = preload("res://scripts/Bullet.gd")
 
@@ -53,7 +53,7 @@ func _ready():
 	pass
 
 func relocate():
-	position = Vector2(0, -70 - 1500)
+	return Vector2(0, -70 - floorN * 50)
 
 func floor_mouse_entered():
 	moreInformation.visible = true

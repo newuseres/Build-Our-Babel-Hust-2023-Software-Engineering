@@ -98,7 +98,7 @@ func _ready():
 func _on_button_refresh_pressed(nosignal : bool = false):
 	if(gold < goldFlushCost) : return
 	gold -= goldFlushCost
-	emit_signal("sendData", {"type":"gameoperation", "op":"refresh"})
+	if(nosignal == false) : emit_signal("sendData", {"type":"gameoperation", "op":"refresh"})
 	goldFlushCost *= penaltyCoefficient
 	refresh()
 	pass # Replace with function body.
@@ -107,7 +107,7 @@ func _on_button_refresh_pressed(nosignal : bool = false):
 func _on_button_up_level_pressed(nosignal : bool = false):
 	if(gold < int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) || level==6 ):
 		return;
-	emit_signal("sendData", {"type":"gameoperation", "op":"levelup"})
+	if(nosignal == false) : emit_signal("sendData", {"type":"gameoperation", "op":"levelup"})
 	gold = gold - int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) 
 	level += 1
 	penaltyBuy = float(Pool.poolAttr["科技等级_"+str(level)+"_购买惩罚倍率"])

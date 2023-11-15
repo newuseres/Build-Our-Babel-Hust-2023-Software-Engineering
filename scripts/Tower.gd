@@ -61,10 +61,11 @@ func build(floor:FloorBase):
 	print(floor.position)
 	#加入碰撞体积
 	#floor.remove_child(floor.textureB)
-	var rigidtmp:RigidBody2D = rigidfloortscn.instantiate()
+	var rigidtmp = rigidfloortscn.instantiate()
 	rigidtmp.add_child(floor)
 	floor.rigid = rigidtmp
 	rigidtmp.position = Vector2(0,-2000 - floors.size() * 50)
+	rigidtmp.floor = floor
 	add_child(rigidtmp)
 	father.refreshMinimap()
 	#rigidtmp.add_child(floor.textureB)
@@ -137,15 +138,15 @@ func paintFloor():
 var warmTime = 0
 
 func allFreeze():
-	for floorN in range(0, floors.size()):
-		floors[floorN].rigid.freeze = true
+#	for floorN in range(0, floors.size()):
+#		floors[floorN].rigid.freeze = true
 	pass
 	
 func allUnfreeze():
-	print("sleep")
-	warmTime = 3.0
-	for floorN in range(0, floors.size()):
-		floors[floorN].rigid.freeze = false
+#	print("sleep")
+#	warmTime = 3.0
+#	for floorN in range(0, floors.size()):
+#		floors[floorN].rigid.freeze = false
 	pass
 
 '''

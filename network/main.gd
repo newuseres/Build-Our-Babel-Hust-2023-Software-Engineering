@@ -5,6 +5,7 @@ class_name NetworkMain
 var ID = null
 var game:Game
 var gameTscn = preload("res://tscns/NewMain.tscn")
+
 # 更换大厅场景
 func to_menu ():
 	$Menu/RoomTip.hide()

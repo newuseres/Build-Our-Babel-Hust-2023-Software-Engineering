@@ -1,6 +1,5 @@
 extends Node
 class_name Game
-signal actEnd
 var Tower = preload("res://scripts/Tower.gd")
 
 var finished:bool = false
@@ -19,33 +18,6 @@ func turnBegin():
 	
 var tmpShop:int = 0 #测试用
 var prior = 0
-	
-func allAct():
-	while(true):
-		tower0.paintFloor()
-		tower1.paintFloor()
-		if(tower0.highestActive() == null and tower1.highestActive() == null):
-			break
-		if(tower0.highestActive() == null):
-			tower1.highestActive().act()
-		elif(tower1.highestActive() == null):
-			tower0.highestActive().act()
-		elif(tower0.highestActive().floorN == tower1.highestActive().floorN):
-			if(prior == 0):
-				tower0.highestActive().act()
-				prior = 1
-			else:
-				tower1.highestActive().act()
-				prior = 0
-		elif(tower0.highestActive().floorN > tower1.highestActive().floorN):
-			tower0.highestActive().act()
-		elif(tower0.highestActive().floorN < tower1.highestActive().floorN):
-			tower1.highestActive().act()
-		tower0.fallCheck()
-		tower1.fallCheck()
-		await get_tree().create_timer(0.1).timeout
-	emit_signal("actEnd")
-	pass
 	
 var shoptscn = preload("res://tscns/Shop.tscn")
 var Cameratscn = preload("res://tscns/Camera.tscn")
@@ -116,8 +88,29 @@ func _process(delta):
 		tower1.finished = 0
 		await get_tree().create_timer(2).timeout
 		
-		allAct()
-		await actEnd
+		while(true):
+			tower0.paintFloor()
+			tower1.paintFloor()
+			if(tower0.highestActive() == null and tower1.highestActive() == null):
+				break
+			if(tower0.highestActive() == null):
+				tower1.highestActive().act()
+			elif(tower1.highestActive() == null):
+				tower0.highestActive().act()
+			elif(tower0.highestActive().floorN == tower1.highestActive().floorN):
+				if(prior == 0):
+					tower0.highestActive().act()
+					prior = 1
+				else:
+					tower1.highestActive().act()
+					prior = 0
+			elif(tower0.highestActive().floorN > tower1.highestActive().floorN):
+				tower0.highestActive().act()
+			elif(tower0.highestActive().floorN < tower1.highestActive().floorN):
+				tower1.highestActive().act()
+			tower0.fallCheck()
+			tower1.fallCheck()
+			await get_tree().create_timer(0.1).timeout
 		
 		await get_tree().create_timer(0.5).timeout
 		
