@@ -17,7 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var sleepT = 0.0
-
+var NewMainTscn = preload("res://tscns/NewMain.tscn")
 func _process(delta):
 	if sleepT > 0 :
 		sleepT -= delta
@@ -25,9 +25,15 @@ func _process(delta):
 	if Input.is_anything_pressed() :
 		sleepT = 1
 		x += 1
+		
 		if x == 6 :
-			get_tree().change_scene_to_file("res://tscns/NewMain.tscn")
+			#get_tree().change_scene_to_file("res://tscns/NewMain.tscn")
+			var newMainTscn = (NewMainTscn.instantiate())
+			newMainTscn.playID = 1
+			get_tree().root.add_child(newMainTscn)
+			get_tree().root.remove_child(self)
 			return
-		$Sprite2D.texture = load( "res://image/bg"+String.num_int64(x)+".png")
-		$Label.text = bgText[x]
+		if x < 6 :
+			$Sprite2D.texture = load( "res://image/bg"+String.num_int64(x)+".png")
+			$Label.text = bgText[x]
 	pass

@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://30kp47bwl73o"]
+
+[ext_resource type="Script" path="res://network/client.gd" id="1_i43c2"]
+
+[node name="Client" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i43c2")
+
+[node name="Text" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 83.0
+offset_right = 830.0
+offset_bottom = 114.0
+
+[node name="Send" type="Button" parent="."]
+layout_mode = 0
+offset_left = 546.0
+offset_top = 143.0
+offset_right = 593.0
+offset_bottom = 174.0
+text = "Send"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 210.0
+offset_right = 1121.0
+offset_bottom = 620.0
+
+[connection signal="pressed" from="Send" to="." method="_on_send_pressed"]

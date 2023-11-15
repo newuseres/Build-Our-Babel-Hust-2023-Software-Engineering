@@ -67,7 +67,7 @@ func loadbase(id:int,level:int) :
 	textureB = TextureButton.new()
 	moreInformation = MoreInformation.instantiate()
 	z_index = 0
-	moreInformation.z_index = 100000
+	moreInformation.z_index = 1
 
 	add_child(textureB)
 	add_child(moreInformation)

@@ -1,0 +1,347 @@
+[gd_scene load_steps=5 format=3 uid="uid://d12jsrbmkf1ln"]
+
+[ext_resource type="Script" path="res://network/websocket/WebSocketClient.gd" id="1_75oc4"]
+[ext_resource type="Script" path="res://network/main.gd" id="1_iajoo"]
+[ext_resource type="PackedScene" uid="uid://30kp47bwl73o" path="res://network/client.tscn" id="3_pl1fr"]
+[ext_resource type="Script" path="res://network/Info.gd" id="4_cfqyu"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iajoo")
+
+[node name="Menu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RandJoin" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = 156.0
+offset_right = 88.5
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "随机加入"
+
+[node name="Join" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = 76.0
+offset_right = 88.5
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "加入房间"
+
+[node name="TextEdit" type="LineEdit" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -74.0
+offset_right = 175.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+alignment = 1
+
+[node name="RoomTip" type="Label" parent="Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.5
+offset_top = 16.0
+offset_right = 206.5
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.117647, 0, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -244.0
+offset_right = 120.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "加入房间"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IDLabel" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -134.0
+offset_right = 273.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="Create" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = 236.0
+offset_right = 88.5
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "新建房间"
+
+[node name="WebSocketClient" type="Node" parent="."]
+script = ExtResource("1_75oc4")
+
+[node name="ServerErrorLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = -33.5
+offset_right = 180.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "服务器连接失败"
+horizontal_alignment = 1
+
+[node name="IDUI" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IDEdit" type="LineEdit" parent="IDUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -64.0
+offset_right = 192.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+placeholder_text = "输入你的 ID"
+alignment = 1
+
+[node name="IDButton" type="Button" parent="IDUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = 76.0
+offset_right = 56.5
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "确定"
+
+[node name="IDTipLabel" type="Label" parent="IDUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = 11.0
+offset_right = 114.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.117647, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "服务器中已存在此 ID"
+horizontal_alignment = 1
+
+[node name="WaitingRoom" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WaitingPlayer" type="ItemList" parent="WaitingRoom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -174.0
+offset_right = 300.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ready" type="Button" parent="WaitingRoom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 76.0
+offset_right = 85.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "准备"
+
+[node name="Quit" type="Button" parent="WaitingRoom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 176.0
+offset_right = 85.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "退出"
+
+[node name="Number" type="Label" parent="WaitingRoom"]
+layout_mode = 1
+offset_right = 235.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 25
+
+[node name="Client" parent="." instance=ExtResource("3_pl1fr")]
+visible = false
+layout_mode = 1
+
+[node name="Info" type="Panel" parent="."]
+visible = false
+modulate = Color(0.298039, 0.298039, 0.298039, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = -205.5
+offset_right = 356.0
+offset_bottom = 205.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_cfqyu")
+
+[node name="Label" type="Label" parent="Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -36.5
+offset_right = 242.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = 94.5
+offset_right = 77.0
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "关闭"
+
+[connection signal="pressed" from="Menu/RandJoin" to="." method="_on_rand_join_pressed"]
+[connection signal="pressed" from="Menu/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Menu/Create" to="." method="_on_create_pressed"]
+[connection signal="connected_to_server" from="WebSocketClient" to="." method="_on_web_socket_client_connected_to_server"]
+[connection signal="connection_closed" from="WebSocketClient" to="." method="_on_web_socket_client_connection_closed"]
+[connection signal="message_received" from="WebSocketClient" to="." method="_on_web_socket_client_message_received"]
+[connection signal="pressed" from="IDUI/IDButton" to="." method="_on_id_button_pressed"]
+[connection signal="toggled" from="WaitingRoom/Ready" to="." method="_on_ready_toggled"]
+[connection signal="pressed" from="WaitingRoom/Quit" to="." method="_on_quit_pressed"]
+[connection signal="sendData" from="Client" to="." method="_on_client_send_data"]
+[connection signal="pressed" from="Info/Button" to="Info" method="_on_button_pressed"]
