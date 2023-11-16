@@ -39,6 +39,7 @@ texture = ExtResource("4_dw6dy")
 centered = false
 
 [node name="Button" type="Button" parent="."]
+visible = false
 z_index = 100
 offset_left = 354.0
 offset_top = 788.0
