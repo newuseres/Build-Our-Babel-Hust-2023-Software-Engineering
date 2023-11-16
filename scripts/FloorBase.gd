@@ -109,11 +109,20 @@ func load(id : int,level:int):
 	pass
 
 func takeDamageBase(damage : int,resource :FloorBase,damageType) -> bool:
-	health -= damage
+	
 	if(damageType == Globals.DamageType.lock) :
 		buffList[Globals.BuffType.lock] = buffList.get(Globals.BuffType.lock,0 )
+	if(damageType == Globals.DamageType.weak) :
+		buffList[Globals.BuffType.weak] = buffList.get(Globals.BuffType.weak,0 )
+
+	if(damageType == Globals.DamageType.maxhealth) :
+		maxHealth -= damage
+	else :
+		health -= damage
+	if(health > maxHealth) : health = maxHealth
 	if(health <= 0):
 		alive = false
+		dealthVoice()
 		return false
 	else: return true
 	

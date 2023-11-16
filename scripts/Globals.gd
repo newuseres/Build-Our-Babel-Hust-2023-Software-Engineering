@@ -6,11 +6,14 @@ enum DamageType{
 	gravity = 2,
 	sacrifice = 3,
 	lock = 4,
+	maxhealth = 5,
+	weak = 6,
 }
 
 enum BuffType{
 	default = 0,
 	lock = 1,
+	weak = 2,
 }
 
 var WinFloors = 20

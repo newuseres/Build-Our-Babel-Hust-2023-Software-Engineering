@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b5pe27wb67e5n"]
+[gd_scene load_steps=28 format=3 uid="uid://b2uqa2ggw6q1b"]
 
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_afsdt"]
 [ext_resource type="LabelSettings" uid="uid://cbuan21y4ibj3" path="res://tress/shop_font30px.tres" id="2_m0a2g"]

@@ -11,5 +11,9 @@ func load(id : int,level:int):
 	pass
 
 func checkBuff():
-	tempAttackPoint = attackPoint * (2.0 -1.0 * health / maxHealth)
+	checkBuffBase()
+	tempAttackPoint += attackPoint * (1.0 -1.0 * health / maxHealth)
 	moreInformationStr = "攻击力" + str(tempAttackPoint)
+
+func act():
+	actLikeGunFloor(5)

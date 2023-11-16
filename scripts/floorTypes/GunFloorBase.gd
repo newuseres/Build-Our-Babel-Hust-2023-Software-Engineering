@@ -1,5 +1,4 @@
 extends FloorBase
-
 class_name GunFloorBase
 
 var attackPoint : int
@@ -14,8 +13,15 @@ func load(id : int,level:int):
 	moreInformationStr = "攻击力" + str(tempAttackPoint)
 	pass
 	
-func checkBuff():
+func checkBuffBase():
 	tempAttackPoint = attackPoint
+	if(buffList.get(Globals.BuffType.weak, 0) > 0 ): 
+		buffList[Globals.BuffType.weak] = buffList.get(Globals.BuffType.weak, 0) - 1
+		tempAttackPoint = int (tempAttackPoint * 0.6)
+	
+
+func checkBuff():
+	checkBuffBase()
 	moreInformationStr = "攻击力" + str(tempAttackPoint)
 	
 func tryAttack(floor : FloorBase, bulletType = 1, damageType = Globals.DamageType.normal):
