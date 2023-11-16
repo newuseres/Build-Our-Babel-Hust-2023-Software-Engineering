@@ -9,7 +9,7 @@ func load(id : int,level:int):
 	pass
 
 func takeDamage(damage : int,resource :FloorBase,damageType = Globals.DamageType.normal):
-	if takeDamage(damage,resource,damageType) :
+	if takeDamageBase(damage,resource,damageType) :
 		if(resource != null) : resource.takeDamage(weight, null, Globals.DamageType.gravity)
 		return true
 	else : return false
