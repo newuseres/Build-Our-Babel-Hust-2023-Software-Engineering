@@ -74,6 +74,7 @@ func loadbase(id:int,level:int) :
 	add_child(textureB)
 	add_child(moreInformation)
 	#读取shop等级
+	descriptionStr = Pool.floor_attr[id].description
 	originalcost = Pool.floor_attr[id].cost
 	cost = originalcost
 	textureB.texture_normal = Pool.floor_attr[id].image

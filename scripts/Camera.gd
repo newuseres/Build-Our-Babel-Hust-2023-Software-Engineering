@@ -23,4 +23,5 @@ func _process(delta):
 	if(Input.is_action_just_pressed("scrolldown")):
 		speed -= 16000 * delta	
 	position += delta * speed * Vector2(0,1)	
-		
+	position.y = min(position.y,3000)
+	position.y = max(position.y,-200)

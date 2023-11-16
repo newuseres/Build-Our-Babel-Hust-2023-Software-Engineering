@@ -19,6 +19,7 @@ func _process(delta):
 	$costLabel.text = "购买花费:" + String.num_int64(self.father.cost)
 	$healthLabel.text = "当前血量:"+str(father.health)+"/"+str(father.maxHealth)
 	$informationLabel.text = father.moreInformationStr
+	$Name.text = father.descriptionStr
 	$weightLabel.text = "重量:"+str(father.weight)
 	$nameLabel.text = str(father.myName)
 	
