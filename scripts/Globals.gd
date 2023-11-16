@@ -14,3 +14,7 @@ enum BuffType{
 }
 
 var WinFloors = 20
+
+var FLOOR_HEIGHT = 80
+
+var FLOOR_OCCUPY_HEIGHT = 80

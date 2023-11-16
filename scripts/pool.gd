@@ -3,6 +3,7 @@ extends Node
 class for_floor_attr extends Object: 
 	var name:String
 	var type:String
+	var description:String
 	var attackPoint:int
 	var produce:int
 	var health:int
@@ -11,6 +12,7 @@ class for_floor_attr extends Object:
 	var image
 	var addProductorLimit:int
 	var cost:int
+#	var coincidence:int #突发事件概率
 
 var floor_attr:Dictionary
 var poolAttr:Dictionary
@@ -47,11 +49,16 @@ func load_floor(pos:String):
 				floor_attr[now_id].floorGrade =int(temp[idx])
 				levelfloor[int(temp[idx])].push_back(now_id)
 			elif keys[idx] == "贴图名称":
-				floor_attr[now_id].image = load("res://image/floor/"+str(temp[idx])+".jpg")
+				floor_attr[now_id].image = load("res://image/floor/"+str(temp[idx])+".png")
 			elif keys[idx] == "增加矿工上限":
 				floor_attr[now_id].addProductorLimit = int(temp[idx])
 			elif keys[idx] == "价格":
 				floor_attr[now_id].cost = int(temp[idx])
+#			elif keys[idx] == "描述":
+#				floor_attr[now_id].description = str(temp[idx])
+#			elif keys[idx] == "概率":
+#				floor_attr[now_id].coincidence = int(temp[idx])
+				
 		temp = file.get_csv_line(",")
 	file.close()
 

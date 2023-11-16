@@ -1,15 +1,6 @@
 extends GunFloorBase
 class_name HeavyGunFloor
 
-	
-func load(id : int,level:int):
-	print("load HeavyGunFloor")
-	loadbase(id,level)
-#	print("id",id,level)
-	attackPoint = Pool.floor_attr[id].attackPoint
-	
-	pass
-
 func act():
 	active = false
 	checkBuff()

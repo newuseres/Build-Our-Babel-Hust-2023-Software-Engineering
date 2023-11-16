@@ -29,6 +29,8 @@ var ownerPart:int
 var myName:String
 var addProductorLimit:int #增加矿工上限
 var buffList:Dictionary
+var moreInformationStr : String
+var descriptionStr: String
 
 var floortype : String
 
@@ -44,8 +46,8 @@ var Bullet = preload("res://scripts/Bullet.gd")
 func makeBulletFly(dest:FloorBase, BulletType:int = 1):
 	var bullet:Bullet = Bullet.new()
 	add_child(bullet)
-	bullet.straightfly(self.position+Vector2(0,25),
-	self.position+Vector2(0,25)+Vector2 ( (750 if self.father.tower_id==0 else -750),-50*(dest.floorN-floorN)) 
+	bullet.straightfly(self.position+Vector2(0,Globals.FLOOR_HEIGHT/2),
+	self.position+Vector2(0,Globals.FLOOR_HEIGHT/2)+Vector2 ( (750 if self.father.tower_id==0 else -750),-Globals.FLOOR_HEIGHT*(dest.floorN-floorN)) 
 	,2000
 	,BulletType)
 
@@ -53,7 +55,7 @@ func _ready():
 	pass
 
 func relocate():
-	return Vector2(0, -70 - floorN * 50)
+	return Vector2(0, -70 - floorN * Globals.FLOOR_OCCUPY_HEIGHT)
 
 func floor_mouse_entered():
 	moreInformation.visible = true
@@ -76,7 +78,7 @@ func loadbase(id:int,level:int) :
 	cost = originalcost
 	textureB.texture_normal = Pool.floor_attr[id].image
 	textureB.ignore_texture_size = true
-	textureB.stretch_mode = TextureButton.STRETCH_SCALE
+	textureB.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_COVERED
 	textureB.size = Vector2(100,100)
 	moreInformation.visible = false
 	textureB.mouse_entered.connect(floor_mouse_entered)
@@ -88,7 +90,7 @@ func loadbase(id:int,level:int) :
 	floortype = Pool.floor_attr[id].type
 	myName = str(Pool.floor_attr[id].name)
 	addProductorLimit = Pool.floor_attr[id].addProductorLimit
-	moreInformation.position = Vector2(0, -50)
+	moreInformation.position = Vector2(0, -Globals.FLOOR_HEIGHT)
 	floorid = id
 	pass
 

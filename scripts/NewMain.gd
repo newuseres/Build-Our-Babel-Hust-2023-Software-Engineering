@@ -24,11 +24,17 @@ var Cameratscn = preload("res://tscns/Camera.tscn")
 
 var semaphs:Array[Semaphore]
 var maxOP:int = 128 
+var mutex:Mutex = Mutex.new()
 
 func enemyAct(message:Dictionary):
-	if(message.get("timestamp") == null) : message["timestamp"] = 0
+	print("enemyAct:",message)
+	if(message.get("timestamp") == null) : 
+		message["timestamp"] = 0
+	print("wait sem",message["timestamp"])
 	for i in range(0,message["timestamp"]) :
 		semaphs[message["timestamp"]].wait()
+	print("enter sem",message["timestamp"])
+	mutex.lock()
 	if(message["op"] == "buy"):
 		towerEnemy.shop.buy(message["number"], true)
 		semaphs[0].wait()
@@ -45,10 +51,10 @@ func enemyAct(message:Dictionary):
 		for i in range(message["timestamp"] + 1,maxOP):
 			semaphs[i].post()
 	if(message["op"] == "turnend"):
-		towerEnemy.shop._on_button_finish_pressed(true)
 		for i in range(0,maxOP):
-			while(semaphs[i].try_wait()) :
-				pass
+			semaphs[i]=Semaphore.new()
+		towerEnemy.shop._on_button_finish_pressed(true)	
+	mutex.unlock()
 	pass
 
 func _ready():

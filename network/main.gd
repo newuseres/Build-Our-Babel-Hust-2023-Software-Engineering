@@ -153,10 +153,11 @@ func _on_quit_pressed():
 # 游戏中发送信息
 var timeStamp:int = 0
 func _on_client_send_data(data:Dictionary):
-	print(data)
+	
 	data["ID"] = ID
 	data["timestamp"] = timeStamp
-	if(data.get("gameoperation","") == "turnend") : timeStamp = 0
+	print(data)
+	if(data.get("op","") == "turnend") : timeStamp = 0
 	else : timeStamp += 1
 	_client.send(JSON.stringify(data))
 	

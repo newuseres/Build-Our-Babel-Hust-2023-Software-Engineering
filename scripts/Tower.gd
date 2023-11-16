@@ -55,14 +55,16 @@ func build(floor:FloorBase):
 	floor.floorN = floors.size() - 1
 	floor.position = Vector2(0,0)
 	floor.father = self
-	floor.textureB.size = Vector2(50,50)
+	if tower_id == 1:
+		floor.textureB.flip_h = true
+	floor.textureB.size = Vector2(200,Globals.FLOOR_HEIGHT)
 	print(floor.position)
 	#加入碰撞体积
 	#floor.remove_child(floor.textureB)
 	var rigidtmp = rigidfloortscn.instantiate()
 	rigidtmp.add_child(floor)
 	floor.rigid = rigidtmp
-	rigidtmp.position = Vector2(0,-2000 - floors.size() * 50)
+	rigidtmp.position = Vector2(0,-2000 - floors.size() * Globals.FLOOR_HEIGHT)
 	rigidtmp.floor = floor
 	add_child(rigidtmp)
 	father.refreshMinimap()

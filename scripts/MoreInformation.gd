@@ -18,10 +18,7 @@ func _process(delta):
 	$health.tint_progress = Color(0.8 - 0.8 * father.health / father.maxHealth,0.8 * father.health / father.maxHealth ,0)
 	$costLabel.text = "购买花费:" + String.num_int64(self.father.cost)
 	$healthLabel.text = "当前血量:"+str(father.health)+"/"+str(father.maxHealth)
-	if(father.floortype == "MineFloor"):
-		$atkLabel.text = "回合生产矿工:"+str(father.produce)
-	elif father.floortype == "HeavyGunFloor" or father.floortype == "GunFloor" :
-		$atkLabel.text = "回合攻击力:"+str(father.attackPoint)
+	$informationLabel.text = father.moreInformationStr
 	$weightLabel.text = "重量:"+str(father.weight)
 	$nameLabel.text = str(father.myName)
 	

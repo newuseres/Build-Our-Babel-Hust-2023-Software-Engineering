@@ -9,7 +9,7 @@ func click():
 	print("click!")
 	father.buy(number)
 	floor.textureB.button_down.disconnect(click)
-	remove_child(floor.moreInformation)
+	floor.moreInformation.visible = false
 	pass
 
 func refresh(level : int):
