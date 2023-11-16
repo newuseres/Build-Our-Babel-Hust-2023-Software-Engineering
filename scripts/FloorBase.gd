@@ -20,6 +20,7 @@ var maxHealth:int
 var weight:int
 
 var textureB:TextureButton
+var textureS:TextureButton#特效图片
 var cost:int
 var originalcost:int#初始cost值
 var floorlevel:int = 1
@@ -67,6 +68,7 @@ func loadbase(id:int,level:int) :
 	alive = true
 	active = true
 	textureB = TextureButton.new()
+	textureS = TextureButton.new()
 	moreInformation = MoreInformation.instantiate()
 	z_index = 0
 	moreInformation.z_index = 1
@@ -80,7 +82,14 @@ func loadbase(id:int,level:int) :
 	textureB.texture_normal = Pool.floor_attr[id].image
 	textureB.ignore_texture_size = true
 	textureB.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_COVERED
-	textureB.size = Vector2(100,100)
+	textureB.size = Vector2(130,130)
+	#特效
+	textureS.texture_normal = Pool.floor_attr[id].SpecialImage
+#	textureB.ignore_texture_size = true
+	textureS.scale = Vector2(0.07,0.05)
+	textureS.position = Vector2(30,80)
+	textureB.add_child(textureS)
+	
 	moreInformation.visible = false
 	textureB.mouse_entered.connect(floor_mouse_entered)
 	textureB.mouse_exited.connect(floor_mouse_exited)

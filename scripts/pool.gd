@@ -10,6 +10,7 @@ class for_floor_attr extends Object:
 	var weight:int
 	var floorGrade:int
 	var image
+	var SpecialImage
 	var addProductorLimit:int
 	var cost:int
 	var coincidence:int #突发事件概率
@@ -49,7 +50,7 @@ func load_floor(pos:String):
 				floor_attr[now_id].floorGrade =int(temp[idx])
 				levelfloor[int(temp[idx])].push_back(now_id)
 			elif keys[idx] == "贴图名称":
-				floor_attr[now_id].image = load("res://image/floor/"+"炮台-"+str(temp[idx])+".png")
+				floor_attr[now_id].image = load("res://image/floor/"+str(temp[idx])+".png")
 			elif keys[idx] == "增加矿工上限":
 				floor_attr[now_id].addProductorLimit = int(temp[idx])
 			elif keys[idx] == "价格":
@@ -58,7 +59,8 @@ func load_floor(pos:String):
 				floor_attr[now_id].description = str(temp[idx])
 			elif keys[idx] == "概率":
 				floor_attr[now_id].coincidence = int(temp[idx])
-				
+			elif keys[idx] == "特效名称":
+				floor_attr[now_id].SpecialImage = load("res://image/specialeffect/"+str(temp[idx])+".png")
 		temp = file.get_csv_line(",")
 	file.close()
 

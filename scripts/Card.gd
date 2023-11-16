@@ -9,6 +9,7 @@ func click():
 	print("click!")
 	if father.buy(number):
 		floor.textureB.button_down.disconnect(click)
+		floor.textureS.button_down.disconnect(click)
 		floor.moreInformation.scale = Vector2(1,1)
 		floor.moreInformation.visible = false
 	pass
@@ -20,6 +21,7 @@ func refresh(level : int):
 	
 	floor = FloorSuper.load(Pool.getRand(level, father.father.rng), father.level)
 	floor.textureB.button_down.connect(click)
+	floor.textureS.button_down.connect(click)
 	floor.position = Vector2(50,0)
 	add_child(floor)
 	floor.father = self;

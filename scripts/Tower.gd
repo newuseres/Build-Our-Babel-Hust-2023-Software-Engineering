@@ -4,7 +4,7 @@ class_name Tower
 var floors : Array[FloorBase]
 var shop:Shop
 var opposite
-var finished
+var finished:bool
 var tower_id:int
 var father : Game
 var seed:int
@@ -57,6 +57,10 @@ func build(floor:FloorBase):
 	floor.father = self
 	if tower_id == 1:
 		floor.textureB.flip_h = true
+		
+	floor.textureS.scale = Vector2(0.1,0.1)
+	floor.textureS.position = Vector2(20,25)
+	
 	floor.textureB.size = Vector2(200,Globals.FLOOR_HEIGHT)
 	print(floor.position)
 	#加入碰撞体积

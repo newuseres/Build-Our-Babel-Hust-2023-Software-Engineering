@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8e1aa0rt3ouy"]
+[gd_scene load_steps=4 format=3 uid="uid://pbjborrvsa5r"]
 
 [ext_resource type="Script" path="res://scripts/FloorSuper.gd" id="1_d0iyx"]
 [ext_resource type="Script" path="res://scripts/floorTypes/MineFloor.gd" id="2_mcqwv"]
