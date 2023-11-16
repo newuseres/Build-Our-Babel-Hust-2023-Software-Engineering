@@ -34,18 +34,20 @@ func refresh():
 	father.father.semaphs[0].post()
 	pass
 
-func buy(number:int, nosignal:bool = false):
+func buy(number:int, nosignal:bool = false) -> bool:
 	var floornow:FloorBase = cards[number].floor
 	floornow.cost = floornow.originalcost * penaltyNowRate 
-	if(gold < floornow.cost) : return
+	if(gold < floornow.cost) : return false
+	var card = floornow.father
+	card.visible = false
 	if(nosignal == false):
 		emit_signal("sendData", {"type":"gameoperation","op":"buy","number":number})
 	gold -= floornow.cost
 	penaltyNowRate = penaltyNowRate * penaltyBuy
 	productorLimit += floornow.addProductorLimit
-	var card = floornow.get_parent()
+	
 	card.remove_child(floornow)
-	card.visible = false
+	
 	'''
 	#calc twice
 	if($Card0.floor!=null):
@@ -56,6 +58,7 @@ func buy(number:int, nosignal:bool = false):
 		$Card2.floor.cost = int($Card2.floor.cost*penaltyNowRate)
 	'''
 	father.build(floornow)
+	return true
 	pass
 #玩家的turn_begin	
 

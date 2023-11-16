@@ -13,10 +13,21 @@ font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="Node2D"]
+z_index = 1
 script = ExtResource("1_8ik45")
 
+[node name="Button" type="TextureButton" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 100
+offset_left = 3.0
+offset_top = 7.0
+offset_right = 210.0
+offset_bottom = 197.0
+action_mode = 0
+texture_normal = ExtResource("2_o4qlw")
+
 [node name="costLabel" type="Label" parent="."]
-z_index = 11
+z_index = 10
 layout_direction = 1
 offset_left = 10.0
 offset_top = 93.0
@@ -50,15 +61,6 @@ z_index = -1
 position = Vector2(608, 9)
 scale = Vector2(1, 0.485667)
 texture = ExtResource("3_o7a2h")
-
-[node name="Button" type="TextureButton" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-z_index = 1000
-offset_left = 3.0
-offset_top = 7.0
-offset_right = 210.0
-offset_bottom = 197.0
-texture_normal = ExtResource("2_o4qlw")
 
 [connection signal="button_down" from="Button" to="." method="click"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]

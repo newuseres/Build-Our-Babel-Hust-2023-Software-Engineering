@@ -7,7 +7,7 @@ var waitTime : float = -1
 signal timeout
 
 func timeReset():
-	waitTime = 10
+	waitTime = 90
 	
 func shutdown():
 	waitTime = -1

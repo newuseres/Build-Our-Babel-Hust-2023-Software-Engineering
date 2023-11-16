@@ -7,10 +7,10 @@ var number : int
 
 func click():
 	print("click!")
-	father.buy(number)
-	floor.textureB.button_down.disconnect(click)
-	floor.moreInformation.scale = Vector2(1,1)
-	floor.moreInformation.visible = false
+	if father.buy(number):
+		floor.textureB.button_down.disconnect(click)
+		floor.moreInformation.scale = Vector2(1,1)
+		floor.moreInformation.visible = false
 	pass
 
 func refresh(level : int):

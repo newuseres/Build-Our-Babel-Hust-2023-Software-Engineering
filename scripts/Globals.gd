@@ -13,7 +13,7 @@ enum BuffType{
 	lock = 1,
 }
 
-var WinFloors = 2
+var WinFloors = 20
 
 var FLOOR_HEIGHT = 60
 
