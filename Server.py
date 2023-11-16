@@ -91,6 +91,7 @@ def player_rand_join ():
 # 开始对局
 def start_game (roomnum):
     Rooms[roomnum]["state"] = "playing"
+    Rooms[roomnum]["ready"] = [False, False]
     Games[roomnum] = {
         "players": Rooms[roomnum]["players"],
         "seeds": [random.randint(0, 2 ** 32), random.randint(0, 2 ** 32)],
@@ -192,8 +193,10 @@ async def server (websocket, path):
                         for playerID in Rooms[num]["players"]:
                             if (playerID != None):
                                 await ID_Websocket[playerID].send(json.dumps({"type": "roomdetail", "data": Rooms[num]}))
-                    else:
-                        await websocket.send(json.dumps({"type": "joinroom", "data": "FULL"}))
+                else:
+                    getnum = create_room(ID)
+                    await websocket.send(json.dumps({"type": "createroom", "data": getnum}))
+                    await websocket.send(json.dumps({"type": "roomdetail", "data": Rooms[getnum]}))
 
             if (message["type"] == "quitroom"):
                 ID = message["ID"]
@@ -213,15 +216,14 @@ async def server (websocket, path):
             
             if (message["type"] == "gameoperation"):
                 ID = message["ID"]
-                print(message["op"])
                 if (message["op"] == "buy"):
-                    player_operation_buy(ID, message["number"])
+                    player_operation_buy(ID, message["number"], message["timestamp"])
                 if (message["op"] == "levelup"):
-                    player_operation_levelup(ID)
+                    player_operation_levelup(ID, message["timestamp"])
                 if (message["op"] == "refresh"):
-                    player_operation_refresh(ID)
+                    player_operation_refresh(ID, message["timestamp"])
                 if (message["op"] == "turnend"):
-                    player_operation_turnend(ID)
+                    player_operation_turnend(ID, message["timestamp"])
                     if (is_ready_to_roundend(ID_Room[ID])):
                         roomnum = ID_Room[ID]
                         optList = Games[roomnum]["operations"]
@@ -229,6 +231,7 @@ async def server (websocket, path):
                         Games[roomnum]["operations"] = [[], []]
                         for i in range(2):
                             for opt in optList[1 - i]:
+                                print(opt)
                                 if (opt[0] == "levelup"):
                                     await ID_Websocket[Games[roomnum]["players"][i]].send(json.dumps({"type": "gameoperation", "op": "levelup", "timestamp": opt[1]}))
                                 elif (opt[0] == "refresh"):
@@ -239,7 +242,20 @@ async def server (websocket, path):
                                     await ID_Websocket[Games[roomnum]["players"][i]].send(json.dumps({"type": "gameoperation", "op": "buy", "number": opt[0], "timestamp": opt[1]}))
             
             if (message["type"] == "endgame"):
-                pass
+                ID = message["ID"]
+                roomnum = ID_Room[ID]
+                reason = message["reason"]
+                Rooms[roomnum]["state"] = "waiting"
+                if (reason == 2):
+                    await websocket.send(json.dumps({"type": "endgame", "reason": "tie", "roomnum": roomnum}))
+                    await websocket.send(json.dumps({"type": "roomdetail", "data": Rooms[roomnum]}))
+                else:
+                    if (Games[roomnum]["players"][reason] == ID):
+                        await websocket.send(json.dumps({"type": "endgame", "reason": "win", "roomnum": roomnum}))
+                        await websocket.send(json.dumps({"type": "roomdetail", "data": Rooms[roomnum]}))
+                    else:
+                        await websocket.send(json.dumps({"type": "endgame", "reason": "lose", "roomnum": roomnum}))
+                        await websocket.send(json.dumps({"type": "roomdetail", "data": Rooms[roomnum]}))
 
 
 
