@@ -20,8 +20,9 @@ func refresh(level : int):
 	visible = true
 	
 	floor = FloorSuper.load(Pool.getRand(level, father.father.rng), father.level)
-	floor.textureB.button_down.connect(click)
-	floor.textureS.button_down.connect(click)
+	if father.visible:
+		floor.textureB.button_down.connect(click)
+		floor.textureS.button_down.connect(click)
 	floor.position = Vector2(50,0)
 	add_child(floor)
 	floor.father = self;

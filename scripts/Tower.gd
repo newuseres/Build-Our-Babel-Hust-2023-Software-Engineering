@@ -59,8 +59,8 @@ func build(floor:FloorBase):
 		floor.textureB.flip_h = true
 		
 	floor.textureS.scale = Vector2(0.1,0.1)
-	floor.textureS.position = Vector2(20,25)
-	
+	floor.textureS.position = Vector2(20,25) if self == father.tower0 else Vector2(140,25)
+		
 	floor.textureB.size = Vector2(200,Globals.FLOOR_HEIGHT)
 	print(floor.position)
 	#加入碰撞体积

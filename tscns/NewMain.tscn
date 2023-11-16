@@ -18,6 +18,7 @@ font_size = 24
 font_color = Color(0, 0, 0, 1)
 
 [node name="NewMain" type="Node2D"]
+z_index = 100
 script = ExtResource("1_qekkm")
 
 [node name="Minimap" parent="." instance=ExtResource("2_kj8dk")]
@@ -38,7 +39,6 @@ texture = ExtResource("4_dw6dy")
 centered = false
 
 [node name="Button" type="Button" parent="."]
-visible = false
 z_index = 100
 offset_left = 354.0
 offset_top = 788.0

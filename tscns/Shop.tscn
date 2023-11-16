@@ -48,7 +48,8 @@ offset_right = -42.0
 offset_bottom = -425.0
 text = "gold"
 label_settings = ExtResource("2_m0a2g")
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("4_3myuf")
 
 [node name="font" type="Sprite2D" parent="GoldLabel"]
@@ -64,12 +65,13 @@ texture = ExtResource("5_3ume2")
 
 [node name="ProductorLabel" type="Label" parent="."]
 offset_left = 274.0
-offset_top = -469.0
+offset_top = -470.0
 offset_right = 435.0
-offset_bottom = -424.0
+offset_bottom = -425.0
 text = "productor"
 label_settings = ExtResource("2_m0a2g")
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("5_bbyac")
 
 [node name="font" type="Sprite2D" parent="ProductorLabel"]
@@ -126,20 +128,20 @@ flip_v = true
 [node name="Label" type="Label" parent="ButtonOpenShop"]
 layout_mode = 0
 offset_left = 32.0
-offset_top = -1.0
 offset_right = 162.0
-offset_bottom = 45.0
+offset_bottom = 46.0
 text = "商店"
 label_settings = ExtResource("2_m0a2g")
 
 [node name="LevelLabel" type="Label" parent="."]
 offset_left = 59.0
-offset_top = -474.0
-offset_right = 149.0
-offset_bottom = -429.0
+offset_top = -470.0
+offset_right = 161.0
+offset_bottom = -425.0
 text = "f"
 label_settings = ExtResource("2_m0a2g")
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("9_ltxlc")
 
 [node name="font" type="Sprite2D" parent="LevelLabel"]

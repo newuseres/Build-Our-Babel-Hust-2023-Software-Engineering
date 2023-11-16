@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b45gy8ja7j6m1" path="res://image/floor/炮台-14.png" id="1_kjd2d"]
 [ext_resource type="Script" path="res://scripts/Countdown.gd" id="1_tej5h"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_bfyop"]
+[sub_resource type="LabelSettings" id="LabelSettings_jmuqb"]
 font_size = 30
 
 [node name="Countdown" type="Sprite2D"]
@@ -17,4 +17,4 @@ offset_top = -51.0
 offset_right = 94.0
 offset_bottom = 33.0
 text = "回合倒计时：90"
-label_settings = SubResource("LabelSettings_bfyop")
+label_settings = SubResource("LabelSettings_jmuqb")
