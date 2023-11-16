@@ -48,7 +48,6 @@ func getProduce() -> FloorBase:
 var rigidfloortscn = preload("res://tscns/Rigidfloor.tscn")
 
 func build(floor:FloorBase):
-	allUnfreeze()
 	floor.moreInformation.visible = false
 	if floors.is_empty() : floor.z_index = 0
 	else : floor.z_index = floors[-1].z_index - 1;
@@ -89,7 +88,6 @@ func resetActive():
 	pass
 	
 func fallCheck():
-	#allUnfreeze() 
 	#now unfreeze after wait
 	var sumWeight = 0
 	var sumDamage = 0
@@ -137,18 +135,6 @@ func paintFloor():
 	
 var warmTime = 0
 
-func allFreeze():
-#	for floorN in range(0, floors.size()):
-#		floors[floorN].rigid.freeze = true
-	pass
-	
-func allUnfreeze():
-#	print("sleep")
-#	warmTime = 3.0
-#	for floorN in range(0, floors.size()):
-#		floors[floorN].rigid.freeze = false
-	pass
-
 '''
 ## 塔
 商店
@@ -168,8 +154,6 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	if(warmTime > 0) :
-		warmTime -= delta
-		if(warmTime <= 0) : allFreeze()
+	pass
 
 

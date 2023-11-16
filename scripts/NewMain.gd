@@ -133,12 +133,7 @@ func _process(delta):
 			tower1.fallCheck()
 			await get_tree().create_timer(0.1).timeout
 		
-		await get_tree().create_timer(0.5).timeout
-		
-		tower0.allUnfreeze()
-		tower1.allUnfreeze()
-		
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(1).timeout
 		
 		if tower0.winCheck() and tower1.winCheck() :
 			
