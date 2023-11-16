@@ -46,7 +46,6 @@ func getProduce() -> FloorBase:
 	return ret
 
 var rigidfloortscn = preload("res://tscns/Rigidfloor.tscn")
-var mutex:Mutex = Mutex.new()
 
 func build(floor:FloorBase):
 	allUnfreeze()
@@ -68,6 +67,7 @@ func build(floor:FloorBase):
 	rigidtmp.floor = floor
 	add_child(rigidtmp)
 	father.refreshMinimap()
+	father.semaphs[0].post()
 	#rigidtmp.add_child(floor.textureB)
 	#add_child(floor)
 	pass

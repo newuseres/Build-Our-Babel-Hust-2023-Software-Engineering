@@ -107,6 +107,9 @@ func takeDamageBase(damage : int,resource :FloorBase,damageType) -> bool:
 	
 func takeDamage(damage : int,resource :FloorBase,damageType = Globals.DamageType.normal) -> bool:
 	return takeDamageBase(damage,resource ,damageType)
+	
+func checkBuff():
+	pass
 
 func takeHeal(heal : int):
 	if(buffList.get(Globals.BuffType.lock,0 ) > 0 ):

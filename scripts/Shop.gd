@@ -31,6 +31,7 @@ func refresh():
 	cards[0].refresh(level)
 	cards[1].refresh(level)
 	cards[2].refresh(level)
+	father.father.semaphs[0].post()
 	pass
 
 func buy(number:int, nosignal:bool = false):
@@ -111,6 +112,7 @@ func _on_button_up_level_pressed(nosignal : bool = false):
 	gold = gold - int(Pool.poolAttr["科技等级_"+str(level)+"_科技升级金币"]) 
 	level += 1
 	penaltyBuy = float(Pool.poolAttr["科技等级_"+str(level)+"_购买惩罚倍率"])
+	father.father.semaphs[0].post()
 	pass # Replace with function body.
 
 

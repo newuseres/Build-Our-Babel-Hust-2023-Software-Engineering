@@ -1,8 +1,6 @@
-extends FloorBase
+extends GunFloorBase
 class_name GunFloor
 
-var attackPoint : int
-	
 func load(id : int,level:int):
 	print("load Gunfloor")
 	loadbase(id,level)
@@ -13,12 +11,11 @@ func load(id : int,level:int):
 
 func act():
 	active = false
+	checkBuff()
 	if father.opposite.floors.is_empty(): return
 	if(father.opposite.getFloor(floorN) == null) :
-		father.opposite.getTop().takeDamage(attackPoint,self)
-		makeBulletFly(father.opposite.getTop())
+		tryAttack(father.opposite.getTop())
 	else :
-		father.opposite.getFloor(floorN).takeDamage(attackPoint,self)
-		makeBulletFly(father.opposite.getFloor(floorN))
+		tryAttack(father.opposite.getFloor(floorN))
 	pass
 

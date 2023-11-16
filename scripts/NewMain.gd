@@ -22,18 +22,39 @@ var prior = 0
 var shoptscn = preload("res://tscns/Shop.tscn")
 var Cameratscn = preload("res://tscns/Camera.tscn")
 
+var semaphs:Array[Semaphore]
+var maxOP:int = 128 
+
 func enemyAct(message:Dictionary):
+	if(message.get("timestamp") == null) : message["timestamp"] = 0
+	for i in range(0,message["timestamp"]) :
+		semaphs[message["timestamp"]].wait()
 	if(message["op"] == "buy"):
 		towerEnemy.shop.buy(message["number"], true)
+		semaphs[0].wait()
+		for i in range(message["timestamp"] + 1,maxOP):
+			semaphs[i].post()
 	if(message["op"] == "levelup"):
 		towerEnemy.shop._on_button_up_level_pressed(true)
+		semaphs[0].wait()
+		for i in range(message["timestamp"] + 1,maxOP):
+			semaphs[i].post()
 	if(message["op"] == "refresh"):
 		towerEnemy.shop._on_button_refresh_pressed(true)
+		semaphs[0].wait()
+		for i in range(message["timestamp"] + 1,maxOP):
+			semaphs[i].post()
 	if(message["op"] == "turnend"):
 		towerEnemy.shop._on_button_finish_pressed(true)
+		for i in range(0,maxOP):
+			while(semaphs[i].try_wait()) :
+				pass
 	pass
 
 func _ready():
+	for i in range(0,maxOP):
+		var tmp:Semaphore = Semaphore.new()
+		semaphs.push_back(tmp)
 	tower0 = Tower.new()
 	tower1 = Tower.new()
 	tower0.finished = true
