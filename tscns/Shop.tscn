@@ -283,13 +283,22 @@ scale = Vector2(0.987643, 1.02616)
 texture = ExtResource("18_wsnw4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HelpScreen"]
-offset_left = -363.0
-offset_top = -104.0
-offset_right = 254.0
-offset_bottom = 191.0
+offset_left = -398.0
+offset_top = -124.0
+offset_right = 322.0
+offset_bottom = 234.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "123
-123"
+theme_override_font_sizes/normal_font_size = 21
+text = "无情的灾祸肆虐您治下的每一片国土。尽管国民众志成城，但仍然饿殍遍野。
+传说天空中的国度有无尽的宝藏，足以淹没一切的忧伤。
+选择巴比伦塔的建设规划，筑成坚固的碉堡。
+抵御入侵者，助您抢先登上天国。
+
+点击购买您需要的建筑，
+建筑有些可以生产矿工提供金币，
+有些可以攻击敌方的巴比伦塔。
+点击商店中的刷新按钮，换一个思路可以更好的规划。
+点击商店中的升级按钮，提高科技，创新制胜！"
 
 [node name="Label" type="Label" parent="HelpScreen"]
 offset_left = -152.624

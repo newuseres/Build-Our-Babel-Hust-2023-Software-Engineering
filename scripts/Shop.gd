@@ -79,6 +79,7 @@ func turnBegin():
 	penaltyNowRate = 1
 	penaltyBuy = float(Pool.poolAttr["科技等级_"+str(level)+"_购买惩罚倍率"])
 	refresh()
+	$HelpScreen.visible = false
 
 
 
