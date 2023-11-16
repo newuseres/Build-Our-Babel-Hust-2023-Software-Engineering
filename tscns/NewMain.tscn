@@ -32,10 +32,10 @@ centered = false
 
 [node name="Button" type="Button" parent="."]
 z_index = 100
-offset_left = 42.0
-offset_top = 127.0
-offset_right = 173.0
-offset_bottom = 158.0
+offset_left = 354.0
+offset_top = 788.0
+offset_right = 485.0
+offset_bottom = 820.0
 text = "交换商店(测试用)
 "
 
@@ -49,11 +49,12 @@ text = "当前0
 "
 
 [node name="一键多金" type="Button" parent="."]
+visible = false
 z_index = 100
-offset_left = 47.0
-offset_top = 201.0
-offset_right = 178.0
-offset_bottom = 232.0
+offset_left = 519.0
+offset_top = 792.0
+offset_right = 650.0
+offset_bottom = 824.0
 text = "一键多金(测试用)
 "
 
@@ -68,20 +69,20 @@ scale = Vector2(1.3, 1.3)
 texture = ExtResource("6_q01ic")
 
 [node name="play0topnum" type="Label" parent="."]
-offset_left = 44.0
-offset_top = 786.0
-offset_right = 110.0
-offset_bottom = 831.0
+offset_left = 42.0
+offset_top = 762.0
+offset_right = 108.0
+offset_bottom = 807.0
 text = "top0
 "
 label_settings = ExtResource("7_5bw67")
 script = ExtResource("8_x61a5")
 
 [node name="play1topnum" type="Label" parent="."]
-offset_left = 1262.0
-offset_top = 786.0
-offset_right = 1328.0
-offset_bottom = 831.0
+offset_left = 1265.0
+offset_top = 763.0
+offset_right = 1331.0
+offset_bottom = 808.0
 text = "top1"
 label_settings = ExtResource("7_5bw67")
 script = ExtResource("9_c1ufm")
