@@ -60,12 +60,19 @@ func buy(number:int, nosignal:bool = false):
 #玩家的turn_begin	
 
 func turnEnd():
-	father.turnEnd()
+	$ButtonFinish.disconnect("pressed",_on_button_finish_pressed)
 	$ShopScreen.visible =  false
-	$ButtonFinish.visible = false
+#	$ButtonFinish.visible = false
+	$ButtonFinish/Sprite2D.self_modulate = Color(1,0,0)
+	$ButtonFinish/Label.text = "等待对手"
+	father.turnEnd()
+	
 
 func turnBegin():
+	$ButtonFinish.connect("pressed",_on_button_finish_pressed)	
+	$ButtonFinish/Label.text = "回合结束"
 	$ButtonFinish.visible = true
+	$ButtonFinish/Sprite2D.self_modulate = Color(1,1,1)
 	$ShopScreen.visible = true
 	gold += productor * int(Pool.poolAttr["科技等级_"+str(level)+"_矿工生产速度"])
 	goldFlushCost = int(Pool.poolAttr["科技等级_"+str(level)+"_刷新金币"])
@@ -129,7 +136,19 @@ func _on_button_close_shop_sceen_pressed():
 
 
 func _on_button_open_shop_pressed():
+	if father == null:
+		return
 	if(father.finished != true): 
 		$ShopScreen.visible = true
 
+	pass # Replace with function body.
+
+
+func _on_button_close_help_sceen_pressed():
+	$HelpScreen.visible = false
+	pass # Replace with function body.
+
+
+func _on_button_open_help_pressed():
+	$HelpScreen.visible = true 
 	pass # Replace with function body.

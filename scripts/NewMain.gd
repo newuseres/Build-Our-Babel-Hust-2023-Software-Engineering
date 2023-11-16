@@ -99,8 +99,8 @@ func _ready():
 	else:
 		tower0.shop.visible = false
 		towerEnemy = tower0
-	tower0.shop.position = Vector2(300, 500)
-	tower1.shop.position = Vector2(300, 500)
+	tower0.shop.position = Vector2(310, 500)
+	tower1.shop.position = Vector2(310, 500)
 	Camera.game.add_child(tower0)
 	Camera.game.add_child(tower1)
 
