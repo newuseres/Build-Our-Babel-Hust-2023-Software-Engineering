@@ -61,6 +61,8 @@ func buy(number:int, nosignal:bool = false):
 
 func turnEnd():
 	$ButtonFinish.disconnect("pressed",_on_button_finish_pressed)
+	if(visible == true) : $Countdown.shutdown()
+	if(visible == true) : $Countdown.timeout.disconnect(_on_button_finish_pressed)
 	$ShopScreen.visible =  false
 #	$ButtonFinish.visible = false
 	$ButtonFinish/Sprite2D.self_modulate = Color(1,0,0)
@@ -69,7 +71,9 @@ func turnEnd():
 	
 
 func turnBegin():
-	$ButtonFinish.connect("pressed",_on_button_finish_pressed)	
+	if(visible == true) : $Countdown.timeReset()
+	if(visible == true) : $Countdown.timeout.connect(_on_button_finish_pressed)
+	$ButtonFinish.connect("pressed",_on_button_finish_pressed)
 	$ButtonFinish/Label.text = "回合结束"
 	$ButtonFinish.visible = true
 	$ButtonFinish/Sprite2D.self_modulate = Color(1,1,1)

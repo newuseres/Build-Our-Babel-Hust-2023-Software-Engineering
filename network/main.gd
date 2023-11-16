@@ -2,7 +2,8 @@ extends Control
 class_name NetworkMain
 
 @onready var _client: WebSocketClient = $WebSocketClient
-var ID = null
+var ID = "b"
+var enemyID = "a"
 var game:Game
 var gameTscn = preload("res://tscns/NewMain.tscn")
 
@@ -37,6 +38,8 @@ func update_waiting_list (data):
 	for i in range(2):
 		if (data["players"][i] == null):
 			continue
+		if(data["players"][i] != ID):
+			enemyID = data["players"][i]
 		var playerLabel = data["players"][i]
 		if (data["ready"][i] == true):
 			playerLabel += "（准备）"

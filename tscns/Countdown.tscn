@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b53tqvnj7ic4l"]
+
+[ext_resource type="Texture2D" uid="uid://b45gy8ja7j6m1" path="res://image/floor/炮台-14.png" id="1_kjd2d"]
+[ext_resource type="Script" path="res://scripts/Countdown.gd" id="1_tej5h"]
+[ext_resource type="LabelSettings" uid="uid://cbuan21y4ibj3" path="res://tress/shop_font30px.tres" id="3_ajv61"]
+
+[node name="Countdown" type="Sprite2D"]
+position = Vector2(252, 255)
+texture = ExtResource("1_kjd2d")
+script = ExtResource("1_tej5h")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -175.0
+offset_top = -51.0
+offset_right = 94.0
+offset_bottom = 33.0
+text = "回合倒计时：90"
+label_settings = ExtResource("3_ajv61")

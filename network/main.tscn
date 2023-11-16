@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d12jsrbmkf1ln"]
+[gd_scene load_steps=6 format=3 uid="uid://d12jsrbmkf1ln"]
 
 [ext_resource type="Script" path="res://network/websocket/WebSocketClient.gd" id="1_75oc4"]
 [ext_resource type="Script" path="res://network/main.gd" id="1_iajoo"]
+[ext_resource type="Texture2D" uid="uid://bluxjcfwb4qbn" path="res://image/bg5.png" id="2_jb01x"]
 [ext_resource type="Script" path="res://network/Info.gd" id="4_cfqyu"]
+[ext_resource type="Texture2D" uid="uid://qwvcxd4jxtnn" path="res://image/block.png" id="4_g5kgx"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -12,6 +14,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iajoo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.9, 0.2)
+position = Vector2(751, 445)
+scale = Vector2(1.05085, 1.33631)
+texture = ExtResource("2_jb01x")
 
 [node name="Menu" type="Control" parent="."]
 visible = false
@@ -280,40 +288,47 @@ offset_right = 235.0
 offset_bottom = 38.0
 theme_override_font_sizes/font_size = 25
 
-[node name="Info" type="Panel" parent="."]
-visible = false
-modulate = Color(0.298039, 0.298039, 0.298039, 1)
+[node name="Info" type="TextureRect" parent="."]
+self_modulate = Color(0.305882, 0.305882, 0.305882, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -356.0
-offset_top = -205.5
-offset_right = 356.0
-offset_bottom = 205.5
+offset_left = -415.5
+offset_top = -230.0
+offset_right = 415.5
+offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_g5kgx")
 script = ExtResource("4_cfqyu")
 
 [node name="Label" type="Label" parent="Info"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -242.0
-offset_top = -36.5
-offset_right = 242.0
-offset_bottom = 14.5
+offset_left = -375.0
+offset_top = -105.0
+offset_right = 375.0
+offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
+text = "无情的灾祸肆虐您治下的每一片国土。
+尽管国民众志成城，但仍然饿殍遍野。
+传说天空中的国度有无尽的宝藏，足以淹没一切的忧伤。
+选择巴比伦塔的建设规划，筑成坚固的碉堡。
+抵御入侵者，助您抢先登上天国。"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Info"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -321,9 +336,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -77.0
-offset_top = 94.5
+offset_top = 140.0
 offset_right = 77.0
-offset_bottom = 156.5
+offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqcbufyscddmd"]
+[gd_scene load_steps=11 format=3 uid="uid://dqcbufyscddmd"]
 
 [ext_resource type="Script" path="res://scripts/NewMain.gd" id="1_qekkm"]
 [ext_resource type="PackedScene" uid="uid://dwsya70w7u43r" path="res://tscns/Minimap.tscn" id="2_kj8dk"]
@@ -6,9 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://b4rviepvldbbx" path="res://image/ui/bigbackground.png" id="4_dw6dy"]
 [ext_resource type="Texture2D" uid="uid://40n0477jeiba" path="res://image/ui/leftfram.png" id="5_nc6ga"]
 [ext_resource type="Texture2D" uid="uid://byx10aftfgsve" path="res://image/ui/rightfram.png" id="6_q01ic"]
-[ext_resource type="LabelSettings" uid="uid://cbuan21y4ibj3" path="res://tress/shop_font30px.tres" id="7_5bw67"]
 [ext_resource type="Script" path="res://scripts/play0topnum.gd" id="8_x61a5"]
 [ext_resource type="Script" path="res://scripts/play1topnum.gd" id="9_c1ufm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkntd"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o86rq"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [node name="NewMain" type="Node2D"]
 script = ExtResource("1_qekkm")
@@ -31,6 +38,7 @@ texture = ExtResource("4_dw6dy")
 centered = false
 
 [node name="Button" type="Button" parent="."]
+visible = false
 z_index = 100
 offset_left = 354.0
 offset_top = 788.0
@@ -75,7 +83,7 @@ offset_right = 108.0
 offset_bottom = 807.0
 text = "top0
 "
-label_settings = ExtResource("7_5bw67")
+label_settings = SubResource("LabelSettings_nkntd")
 script = ExtResource("8_x61a5")
 
 [node name="play1topnum" type="Label" parent="."]
@@ -84,7 +92,7 @@ offset_top = 763.0
 offset_right = 1331.0
 offset_bottom = 808.0
 text = "top1"
-label_settings = ExtResource("7_5bw67")
+label_settings = SubResource("LabelSettings_o86rq")
 script = ExtResource("9_c1ufm")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

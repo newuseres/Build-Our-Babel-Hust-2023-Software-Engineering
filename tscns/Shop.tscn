@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://vnhrx4iq4ggc"]
+[gd_scene load_steps=28 format=3 uid="uid://b5pe27wb67e5n"]
 
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_afsdt"]
 [ext_resource type="LabelSettings" uid="uid://cbuan21y4ibj3" path="res://tress/shop_font30px.tres" id="2_m0a2g"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://rlmxpf3qen22" path="res://image/ui/close_font.png" id="18_wsnw4"]
 [ext_resource type="Texture2D" uid="uid://bmme8vjfrskwx" path="res://image/ui/shop3.png" id="20_tt4l4"]
 [ext_resource type="Texture2D" uid="uid://dinvop1tecknd" path="res://image/floor/炮台-16.png" id="22_7nu5n"]
+[ext_resource type="PackedScene" uid="uid://b53tqvnj7ic4l" path="res://tscns/Countdown.tscn" id="24_ajvr4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0b86k"]
 font_size = 38
@@ -307,6 +308,10 @@ offset_right = 94.3759
 offset_bottom = -115.818
 text = "游戏帮助"
 label_settings = SubResource("LabelSettings_cfhg0")
+
+[node name="Countdown" parent="." instance=ExtResource("24_ajvr4")]
+position = Vector2(1076, -428)
+scale = Vector2(0.555941, 0.591451)
 
 [connection signal="pressed" from="ButtonOpenShop" to="." method="_on_button_open_shop_pressed"]
 [connection signal="pressed" from="ShopScreen/ButtonRefresh" to="." method="_on_button_refresh_pressed"]
