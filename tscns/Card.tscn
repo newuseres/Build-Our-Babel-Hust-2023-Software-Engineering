@@ -1,11 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://mysr35pn3pkv"]
+[gd_scene load_steps=6 format=3 uid="uid://mysr35pn3pkv"]
 
 [ext_resource type="Script" path="res://scripts/Card.gd" id="1_8ik45"]
+[ext_resource type="Texture2D" uid="uid://qwvcxd4jxtnn" path="res://image/block.png" id="2_o4qlw"]
+[ext_resource type="Texture2D" uid="uid://40n0477jeiba" path="res://image/ui/leftfram.png" id="3_o7a2h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j5eww"]
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7ien"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_8ik45")
 
-[node name="Label" type="Label" parent="."]
-offset_top = 100.0
-offset_right = 40.0
-offset_bottom = 123.0
+[node name="costLabel" type="Label" parent="."]
+z_index = 11
+layout_direction = 1
+offset_left = 10.0
+offset_top = 93.0
+offset_right = 197.0
+offset_bottom = 132.0
+scale = Vector2(1, 0.75)
+text = "价格:"
+label_settings = SubResource("LabelSettings_j5eww")
+horizontal_alignment = 1
+
+[node name="background" type="Sprite2D" parent="."]
+self_modulate = Color(0.968627, 0.717647, 0.831373, 0.717647)
+position = Vector2(720, -528)
+scale = Vector2(1.215, 2.00071)
+texture = ExtResource("3_o7a2h")
+
+[node name="nameLabel" type="Label" parent="."]
+z_index = 10
+offset_left = 8.0
+offset_top = 144.0
+offset_right = 202.0
+offset_bottom = 204.0
+scale = Vector2(1, 0.75)
+text = "重炮"
+label_settings = SubResource("LabelSettings_v7ien")
+horizontal_alignment = 1
+
+[node name="nameBackground" type="Sprite2D" parent="."]
+self_modulate = Color(0.898039, 0.870588, 0.839216, 1)
+z_index = -1
+position = Vector2(608, 9)
+scale = Vector2(1, 0.485667)
+texture = ExtResource("3_o7a2h")
+
+[node name="Button" type="TextureButton" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = -100
+offset_left = 3.0
+offset_top = 7.0
+offset_right = 210.0
+offset_bottom = 197.0
+texture_normal = ExtResource("2_o4qlw")
+
+[connection signal="button_down" from="Button" to="." method="click"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

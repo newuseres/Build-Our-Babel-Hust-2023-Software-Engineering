@@ -20,5 +20,5 @@ func checkBuff():
 	
 func tryAttack(floor : FloorBase, bulletType = 1, damageType = Globals.DamageType.normal):
 	if(floor != null):
-		floor.takeDamage(attackPoint,self,damageType)
+		floor.takeDamage(tempAttackPoint,self,damageType)
 		makeBulletFly(floor, bulletType) 

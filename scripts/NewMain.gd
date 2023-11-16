@@ -25,6 +25,7 @@ var Cameratscn = preload("res://tscns/Camera.tscn")
 var semaphs:Array[Semaphore]
 var maxOP:int = 128 
 var mutex:Mutex = Mutex.new()
+signal sendData(Data:Dictionary)
 
 func enemyAct(message:Dictionary):
 	print("enemyAct:",message)
@@ -103,7 +104,8 @@ func _ready():
 	tower1.shop.position = Vector2(300, 500)
 	Camera.game.add_child(tower0)
 	Camera.game.add_child(tower1)
-
+	
+	if(father != null) : sendData.connect(father._on_client_send_data_no_time)
 
 func refreshMinimap():
 	$Minimap.updateScreen()
@@ -142,19 +144,19 @@ func _process(delta):
 		await get_tree().create_timer(1).timeout
 		
 		if tower0.winCheck() and tower1.winCheck() :
+			emit_signal("sendData",{"type":"endgame", "reason":2})
 			
-			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
 			finished = true
 			return
 			
 		elif tower0.winCheck() :
+			emit_signal("sendData",{"type":"endgame", "reason":0})
 			
-			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
 			finished = true
 			return
 		elif tower1.winCheck() :
+			emit_signal("sendData",{"type":"endgame", "reason":1})
 			
-			get_tree().change_scene_to_file("res://tscns/Begin.tscn")
 			finished = true
 			return
 		tower0.turnBegin()

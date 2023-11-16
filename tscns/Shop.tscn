@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bmme8vjfrskwx" path="res://image/ui/shop3.png" id="20_tt4l4"]
 
 [node name="Shop" type="Node2D"]
+position = Vector2(57, 0)
 script = ExtResource("1_afsdt")
 
 [node name="GoldLabel" type="Label" parent="."]
@@ -102,25 +103,25 @@ scale = Vector2(0.915833, 1)
 texture = ExtResource("5_3ume2")
 
 [node name="ShopScreen" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.6)
+self_modulate = Color(1, 1, 1, 0.67451)
 z_index = 10
 position = Vector2(434.149, -84.6187)
-scale = Vector2(1.31691, 1.14832)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("11_c7334")
 
 [node name="Card0" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
-position = Vector2(-388.653, -93.701)
+position = Vector2(-379.79, -90.8991)
 scale = Vector2(0.730551, 1.09132)
 
 [node name="Card1" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
-position = Vector2(-170.218, -90.3988)
+position = Vector2(-170.968, -90.8991)
 scale = Vector2(0.730551, 1.09132)
 
 [node name="Card2" parent="ShopScreen" instance=ExtResource("2_nmrwk")]
 z_index = 50
-position = Vector2(33.6053, -84.6198)
+position = Vector2(34.8171, -91.77)
 scale = Vector2(0.730551, 1.09132)
 
 [node name="flushCostLabel" type="Label" parent="ShopScreen"]

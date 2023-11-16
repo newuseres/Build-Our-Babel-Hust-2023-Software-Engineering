@@ -103,6 +103,15 @@ func _on_web_socket_client_message_received(_message):
 		if (message["reason"] == "quit"):
 			$Info/Label.text = "对手退出了游戏"
 			$Info.visible = true
+		if (message["reason"] == "win"):
+			$Info/Label.text = "获胜！"
+			$Info.visible = true
+		if (message["reason"] == "lose"):
+			$Info/Label.text = "失败！"
+			$Info.visible = true
+		if (message["reason"] == "tie"):
+			$Info/Label.text = "平局！"
+			$Info.visible = true
 	
 	if (message["type"] == "gameoperation"):
 		game.enemyAct(message)  
@@ -152,6 +161,11 @@ func _on_quit_pressed():
 
 # 游戏中发送信息
 var timeStamp:int = 0
+func _on_client_send_data_no_time(data:Dictionary):
+	data["ID"] = ID
+	print(data)
+	_client.send(JSON.stringify(data))
+		
 func _on_client_send_data(data:Dictionary):
 	
 	data["ID"] = ID
