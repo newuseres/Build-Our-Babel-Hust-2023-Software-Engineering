@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://vnhrx4iq4ggc"]
+[gd_scene load_steps=27 format=3 uid="uid://vnhrx4iq4ggc"]
 
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_afsdt"]
 [ext_resource type="LabelSettings" uid="uid://cbuan21y4ibj3" path="res://tress/shop_font30px.tres" id="2_m0a2g"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" path="res://scripts/labels/upLevelCostLabel.gd" id="6_37etc"]
 [ext_resource type="Script" path="res://scripts/buttons/ButtonFinish.gd" id="6_q2ffn"]
 [ext_resource type="Texture2D" uid="uid://bxjo0f0c1xnea" path="res://image/ui/productor_font.png" id="7_t40wj"]
+[ext_resource type="Texture2D" uid="uid://b45gy8ja7j6m1" path="res://image/floor/炮台-14.png" id="9_eeum0"]
 [ext_resource type="Script" path="res://scripts/FloorTotalLabel.gd" id="9_ltxlc"]
+[ext_resource type="Texture2D" uid="uid://dly7wipv1srsk" path="res://image/floor/炮台-17.png" id="9_r3t8a"]
 [ext_resource type="Texture2D" uid="uid://qe7hqso7cv3d" path="res://image/ui/floor_num_font.png" id="10_p4wfx"]
 [ext_resource type="Texture2D" uid="uid://du760xor6700" path="res://image/ui/shopui.png" id="11_c7334"]
 [ext_resource type="LabelSettings" uid="uid://bdadfrnrf2vmx" path="res://tress/shop_font16px.tres" id="14_1o0jt"]
@@ -20,16 +22,29 @@
 [ext_resource type="Texture2D" uid="uid://b4g325721dweg" path="res://image/ui/add_science_font.png" id="17_67rde"]
 [ext_resource type="Texture2D" uid="uid://rlmxpf3qen22" path="res://image/ui/close_font.png" id="18_wsnw4"]
 [ext_resource type="Texture2D" uid="uid://bmme8vjfrskwx" path="res://image/ui/shop3.png" id="20_tt4l4"]
+[ext_resource type="Texture2D" uid="uid://dinvop1tecknd" path="res://image/floor/炮台-16.png" id="22_7nu5n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0b86k"]
+font_size = 38
+font_color = Color(0.909804, 0.847059, 0.886275, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fr400"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cfhg0"]
+font_size = 45
+font_color = Color(0, 0, 0, 1)
 
 [node name="Shop" type="Node2D"]
 position = Vector2(57, 0)
 script = ExtResource("1_afsdt")
 
 [node name="GoldLabel" type="Label" parent="."]
-offset_left = -181.0
-offset_top = -471.0
-offset_right = -44.0
-offset_bottom = -426.0
+offset_left = -179.0
+offset_top = -470.0
+offset_right = -42.0
+offset_bottom = -425.0
 text = "gold"
 label_settings = ExtResource("2_m0a2g")
 horizontal_alignment = 2
@@ -67,20 +82,54 @@ scale = Vector2(1.29667, 1.00267)
 texture = ExtResource("5_3ume2")
 
 [node name="ButtonFinish" type="Button" parent="."]
-offset_left = 978.0
-offset_top = -399.0
-offset_right = 1090.0
-offset_bottom = -316.0
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -275.0
+offset_top = -46.0
+offset_right = -97.0
+offset_bottom = 144.0
 text = "回合结束"
 script = ExtResource("6_q2ffn")
 
+[node name="Sprite2D" type="Sprite2D" parent="ButtonFinish"]
+z_index = -1
+position = Vector2(133, 73)
+scale = Vector2(0.528713, 0.82505)
+texture = ExtResource("9_eeum0")
+flip_v = true
+
+[node name="Label" type="Label" parent="ButtonFinish"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 63.0
+offset_right = 170.0
+offset_bottom = 120.0
+text = "回合结束"
+label_settings = SubResource("LabelSettings_0b86k")
+
 [node name="ButtonOpenShop" type="Button" parent="."]
-offset_left = 1026.0
-offset_top = -479.0
-offset_right = 1093.0
-offset_bottom = -426.0
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -241.0
+offset_top = -246.0
+offset_right = -86.0
+offset_bottom = -189.0
 text = "商店
 "
+
+[node name="Sprite2D" type="Sprite2D" parent="ButtonOpenShop"]
+z_index = -1
+position = Vector2(102.5, 10.5)
+scale = Vector2(0.528713, 0.411531)
+texture = ExtResource("9_r3t8a")
+flip_v = true
+
+[node name="Label" type="Label" parent="ButtonOpenShop"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -1.0
+offset_right = 162.0
+offset_bottom = 45.0
+text = "商店"
+label_settings = ExtResource("2_m0a2g")
 
 [node name="LevelLabel" type="Label" parent="."]
 offset_left = 59.0
@@ -105,7 +154,7 @@ texture = ExtResource("5_3ume2")
 [node name="ShopScreen" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.67451)
 z_index = 10
-position = Vector2(434.149, -84.6187)
+position = Vector2(489.149, -84.6187)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("11_c7334")
 
@@ -188,8 +237,80 @@ script = ExtResource("6_37etc")
 position = Vector2(-12.4194, 0.41278)
 texture = ExtResource("20_tt4l4")
 
-[connection signal="pressed" from="ButtonFinish" to="." method="_on_button_finish_pressed"]
+[node name="ButtonOpenHelp" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -243.0
+offset_top = -129.0
+offset_right = -88.0
+offset_bottom = -72.0
+text = "商店
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="ButtonOpenHelp"]
+self_modulate = Color(16.76, 1, 1, 1)
+z_index = -1
+position = Vector2(102.5, 10.5)
+scale = Vector2(0.528713, 0.411531)
+texture = ExtResource("22_7nu5n")
+flip_v = true
+
+[node name="Label" type="Label" parent="ButtonOpenHelp"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -1.0
+offset_right = 141.0
+offset_bottom = 45.0
+text = "游戏帮助"
+label_settings = SubResource("LabelSettings_fr400")
+
+[node name="HelpScreen" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(489.149, -84.6187)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("11_c7334")
+
+[node name="ButtonCloseHelpSceen" type="Button" parent="HelpScreen"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 294.0
+offset_top = -181.0
+offset_right = 354.0
+offset_bottom = -93.0
+text = "关闭"
+
+[node name="Sprite2D" type="Sprite2D" parent="HelpScreen/ButtonCloseHelpSceen"]
+position = Vector2(-282.202, 169.953)
+scale = Vector2(0.987643, 1.02616)
+texture = ExtResource("18_wsnw4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HelpScreen"]
+offset_left = -398.0
+offset_top = -124.0
+offset_right = 322.0
+offset_bottom = 234.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "无情的灾祸肆虐您治下的每一片国土。尽管国民众志成城，但仍然饿殍遍野。
+传说天空中的国度有无尽的宝藏，足以淹没一切的忧伤。
+选择巴比伦塔的建设规划，筑成坚固的碉堡。
+抵御入侵者，助您抢先登上天国。
+
+点击购买您需要的建筑，
+建筑有些可以生产矿工提供金币，
+有些可以攻击敌方的巴比伦塔。
+点击商店中的刷新按钮，换一个思路可以更好的规划。
+点击商店中的升级按钮，提高科技，创新制胜！"
+
+[node name="Label" type="Label" parent="HelpScreen"]
+offset_left = -152.624
+offset_top = -182.818
+offset_right = 94.3759
+offset_bottom = -115.818
+text = "游戏帮助"
+label_settings = SubResource("LabelSettings_cfhg0")
+
 [connection signal="pressed" from="ButtonOpenShop" to="." method="_on_button_open_shop_pressed"]
 [connection signal="pressed" from="ShopScreen/ButtonRefresh" to="." method="_on_button_refresh_pressed"]
 [connection signal="pressed" from="ShopScreen/ButtonUpLevel" to="." method="_on_button_up_level_pressed"]
 [connection signal="pressed" from="ShopScreen/ButtonCloseShopSceen" to="." method="_on_button_close_shop_sceen_pressed"]
+[connection signal="pressed" from="ButtonOpenHelp" to="." method="_on_button_open_help_pressed"]
+[connection signal="pressed" from="HelpScreen/ButtonCloseHelpSceen" to="." method="_on_button_close_help_sceen_pressed"]
