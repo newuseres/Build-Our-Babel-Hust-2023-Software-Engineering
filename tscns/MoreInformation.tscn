@@ -66,7 +66,7 @@ texture = ExtResource("3_nylqs")
 position = Vector2(-1.00002, -40)
 
 [node name="background" type="Sprite2D" parent="."]
-self_modulate = Color(0.313726, 0.329412, 0.278431, 0.847059)
+self_modulate = Color(0.313726, 0.329412, 0.278431, 0.952941)
 z_index = 5
 position = Vector2(-113.5, -139)
 scale = Vector2(2.25, 2.72)
