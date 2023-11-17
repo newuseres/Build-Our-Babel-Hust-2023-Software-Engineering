@@ -71,8 +71,8 @@ func loadbase(id:int,level:int) :
 	textureS = TextureButton.new()
 	moreInformation = MoreInformation.instantiate()
 	z_index = 0
-	moreInformation.z_index = 1
-
+	moreInformation.z_index = 2
+	
 	add_child(textureB)
 	add_child(moreInformation)
 	#读取shop等级
@@ -88,6 +88,7 @@ func loadbase(id:int,level:int) :
 #	textureB.ignore_texture_size = true
 	textureS.scale = Vector2(0.07,0.05)
 	textureS.position = Vector2(30,80)
+	textureS.z_index = 1
 	textureB.add_child(textureS)
 	
 	moreInformation.visible = false

@@ -27,7 +27,7 @@ action_mode = 0
 texture_normal = ExtResource("2_o4qlw")
 
 [node name="costLabel" type="Label" parent="."]
-z_index = 10
+z_index = -1
 layout_direction = 1
 offset_left = 10.0
 offset_top = 93.0
@@ -40,12 +40,13 @@ horizontal_alignment = 1
 
 [node name="background" type="Sprite2D" parent="."]
 self_modulate = Color(0.968627, 0.717647, 0.831373, 0.717647)
+z_index = -2
 position = Vector2(720, -528)
 scale = Vector2(1.215, 2.00071)
 texture = ExtResource("3_o7a2h")
 
 [node name="nameLabel" type="Label" parent="."]
-z_index = 10
+z_index = -1
 offset_left = 8.0
 offset_top = 144.0
 offset_right = 202.0
@@ -57,7 +58,7 @@ horizontal_alignment = 1
 
 [node name="nameBackground" type="Sprite2D" parent="."]
 self_modulate = Color(0.898039, 0.870588, 0.839216, 1)
-z_index = -1
+z_index = -2
 position = Vector2(608, 9)
 scale = Vector2(1, 0.485667)
 texture = ExtResource("3_o7a2h")

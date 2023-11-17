@@ -10,7 +10,7 @@ var towerEnemy:Tower
 var playID:int#玩家ID
 var seed0:int
 var seed1:int
-var father:NetworkMain
+var father:NetworkMain	
 
 func turnBegin():
 	tower0.turnBegin()
