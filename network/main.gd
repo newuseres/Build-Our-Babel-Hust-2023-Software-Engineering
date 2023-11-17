@@ -15,6 +15,7 @@ func to_menu ():
 	
 # 更换房间场景
 func to_room (room_id):
+	if(game != null) : game.visible = false
 	$WaitingRoom/WaitingPlayer.clear()
 	$WaitingRoom/Ready.text = "准备"
 	$WaitingRoom/Ready.set_pressed_no_signal(false)
@@ -22,7 +23,7 @@ func to_room (room_id):
 	$WaitingRoom.visible = true
 
 func to_game (playid,seed0,seed1):
-	
+	if(game != null) : game.queue_free()
 	game = gameTscn.instantiate()
 	game.father = self
 	game.playID = playid	
@@ -101,8 +102,8 @@ func _on_web_socket_client_message_received(_message):
 		
 	# 接收结束游戏信息
 	if (message["type"] == "endgame"):
-		game.queue_free()
 		to_room(message["roomnum"])
+		
 		if (message["reason"] == "quit"):
 			$Info/Label.text = "对手退出了游戏"
 			$Info.visible = true
