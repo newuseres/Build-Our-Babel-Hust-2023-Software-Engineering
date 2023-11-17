@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d12jsrbmkf1ln"]
+[gd_scene load_steps=7 format=3 uid="uid://d12jsrbmkf1ln"]
 
 [ext_resource type="Script" path="res://network/websocket/WebSocketClient.gd" id="1_75oc4"]
 [ext_resource type="Script" path="res://network/main.gd" id="1_iajoo"]
 [ext_resource type="Texture2D" uid="uid://bluxjcfwb4qbn" path="res://image/bg5.png" id="2_jb01x"]
 [ext_resource type="Script" path="res://network/Info.gd" id="4_cfqyu"]
 [ext_resource type="Texture2D" uid="uid://qwvcxd4jxtnn" path="res://image/block.png" id="4_g5kgx"]
+[ext_resource type="AudioStream" uid="uid://jlk82kv17bgp" path="res://music/start.mp3" id="6_5muhh"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -344,6 +345,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "关闭"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5muhh")
+volume_db = 12.381
+autoplay = true
 
 [connection signal="pressed" from="Menu/RandJoin" to="." method="_on_rand_join_pressed"]
 [connection signal="pressed" from="Menu/Join" to="." method="_on_join_pressed"]

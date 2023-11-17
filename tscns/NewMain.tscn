@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqcbufyscddmd"]
+[gd_scene load_steps=12 format=3 uid="uid://dqcbufyscddmd"]
 
 [ext_resource type="Script" path="res://scripts/NewMain.gd" id="1_qekkm"]
 [ext_resource type="PackedScene" uid="uid://dwsya70w7u43r" path="res://tscns/Minimap.tscn" id="2_kj8dk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://byx10aftfgsve" path="res://image/ui/rightfram.png" id="6_q01ic"]
 [ext_resource type="Script" path="res://scripts/play0topnum.gd" id="8_x61a5"]
 [ext_resource type="Script" path="res://scripts/play1topnum.gd" id="9_c1ufm"]
+[ext_resource type="AudioStream" uid="uid://5nj8reedrk4n" path="res://music/bbgm.mp3" id="9_gf5lv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nkntd"]
 font_size = 24
@@ -95,6 +96,11 @@ offset_bottom = 808.0
 text = "top1"
 label_settings = SubResource("LabelSettings_o86rq")
 script = ExtResource("9_c1ufm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_gf5lv")
+volume_db = 10.4
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="一键多金" to="." method="_on_一键多金_pressed"]
