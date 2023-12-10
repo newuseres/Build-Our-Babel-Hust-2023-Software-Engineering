@@ -18,3 +18,5 @@ func _process(delta):
 		speed = 800
 	else: position += dist.normalized() * speed * delta
 	pass
+
+
