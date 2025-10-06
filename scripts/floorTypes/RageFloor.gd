@@ -12,7 +12,13 @@ func load(id : int,level:int):
 
 func checkBuff():
 	checkBuffBase()
-	tempAttackPoint += attackPoint * (1.0 -1.0 * health / maxHealth)
+	var perc:float
+	perc = 1.0 * health / maxHealth
+	if(perc < 0.1):
+		tempAttackPoint += attackPoint
+	else :
+		if(perc < 0.95):
+			tempAttackPoint += attackPoint * (1.0 - perc)
 	moreInformationStr = "攻击力" + str(tempAttackPoint)
 
 func act():

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://d12jsrbmkf1ln"]
 
-[ext_resource type="Script" path="res://network/websocket/WebSocketClient.gd" id="1_75oc4"]
-[ext_resource type="Script" path="res://network/main.gd" id="1_iajoo"]
+[ext_resource type="Script" uid="uid://b8xha3eqtkpmy" path="res://network/websocket/WebSocketClient.gd" id="1_75oc4"]
+[ext_resource type="Script" uid="uid://di1jmal112477" path="res://network/main.gd" id="1_iajoo"]
 [ext_resource type="Texture2D" uid="uid://bluxjcfwb4qbn" path="res://image/bg5.png" id="2_jb01x"]
-[ext_resource type="Script" path="res://network/Info.gd" id="4_cfqyu"]
+[ext_resource type="Script" uid="uid://betq7cpaam4mt" path="res://network/Info.gd" id="4_cfqyu"]
 [ext_resource type="Texture2D" uid="uid://qwvcxd4jxtnn" path="res://image/block.png" id="4_g5kgx"]
 [ext_resource type="AudioStream" uid="uid://jlk82kv17bgp" path="res://music/start.mp3" id="6_5muhh"]
 
@@ -348,7 +348,7 @@ text = "关闭"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_5muhh")
-volume_db = 12.381
+volume_db = -10.0
 autoplay = true
 
 [connection signal="pressed" from="Menu/RandJoin" to="." method="_on_rand_join_pressed"]

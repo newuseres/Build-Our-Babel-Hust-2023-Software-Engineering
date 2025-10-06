@@ -96,19 +96,12 @@ func resetActive():
 func fallCheck():
 	#now unfreeze after wait
 	var sumWeight = 0
-	var sumDamage = 0
 	for floorN in range(floors.size() - 1,-1,-1) :
-		if sumDamage > 0 :
-			if sumDamage > floors[floorN].health :
-				sumDamage -= floors[floorN].health
-				floors[floorN].takeDamage(floors[floorN].health, null, Globals.DamageType.gravity)
-			else:
-				floors[floorN].takeDamage(sumDamage,null , Globals.DamageType.gravity)
-				sumDamage = 0
-		if floors[floorN].alive == false :
-			sumDamage += sumWeight
-			sumWeight = 0
+		if sumWeight > floors[floorN].health :
+			floors[floorN].takeDamage(floors[floorN].health, null, Globals.DamageType.gravity)
 		else:
+			floors[floorN].takeDamage(sumWeight,null , Globals.DamageType.gravity)
+		if floors[floorN].alive == true :
 			sumWeight = sumWeight + floors[floorN].weight
 	pass
 	var pos = 0
@@ -161,5 +154,3 @@ func _ready():
 
 func _process(delta):
 	pass
-
-

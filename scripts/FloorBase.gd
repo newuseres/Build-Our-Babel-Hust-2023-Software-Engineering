@@ -115,7 +115,13 @@ func takeDamageBase(damage : int,resource :FloorBase,damageType) -> bool:
 		buffList[Globals.BuffType.lock] = buffList.get(Globals.BuffType.lock,0 )
 	if(damageType == Globals.DamageType.weak) :
 		buffList[Globals.BuffType.weak] = buffList.get(Globals.BuffType.weak,0 )
-
+		
+	if(damageType == Globals.DamageType.gravity) :
+		if(damage <= weight) :
+			damage = 0
+		else : 
+			damage -= weight
+		
 	if(damageType == Globals.DamageType.maxhealth) :
 		maxHealth -= damage
 	else :
@@ -137,7 +143,7 @@ func takeHeal(heal : int):
 	if(buffList.get(Globals.BuffType.lock,0 ) > 0 ):
 		buffList[Globals.BuffType.lock] -= 1
 		return
-	health = max(health + heal, maxHealth)
+	health = min(health + heal, maxHealth)
 
 func dealthVoice():
 	pass

@@ -123,7 +123,7 @@ func loadall():
 	levelfloor = [[],[],[],[],[],[],[]]
 	load_relation_database("res://database/经济.csv")
 	load_kv_database("res://database/初始设置.csv")
-	load_floor("res://database/建筑数值（随机从80%~120%波动鼓励刷新）.csv")
+	load_floor("res://database/建筑数值.csv")
 	load_refresh_rates("res://database/商店刷新概率.csv")
 	load_floor_type("res://database/类型名称.csv")
 	pass

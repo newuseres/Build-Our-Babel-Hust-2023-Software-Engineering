@@ -34,4 +34,3 @@ func _process(delta):
 		self.position += (delta/time_all) * (to-from)
 		if time_now >= time_all:
 			self.visible = false
-

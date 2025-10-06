@@ -7,4 +7,3 @@ func act():
 	if father.opposite.floors.is_empty(): return
 	tryAttack(father.opposite.getWeak(),9)
 	pass
-

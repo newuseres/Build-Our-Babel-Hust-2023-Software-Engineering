@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8e1aa0rt3ouy"]
 
-[ext_resource type="Script" path="res://scripts/FloorSuper.gd" id="1_d0iyx"]
-[ext_resource type="Script" path="res://scripts/floorTypes/MineFloor.gd" id="2_mcqwv"]
-[ext_resource type="Script" path="res://scripts/floorTypes/GunFloor.gd" id="3_gom0k"]
+[ext_resource type="Script" uid="uid://w4xjo8m2pae6" path="res://scripts/FloorSuper.gd" id="1_d0iyx"]
+[ext_resource type="Script" uid="uid://drori163401h2" path="res://scripts/floorTypes/ResistFloor.gd" id="2_mcqwv"]
+[ext_resource type="Script" uid="uid://didjyjy6jjrv3" path="res://scripts/floorTypes/GunFloor.gd" id="3_gom0k"]
 
 [node name="FloorBase" type="Node2D"]
 script = ExtResource("1_d0iyx")

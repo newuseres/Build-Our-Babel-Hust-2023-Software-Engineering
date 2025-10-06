@@ -17,7 +17,7 @@ func checkBuffBase():
 	tempAttackPoint = attackPoint
 	if(buffList.get(Globals.BuffType.weak, 0) > 0 ): 
 		buffList[Globals.BuffType.weak] = buffList.get(Globals.BuffType.weak, 0) - 1
-		tempAttackPoint = int (tempAttackPoint * 0.6)
+		tempAttackPoint = int (tempAttackPoint * 0.5)
 	
 
 func checkBuff():

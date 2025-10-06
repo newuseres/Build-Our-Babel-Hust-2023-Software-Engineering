@@ -17,6 +17,4 @@ func act():
 		aim = father.opposite.getFloor(floorN)
 		tryAttack(father.opposite.getFloor(aim.floorN-1),2 ) 
 		tryAttack(father.opposite.getFloor(aim.floorN+1),2 ) 
-
-
-
+	pass

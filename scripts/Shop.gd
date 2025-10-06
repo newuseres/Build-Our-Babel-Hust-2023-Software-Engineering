@@ -104,6 +104,7 @@ func _ready():
 	productor = int(Pool.poolAttr["初始矿工"])
 	productorLimit = int(Pool.poolAttr["初始矿工上限"])
 	goldFlushCost = int(Pool.poolAttr["科技等级_1_刷新金币"])
+	penaltyCoefficient = int(Pool.poolAttr["刷新惩罚系数"])
 	gold = int(Pool.poolAttr["初始金币"])
 	penaltyBuy = float(Pool.poolAttr["科技等级_1"+"_购买惩罚倍率"])
 	penaltyNowRate = 1

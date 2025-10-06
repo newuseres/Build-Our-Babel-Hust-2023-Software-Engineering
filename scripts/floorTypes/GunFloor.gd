@@ -13,4 +13,3 @@ func actLikeGunFloor(bulletType : int):
 func act():
 	actLikeGunFloor(8)
 	pass
-

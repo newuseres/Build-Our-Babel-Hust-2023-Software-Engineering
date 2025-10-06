@@ -130,7 +130,7 @@ func _process(delta):
 				if(prior == 0):
 					tower0.highestActive().act()
 					prior = 1
-				ese:
+				else:
 					tower1.highestActive().act()
 					prior = 0
 			elif(tower0.highestActive().floorN > tower1.highestActive().floorN):

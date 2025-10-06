@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bstm0dum4ef72"]
 
-[ext_resource type="Script" path="res://scripts/MoreInformation.gd" id="1_kqpgs"]
+[ext_resource type="Script" uid="uid://du5inmnv4l156" path="res://scripts/MoreInformation.gd" id="1_kqpgs"]
 [ext_resource type="Texture2D" uid="uid://qwvcxd4jxtnn" path="res://image/block.png" id="3_nylqs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mhh3o"]
@@ -8,6 +8,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_g7rtg"]
 
 [sub_resource type="FontFile" id="FontFile_yka4b"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/30/0/ascent = 0.0
 cache/0/30/0/descent = 0.0
 cache/0/30/0/underline_position = 0.0

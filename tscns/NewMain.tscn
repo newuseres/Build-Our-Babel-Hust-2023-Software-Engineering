@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://dqcbufyscddmd"]
 
-[ext_resource type="Script" path="res://scripts/NewMain.gd" id="1_qekkm"]
+[ext_resource type="Script" uid="uid://cq4qf6yvmt3kn" path="res://scripts/NewMain.gd" id="1_qekkm"]
 [ext_resource type="PackedScene" uid="uid://dwsya70w7u43r" path="res://tscns/Minimap.tscn" id="2_kj8dk"]
 [ext_resource type="Texture2D" uid="uid://b1mvoo6xai35x" path="res://image/ui/minimap.png" id="3_axnox"]
 [ext_resource type="Texture2D" uid="uid://b4rviepvldbbx" path="res://image/ui/bigbackground.png" id="4_dw6dy"]
 [ext_resource type="Texture2D" uid="uid://40n0477jeiba" path="res://image/ui/leftfram.png" id="5_nc6ga"]
 [ext_resource type="Texture2D" uid="uid://byx10aftfgsve" path="res://image/ui/rightfram.png" id="6_q01ic"]
-[ext_resource type="Script" path="res://scripts/play0topnum.gd" id="8_x61a5"]
-[ext_resource type="Script" path="res://scripts/play1topnum.gd" id="9_c1ufm"]
+[ext_resource type="Script" uid="uid://dd7vc850ne3ej" path="res://scripts/play0topnum.gd" id="8_x61a5"]
+[ext_resource type="Script" uid="uid://jk228pv5cfd4" path="res://scripts/play1topnum.gd" id="9_c1ufm"]
 [ext_resource type="AudioStream" uid="uid://5nj8reedrk4n" path="res://music/bbgm.mp3" id="9_gf5lv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nkntd"]
@@ -99,7 +99,7 @@ script = ExtResource("9_c1ufm")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_gf5lv")
-volume_db = 10.4
+volume_db = -13.867
 autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

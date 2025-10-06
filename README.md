@@ -32,8 +32,6 @@
 
 windows 系统:选择 babel.exe,点击即玩
 
-maxos 系统:选择 babel.dmg 点击里面的babel.app 即可玩，可能需要安全机制
-
 其它系统，或不兼容情况，可以选择clone该git，然后采用Godot4.1.2 stable 进行自行编译发行。
 
 **里面有随机匹配机制，但在线人数少的话，你可能需要一个朋友和你一起玩**
@@ -60,3 +58,6 @@ maxos 系统:选择 babel.dmg 点击里面的babel.app 即可玩，可能需要�
 ![](https://github.com/newuseres/HLB/blob/master/show_images/图片2.png)
 ![](https://github.com/newuseres/HLB/blob/master/show_images/图片3.png)
 ![](https://github.com/newuseres/HLB/blob/master/show_images/图片1.png)
+
+## 2025/10/7
+**胡乐麟** 整理修改了游戏数值和部分炮台的机制，更新了服务器代码使之符合最新的websocket库

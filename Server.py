@@ -137,6 +137,7 @@ def is_ready_to_roundend (roomnum):
 
 async def server (websocket, path):
     try:
+        print("Servering a new client")
         async for message in websocket:
             message = json.loads(message)
 
@@ -281,9 +282,15 @@ async def server (websocket, path):
 
 print("Server started")
 
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
+async def main():
+    async with websockets.serve(server, "localhost", 8282):
+        await asyncio.Future()  # 永远挂起，保持服务运行
+
+asyncio.run(main())
+
+# loop = asyncio.new_event_loop()
+# asyncio.set_event_loop(loop)
 
 
-loop.run_until_complete(websockets.serve(server, "", 8000))
-loop.run_forever()
+# loop.run_until_complete(websockets.serve(server, "", 8282))
+# loop.run_forever()

@@ -123,9 +123,8 @@ func _on_web_socket_client_message_received(_message):
 
 
 func _ready():
-	#to be coding
-	var err = _client.connect_to_url("ws://175.178.69.150:8000/")
-	# var err = _client.connect_to_url("ws://localhost:8000/")
+	# 没能添加服务器设置相关页面……遗憾
+	var err = _client.connect_to_url("ws://223.152.215.237:8282/")
 	if err != OK:
 		_client.close()
 		return

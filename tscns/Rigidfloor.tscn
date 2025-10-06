@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cejfxi1ber66a"]
 
-[ext_resource type="Script" path="res://scripts/Rigid.gd" id="1_32ane"]
+[ext_resource type="Script" uid="uid://3sypn6r5it4h" path="res://scripts/Rigid.gd" id="1_32ane"]
 
 [node name="Rigid" type="Node2D"]
 script = ExtResource("1_32ane")
