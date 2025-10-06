@@ -124,7 +124,7 @@ func _on_web_socket_client_message_received(_message):
 
 func _ready():
 	# 没能添加服务器设置相关页面……遗憾
-	var err = _client.connect_to_url("ws://223.152.215.237:8282/")
+	var err = _client.connect_to_url("ws://localhost:8282/")
 	if err != OK:
 		_client.close()
 		return

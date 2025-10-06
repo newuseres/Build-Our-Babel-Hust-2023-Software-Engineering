@@ -1,3 +1,10 @@
+
+#### 2025/10/7
+
+整理修改了游戏数值和部分炮台的机制，更新了服务器代码使之符合最新的websocket库。目前由于技术原因只能在本机上运行）具体需要修改network/main.gd相关的函数（似乎主要是_ready（））
+
+---
+
 # build our babel 巴比伦塔-双人策略对战小游戏-hust2023软件工程项目
 
 一款名为巴比伦塔的双人对战策略类小游戏
@@ -50,14 +57,15 @@ windows 系统:选择 babel.exe,点击即玩
 **胡乐麟** 主要负责数值与玩法的设计，美术素材的获取与对接。
 
 ### 技术信息
+
 游戏主体逻辑采用Godot4.1.2stable 开发
 游戏服务端逻辑采用 Python 编写，具体可见 server.py
 
 具体整个游戏项目的实现的详细信息,以及游戏的具体塔层属性和游戏说明，见软件工程实现报告。
 ## 游戏展示
-![](https://github.com/newuseres/HLB/blob/master/show_images/图片2.png)
-![](https://github.com/newuseres/HLB/blob/master/show_images/图片3.png)
-![](https://github.com/newuseres/HLB/blob/master/show_images/图片1.png)
 
-## 2025/10/7
-**胡乐麟** 整理修改了游戏数值和部分炮台的机制，更新了服务器代码使之符合最新的websocket库
+![](https://github.com/newuseres/HLB/blob/master/show_images/图片2.png)
+
+![](https://github.com/newuseres/HLB/blob/master/show_images/图片3.png)
+
+![](https://github.com/newuseres/HLB/blob/master/show_images/图片1.png)
